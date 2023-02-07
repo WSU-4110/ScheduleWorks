@@ -72,6 +72,38 @@ def extract_user_info():
     return user_information
 
 
+
+def view_course_history():
+    """Extracts course history from json audit file."""
+    try:
+        with open('data/classData.json', encoding="utf-8") as file:
+            audit_data = json.load(file)
+    except FileNotFoundError as error:
+        raise error
+
+    for course in audit_data["classInformation"]["classArray"]:
+        print(f"{course['discipline']:<5} {course['number']:<5} {course['credits']:<3} {course['courseTitle']:<30} 'Passed:' {course['passed']:<8}")
+       
+
+
+
+def view_degree_requirements():
+    """Extracts course history from json audit file."""
+    try:
+        with open('data/classData.json', encoding="utf-8") as file:
+            audit_data = json.load(file)
+    except FileNotFoundError as error:
+        raise error
+
+    for degree_block_requirement in audit_data["blockArray"]:
+        print(degree_block_requirement["title"])
+
+    
+
 if __name__ == "__main__":
-    retrive_data()
-    # extract_user_info()
+    view_course_history()
+    view_degree_requirements()
+
+
+
+    
