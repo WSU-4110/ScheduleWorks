@@ -14,7 +14,7 @@ import devolpment_shortcut
 def manual_endpoints(sid,passwd):
     """something descriptive when this is done."""
     chrome_options = Options()
-    # chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--headless")
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()), options=chrome_options)
 
@@ -23,9 +23,7 @@ def manual_endpoints(sid,passwd):
 
     # go to where
     driver.get(
-        "https://login.wayne.edu/" +
-        "?destination_url=https%3A%2F%2Facademica.aws.wayne.edu%2Fcas%2Flogin%3Fservice%3D" +
-        "https%253A%252F%252Fdegreeworks.wayne.edu%253A443%252Flogin%252Fcas")
+        "https://login.wayne.edu/")
 
     # find html id password and usrename
     username = driver.find_element("id", "accessid")
@@ -34,23 +32,28 @@ def manual_endpoints(sid,passwd):
     # my info sent into the driver
     username.send_keys(sid)
     password.send_keys(passwd)
-
     # loginbutton clicky
     driver.find_element("id", "login-button").click()
-    time.sleep(2)
-    driver.find_element(
-        "xpath", "//*[@id=\"idDiv_SAOTCS_Proofs\"]/div[1]/div/div").click()
-    # microsoft 2fa code
-    time.sleep(2)
-    code = input("code: ")
-    driver.find_element(
-        "xpath", "//*[@id=\"idTxtBx_SAOTCC_OTC\"]").send_keys(code)
-    driver.find_element(
-        "xpath", "//*[@id=\"idSubmit_SAOTCC_Continue\"]").click()
+    time.sleep(1)
+    
+    # driver.find_element(
+    #     "xpath", "//*[@id=\"idDiv_SAOTCS_Proofs\"]/div[1]/div/div").click()
+    # # microsoft 2fa code
+    # time.sleep(10)
+    # code = input("code: ")
+    # driver.find_element(
+    #     "xpath", "//*[@id=\"idTxtBx_SAOTCC_OTC\"]").send_keys(code)
+    # driver.find_element(
+    #     "xpath", "//*[@id=\"idSubmit_SAOTCC_Continue\"]").click()
     
     # authentication finished, endpoints available
-    time.sleep(2)
+
+    time.sleep(3)
+    driver.get("https://degreeworks.wayne.edu/worksheets/WEB31")
+    time.sleep(3)
     driver.get("https://degreeworks.wayne.edu/api/students/myself")
+    time.sleep(3)
+
     soup = BeautifulSoup(driver.page_source, features="lxml")
     dict_from_json = json.loads(soup.find("body").text)
 
@@ -81,6 +84,6 @@ def manual_endpoints(sid,passwd):
 
 
 if __name__ == "__main__":
-    manual_endpoints("HH8001",privateInfo.getPass())
+    manual_endpoints("hh8001",privateInfo.getPass())
     devolpment_shortcut.view_degree_requirements()
     devolpment_shortcut.view_course_history()
