@@ -5,6 +5,7 @@ Uses selenium to retrive data and beautifulSoup to parse it.
 """
 
 import json
+import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -34,6 +35,10 @@ def retrive_data(refresh_token: str, token:str, name:str) -> None:
     driver.get("https://degreeworks.wayne.edu/api/students/myself")
     soup = BeautifulSoup(driver.page_source, features="lxml")
     dict_from_json = json.loads(soup.find("body").text)
+
+    if not os.path.exists('data'):
+        os.makedirs('data')
+
     with open("data/userData.json", 'w+', encoding="utf-8") as outfile:
         json.dump(dict_from_json, outfile, indent=4)
 
@@ -85,9 +90,9 @@ def view_course_history():
     for course in audit_data["classInformation"]["classArray"]:
         print(f"{course['discipline']:<5}",
               f"{course['number']:<5}",
-              f" {course['credits']:<3}",
-              f" {course['courseTitle']:<30}",
-              f" 'Passed:' {course['passed']:<8}")
+              f"{course['credits']:<3}",
+              f"{course['courseTitle']:<30}",
+              f"'Passed:' {course['passed']:<8}")
 
 
 
