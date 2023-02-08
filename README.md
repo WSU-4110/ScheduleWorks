@@ -4,7 +4,8 @@ A desktop application that can build a class schedule given time & day filters.
 
 
 # Requirements
-### Manual Installations
+Installation can be either through a terminal or by directly downloading the required software
+### Direct Installations
 -----
 <a href="https://www.python.org/downloads/release/python-3100/" target="_blank">Python 3.10</a>
 
