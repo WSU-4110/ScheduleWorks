@@ -159,10 +159,22 @@ def course_sum3(dir_graph: nx.DiGraph, course:str, memo:dict) -> int:
 
 
 
-def course_sum4(G: nx.DiGraph, course:str, memo:dict) -> int:
+def course_sum4(G: nx.DiGraph, course:str, memo:dict) -> list:
+    """
+    Determine a given courses dependency count. See make_priority_queue() to use properly.
 
+    Wrapper function to clarify args used during recursion.
+    Functions best when courses are fed in order from least expected dependency to most.
     
-    def course_summate(course_id:str,included_courses = set()) -> int:
+    
+    Args:
+    G: A directed graph containing courses and edges that point towards a courses prequisite.
+    course: The course that is being analysed for priority count.
+    memo: Memoization dict to speed up complex prerequisties
+    """
+    
+    def course_summate(course_id:str,included_courses = set()) -> list:
+        """Recursive function to return a list of prereq courses given a course."""
         if course_id in memo.keys():
             return memo[course_id]
         temp_courses=set()
@@ -177,6 +189,22 @@ def course_sum4(G: nx.DiGraph, course:str, memo:dict) -> int:
             return course_summate(course_not_reached,included_courses) + (current_thread)
         return [course_id]
     return course_summate(course)
+
+
+def make_priority_queue(G: nx.DiGraph) -> list:
+    """
+    Produce a priority queue of courses from a directed graph.
+
+    TODO:
+    return numeric list.
+    ensure priority when 2 classes are equal length.
+    """
+    memo={}
+    for node in sorted_by_level:
+        arr = course_sum4(G,node,memo)
+        memo[node]:arr
+    
+    return memo
 print()
 print()
 
@@ -197,6 +225,7 @@ for node in sorted_by_level:
 toc = time.perf_counter()
 print(f"Memoization in {toc - tic:0.5f} seconds")
 
+
 print()
 memo={}
 tic = time.perf_counter()
@@ -207,19 +236,6 @@ for node in sorted_by_level:
 toc = time.perf_counter()
 print(f"Memoization in {toc - tic:0.5f} seconds")
 
-
-
-
-# tic = time.perf_counter()
-# for node in sorted_by_level:
-#     print(node ,": ", course_sum(G,node))
-# toc = time.perf_counter()
-# print(f"Normal recursion in {toc - tic:0.4f} seconds")
-
-# tic = time.perf_counter()
-
-# for course in G.nodes():
-
-# print(course_sum(G,"CSC1500"))
+print(memo==make_priority_queue(G))
 
 
