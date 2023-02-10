@@ -19,7 +19,7 @@ def course_sum(graph: nx.DiGraph, course: str, memo: dict) -> set:
     """
     included_courses = set()
 
-    def course_summate(course_id: str):
+    def course_summate(course_id: str) -> None:
         """Recursive function to return a list of prereq courses given a course."""
 
         if course_id not in included_courses:
@@ -58,7 +58,7 @@ def make_priority_queue(graph: nx.DiGraph) -> dict:
         dependent_courses = course_sum(graph, node, memo)
 
         memo[node] = dependent_courses
-        # print(node, ": ", len(dependent_courses))
+        print(node, ": ", len(dependent_courses))
 
     return memo
 
@@ -102,4 +102,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print()
