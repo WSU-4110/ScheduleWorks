@@ -18,7 +18,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pylint
-        pip install -r /requirements.txt
+        pip install selenium
+        pip install webdriver_manager
+        pip install lxml
+        pip install bs4
+        pip install networkx
+        pip install matplotlib
+        pip install PyQt5
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
