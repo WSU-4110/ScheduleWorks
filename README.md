@@ -51,3 +51,4 @@ pip install -r requirements.txt
  - connect java frontend and python backend
  - save python output to a file for java to read
  - organize directories
+ - connect nub.py to dgraph to build a priority queue
