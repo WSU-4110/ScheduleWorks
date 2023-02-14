@@ -52,3 +52,4 @@ pip install -r requirements.txt
  - save python output to a file for java to read
  - organize directories
  - connect nub.py to dgraph to build a priority queue
+ - add picture to the top of the github
