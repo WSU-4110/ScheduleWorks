@@ -11,10 +11,14 @@ import privateInfo
 import devolpment_shortcut
 
 
+<<<<<<< Updated upstream
 def manual_endpoints(sid,passwd):
+=======
+def two_fa(sid,passwd):
+>>>>>>> Stashed changes
     """something descriptive when this is done."""
     chrome_options = Options()
-    # chrome_options.add_argument("--headless")
+    #chrome_options.add_argument("--headless")
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()), options=chrome_options)
 
@@ -23,9 +27,13 @@ def manual_endpoints(sid,passwd):
 
     # go to where
     driver.get(
+<<<<<<< Updated upstream
         "https://login.wayne.edu/" +
         "?destination_url=https%3A%2F%2Facademica.aws.wayne.edu%2Fcas%2Flogin%3Fservice%3D" +
         "https%253A%252F%252Fdegreeworks.wayne.edu%253A443%252Flogin%252Fcas")
+=======
+        "https://login.wayne.edu/")
+>>>>>>> Stashed changes
 
     # find html id password and usrename
     username = driver.find_element("id", "accessid")
@@ -37,11 +45,20 @@ def manual_endpoints(sid,passwd):
 
     # loginbutton clicky
     driver.find_element("id", "login-button").click()
+<<<<<<< Updated upstream
     time.sleep(2)
     driver.find_element(
         "xpath", "//*[@id=\"idDiv_SAOTCS_Proofs\"]/div[1]/div/div").click()
     # microsoft 2fa code
     time.sleep(2)
+=======
+    time.sleep(1)
+    
+    driver.find_element(
+        "xpath", "//*[@id=\"idDiv_SAOTCS_Proofs\"]/div[1]/div/div").click()
+    # microsoft 2fa code
+    time.sleep(10)
+>>>>>>> Stashed changes
     code = input("code: ")
     driver.find_element(
         "xpath", "//*[@id=\"idTxtBx_SAOTCC_OTC\"]").send_keys(code)
@@ -49,8 +66,18 @@ def manual_endpoints(sid,passwd):
         "xpath", "//*[@id=\"idSubmit_SAOTCC_Continue\"]").click()
     
     # authentication finished, endpoints available
+<<<<<<< Updated upstream
     time.sleep(2)
     driver.get("https://degreeworks.wayne.edu/api/students/myself")
+=======
+
+    time.sleep(3)
+    driver.get("https://degreeworks.wayne.edu/worksheets/WEB31")
+    time.sleep(3)
+    driver.get("https://degreeworks.wayne.edu/api/students/myself")
+    time.sleep(3)
+
+>>>>>>> Stashed changes
     soup = BeautifulSoup(driver.page_source, features="lxml")
     dict_from_json = json.loads(soup.find("body").text)
 
@@ -77,10 +104,78 @@ def manual_endpoints(sid,passwd):
     soup = BeautifulSoup(driver.page_source, features="lxml")
     dict_from_json = json.loads(soup.find("body").text)
     with open("data/classData.json", 'w+', encoding="utf-8") as outfile:
+<<<<<<< Updated upstream
+=======
+        json.dump(dict_from_json, outfile, indent=4)
+
+def login_only(sid,passwd):
+    """something descriptive when this is done."""
+    chrome_options = Options()
+    #chrome_options.add_argument("--headless")
+    driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()), options=chrome_options)
+
+    # max screen
+    driver.maximize_window()
+
+    # go to where
+    driver.get(
+        "https://login.wayne.edu/")
+
+    # find html id password and usrename
+    username = driver.find_element("id", "accessid")
+    password = driver.find_element("id", "passwd")
+
+    # my info sent into the driver
+    username.send_keys(sid)
+    password.send_keys(passwd)
+
+    # loginbutton clicky
+    driver.find_element("id", "login-button").click()
+    time.sleep(1)
+    # authentication finished, endpoints available
+
+    time.sleep(3)
+    driver.get("https://degreeworks.wayne.edu/worksheets/WEB31")
+    time.sleep(3)
+    driver.get("https://degreeworks.wayne.edu/api/students/myself")
+    time.sleep(3)
+
+    soup = BeautifulSoup(driver.page_source, features="lxml")
+    dict_from_json = json.loads(soup.find("body").text)
+
+    if not os.path.exists('data'):
+        os.makedirs('data')
+
+    with open("data/userData.json", 'w+', encoding="utf-8") as outfile:
+        json.dump(dict_from_json, outfile, indent=4)
+
+    user_info = devolpment_shortcut.extract_user_info()
+
+    audit_url = ("https://degreeworks.wayne.edu/api/audit?studentId={sid}" +
+                 "&school={school}" +
+                 "&degree={degree}" +
+                 "&is-process-new=false" +
+                 "&audit-type=AA" +
+                 "&auditId=" +
+                 "&include-inprogress=true" +
+                 "&include-preregistered=true" +
+                 "&aid-term=").format(
+        sid=user_info["id"], school=user_info["level"], degree=user_info["degree"])
+
+    driver.get(audit_url)
+    soup = BeautifulSoup(driver.page_source, features="lxml")
+    dict_from_json = json.loads(soup.find("body").text)
+    with open("data/classData.json", 'w+', encoding="utf-8") as outfile:
+>>>>>>> Stashed changes
         json.dump(dict_from_json, outfile, indent=4)
 
 
 if __name__ == "__main__":
+<<<<<<< Updated upstream
     manual_endpoints("HH8001",privateInfo.getPass())
+=======
+    two_fa("ha5135",privateInfo.getPass())
+>>>>>>> Stashed changes
     devolpment_shortcut.view_degree_requirements()
     devolpment_shortcut.view_course_history()
