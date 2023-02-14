@@ -51,3 +51,6 @@ privateInfo.py
 env/
 data/
 
+#java
+*.class
+
