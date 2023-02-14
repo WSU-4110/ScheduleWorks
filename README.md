@@ -42,3 +42,12 @@ The project is still in devolpment, to install the required tools to manually ru
 ```bash
 pip install -r requirements.txt
 ```
+
+### todo
+ - parse json for requirements
+ - improve javaFX features
+ - improve javaFX look
+ - optimize functions 
+ - connect java frontend and python backend
+ - save python output to a file for java to read
+ - organize directories
