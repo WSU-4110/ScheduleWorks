@@ -12,8 +12,9 @@
          <children>
             <VBox layoutY="186.0" prefHeight="412.0" prefWidth="189.0">
                <children>
-                  <Button fx:id="btn_login_tab" mnemonicParsing="false" onAction="#pressLoginButton" prefHeight="47.0" prefWidth="191.0" text="Login" />
-                  <Button fx:id="btn_retrieve_tab" mnemonicParsing="false" onAction="#retrieveCoursesButton" prefHeight="49.0" prefWidth="193.0" text="Retrieve Courses" />
+                  <Button fx:id="btn_login_tab" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="47.0" prefWidth="191.0" text="Login" />
+                  <Button fx:id="btn_retrieve_tab" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="49.0" prefWidth="193.0" text="Retrieve Courses" />
+                  <Button fx:id="btn_quit" mnemonicParsing="false" onAction="#closeApplication" prefHeight="49.0" prefWidth="193.0" text="Quit" textFill="RED" />
                </children>
             </VBox>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="27.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
