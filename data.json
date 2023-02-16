@@ -8809,7 +8809,7 @@
                     "label": "University Physics for Engineers I (NSI)",
                     "labelTag": "PHY2175",
                     "percentComplete": "100",
-                    "ruleId": "3
+                    "ruleId": "3",
                     "nodeId": "17",
                     "nodeType": "4200",
                     "indentLevel": "1",
@@ -8849,7 +8849,7 @@
                 },
                 {
                     "label": "University Physics for Engineers II",
-                    "labelTag": "2185",
+                    "labelTag": "PHY2185",
                     "percentComplete": "100",
                     "ruleId": "4",
                     "nodeId": "20",
