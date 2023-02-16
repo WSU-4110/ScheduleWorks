@@ -2,6 +2,8 @@
 A desktop application that can build a class schedule given time & day filters. 
 
 
+# Contributors
+1. Mazen Mirzah 
 
 # Requirements
 Installation can be either through a terminal or by directly downloading the required software
