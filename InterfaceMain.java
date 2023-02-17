@@ -16,7 +16,7 @@ public class InterfaceMain extends Application {
         stg = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("Interface.fxml"));
         primaryStage.setTitle("ScheduleWorks");
-        primaryStage.setScene(new Scene(root, 969, 598));
+        primaryStage.setScene(new Scene(root, 930, 600));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

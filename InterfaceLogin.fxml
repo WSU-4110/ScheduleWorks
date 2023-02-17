@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!-- this fxml code is created through scene builder, you can edit the code here manually or
+you can put your changes in to the scene builder and you can see your results accordingly in here as well -->
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
