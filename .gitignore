@@ -52,7 +52,10 @@ privateInfo.py
 env/
 data/
 testing/
+*.log
 
 #java
 *.class
+schedule-works-fe/target/
+
 
