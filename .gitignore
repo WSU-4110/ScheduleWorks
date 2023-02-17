@@ -47,6 +47,7 @@ dist/**
 package.nls.*.json
 l10n/
 #personal additions
+venv/
 privateInfo.py
 env/
 data/
