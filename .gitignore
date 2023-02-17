@@ -50,6 +50,7 @@ l10n/
 privateInfo.py
 env/
 data/
+testing/
 
 #java
 *.class
