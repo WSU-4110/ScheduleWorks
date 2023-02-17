@@ -30,6 +30,7 @@ for course in data ['courses']:
             'category': category,
             'credits': credits
         })
+        
     elif discipline == 'PHYS':
         PHY_courses.append({
             'name': name,
@@ -38,7 +39,7 @@ for course in data ['courses']:
             'category': category,
             'credits': credits
         })
-    elif discipline == 'CSCI':
+    elif discipline == 'CSC':
         CS_courses.append({
             'name': name,
             'discipline': discipline,
