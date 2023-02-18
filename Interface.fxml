@@ -4,52 +4,48 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <!-- this fxml code is created through scene builder, you can edit the code here manually or
 you can put your changes in to the scene builder and you can see your results accordingly in here as well -->
 
-<AnchorPane prefHeight="598.0" prefWidth="872.0" style="-fx-background-color: #8FBC8F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceController">
+<AnchorPane fx:id="scenePane" prefHeight="598.0" prefWidth="872.0" style="-fx-background-color: #8FBC8F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceController">
    <children>
-      <AnchorPane prefHeight="598.0" prefWidth="189.0" style="-fx-background-color: #0F5F52;">
+      <AnchorPane prefHeight="598.0" prefWidth="352.0" style="-fx-background-color: #0F5F52;">
          <children>
-            <VBox layoutY="186.0" prefHeight="412.0" prefWidth="318.0">
+            <AnchorPane layoutX="1.0" layoutY="-56.0" prefHeight="314.0" prefWidth="356.0" style="-fx-background-color: #F0F8FF;">
                <children>
-                  <AnchorPane prefHeight="414.0" prefWidth="318.0" style="-fx-background-color: #F0F8FF;">
+                  <AnchorPane layoutX="34.0" layoutY="125.0" prefHeight="189.0" prefWidth="283.0">
                      <children>
-                        <AnchorPane layoutX="34.0" layoutY="147.0" prefHeight="225.0" prefWidth="260.0">
-                           <children>
-                              <ImageView fitHeight="295.0" fitWidth="220.0" layoutX="15.0" layoutY="-70.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@ScheduleWorksLogo.png" />
-                                 </image>
-                              </ImageView>
-                           </children></AnchorPane>
+                        <ImageView fitHeight="187.0" fitWidth="171.0" layoutX="70.0" layoutY="-34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ScheduleWorksLogo.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>
-            </VBox>
+            </AnchorPane>
+            <Button fx:id="btn_login_tab" layoutX="8.0" layoutY="291.0" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="47.0" prefWidth="191.0" text="Login" textFill="#0f1715">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_retrieve_tab" layoutX="7.0" layoutY="368.0" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="49.0" prefWidth="193.0" text="Retrieve Courses">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="Close_button" layoutX="7.0" layoutY="445.0" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="49.0" prefWidth="193.0" text="Quit" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="btn_login_tab" layoutX="534.0" layoutY="293.0" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="47.0" prefWidth="191.0" text="Login" textFill="#0f1715">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="btn_retrieve_tab" layoutX="533.0" layoutY="394.0" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="49.0" prefWidth="193.0" text="Retrieve Courses">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="btn_quit" layoutX="533.0" layoutY="489.0" mnemonicParsing="false" onAction="#closeApplication" prefHeight="49.0" prefWidth="193.0" text="Quit" textFill="RED">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
       <AnchorPane layoutX="346.0" layoutY="14.0" prefHeight="150.0" prefWidth="563.0">
          <children>
-            <ImageView fitHeight="142.0" fitWidth="574.0" layoutX="-9.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="142.0" fitWidth="574.0" layoutX="-30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@DWLogo-crop.png" />
                </image>

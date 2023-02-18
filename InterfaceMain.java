@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -8,7 +9,7 @@ public class InterfaceMain extends Application {
     private static Stage stg;
 
     public static void main(String[] args) {
-        launch(args);
+        launch(args); // necessary to start the application
     }
 
     @Override
@@ -20,6 +21,7 @@ public class InterfaceMain extends Application {
         primaryStage.setResizable(false); // cannot change the size of the screen
         primaryStage.show();
     }
+    
 
     public void changeScene(String fxml) throws Exception {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
