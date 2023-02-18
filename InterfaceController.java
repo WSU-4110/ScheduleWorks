@@ -23,12 +23,12 @@ public class InterfaceController {
     
     public void pressLoginTab() throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("InterfaceLogin.fxml"));
-        Stage quitStage = new Stage();
-        stg = quitStage;
-        quitStage.setTitle("Login");
-        quitStage.setScene(new Scene(root, 500, 375));
-        quitStage.setResizable(false);
-        quitStage.show();
+        Stage loginStage = new Stage();
+        stg = loginStage;
+        loginStage.setTitle("Login");
+        loginStage.setScene(new Scene(root, 500, 375));
+        loginStage.setResizable(false);
+        loginStage.show();
 
         System.out.println("Login tab pressed");
     }
