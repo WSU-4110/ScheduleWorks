@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -27,7 +28,7 @@ public class InterfaceController {
         loginStage.setTitle("Login");
         loginStage.setScene(new Scene(root, 500, 375));
         loginStage.setResizable(false);
-        loginStage.show();
+        loginStage.show();// show the login page
 
         System.out.println("Login tab pressed");
     }
@@ -56,9 +57,14 @@ public class InterfaceController {
         stg.close();
     }
 
+    
+
     //  Close application
+    @FXML private javafx.scene.control.Button Close_button;
+
     public void closeApplication() throws Exception {
-        //stg.close();
+        Stage stage = (Stage) Close_button.getScene().getWindow();
+        stage.close(); // this is to close the Application.
 
         System.out.println("Application closed");
     }
