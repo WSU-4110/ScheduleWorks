@@ -12,14 +12,17 @@ CS_courses = []
 GE_courses = []
 
 ## Iterate over each course
-for course in data ['courses']:
+for course in data ['classesAppliedToRule']:
     # Extract course properties
     name = course['name']
-    code = course['code']
-    discipline = code.split()[0]
     number = code.split()[1]
-    category = course['category'] #split into category an credigt
-    credits = course['credits']
+    discipline = code.split()[0]
+    category = course['category'] 
+    credits = course['credits'] 
+    code = course['code']
+ 
+
+   
 
     # Categorize course by discipline and number
     if discipline == 'MATH':
@@ -30,7 +33,7 @@ for course in data ['courses']:
             'category': category,
             'credits': credits
         })
-        
+
     elif discipline == 'PHYS':
         PHY_courses.append({
             'name': name,
