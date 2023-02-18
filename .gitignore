@@ -50,7 +50,6 @@ l10n/
 venv/
 privateInfo.py
 env/
-data/
 testing/
 *.log
 
