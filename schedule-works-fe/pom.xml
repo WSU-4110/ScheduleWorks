@@ -41,7 +41,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>org.scheduleworks.dep.App</mainClass>
+                            <mainClass>org.scheduleworks.dep.InterfaceMain</mainClass>
                         </configuration>
                     </execution>
                 </executions>

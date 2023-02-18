@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-public class App extends Application {
+public class InterfaceMain extends Application {
     private static Stage stg;
 
     public static void main(String[] args) {
