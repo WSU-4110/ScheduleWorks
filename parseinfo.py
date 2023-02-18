@@ -5,72 +5,41 @@ open_f=open('data.json')
 data = json.load(open_f)
 
 
-#Hold courses in each category for grad requiremnt
-MATH_courses = []
-PHY_courses = []
-CS_courses = []
-GE_courses = []
+
+#Grab discipline from key course
+courses = {}
+
+#Show all keys
+print(data.keys())
 
 ## Iterate over each course
-for course in data ['classesAppliedToRule']:
-    # Extract course properties
-    name = course['name']
-    number = code.split()[1]
-    discipline = code.split()[0]
-    category = course['category'] 
-    credits = course['credits'] 
-    code = course['code']
- 
+#Key of classinformation->class array
+for course in data["classInformation"]["classArray"]: #extract
+                discipline = course["discipline"]
+                number = course["number"]
+                credits = int(course["credits"])
+                #if to check if discipline is available
+                if discipline not in courses:
+                    courses[discipline] = {}
+                if number not in courses[discipline]:
+                     courses[discipline][number] = credits
 
-   
 
-    # Categorize course by discipline and number
-    if discipline == 'MATH':
-        MATH_courses.append({
-            'name': name,
-            'discipline': discipline,
-            'number': number,
-            'category': category,
-            'credits': credits
-        })
+#Key of blockarray that contains classesAppliedtoRule and class arrar
+for course in data["blockArray"]["classesAppliedToRule. "]: #extract
+        for class_info in course["classesAppliedToRule"]["classArray"]:
+                discipline = class_info["discipline"]
+                number = class_info["number"]
+                credits = int(class_info["credits"])
+        if discipline not in courses:
+            courses[discipline] = {}
+        if number not in courses[discipline]:
+            courses[discipline][number] = credits
 
-    elif discipline == 'PHYS':
-        PHY_courses.append({
-            'name': name,
-            'discipline': discipline,
-            'number': number,
-            'category': category,
-            'credits': credits
-        })
-    elif discipline == 'CSC':
-        CS_courses.append({
-            'name': name,
-            'discipline': discipline,
-            'number': number,
-            'category': category,
-            'credits': credits
-        })
-    else:
-        GE_courses.append({
-            'name': name,
-            'discipline': discipline,
-            'number': number,
-            'category': category,
-            'credits': credits
-        })
+# calculate total 
+Tot_credits = sum(sum(courses[discipline].values()) for discipline in courses)
 
-# Calculate total number of credits 
-TOT_credits = sum([course['credits'] for course in CS_courses])
+# Write the output to a JSON file(output)
+with open("output.json", "w") as f:
+    json.dump({"courses": courses, "Tot_credits": Tot_credits}, f, indent=4) 
 
-# Create a dictionary with all categorized courses and total credits
-output_data = {
-    'Math courses': MATH_courses,
-    'Physics courses': PHY_courses,
-    'Computer Science courses': CS_courses,
-    'General Education courses': GE_courses,
-    'Total credits needed for a degree': TOT_credits
-}
-
-# Write the output to a JSON 
-with open('output.json', 'w') as f:
-    json.dump(output_data, f, indent=4)
