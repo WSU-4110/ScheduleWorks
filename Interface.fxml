@@ -11,13 +11,13 @@ you can put your changes in to the scene builder and you can see your results ac
 
 <AnchorPane fx:id="scenePane" prefHeight="598.0" prefWidth="872.0" style="-fx-background-color: #8FBC8F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceController">
    <children>
-      <AnchorPane prefHeight="598.0" prefWidth="352.0" style="-fx-background-color: #0F5F52;">
+      <AnchorPane prefHeight="598.0" prefWidth="321.0" style="-fx-background-color: #0F5F52;">
          <children>
-            <AnchorPane layoutX="1.0" layoutY="-56.0" prefHeight="314.0" prefWidth="356.0" style="-fx-background-color: #F0F8FF;">
+            <AnchorPane layoutX="1.0" layoutY="-58.0" prefHeight="316.0" prefWidth="320.0" style="-fx-background-color: #F0F8FF;">
                <children>
                   <AnchorPane layoutX="34.0" layoutY="125.0" prefHeight="189.0" prefWidth="283.0">
                      <children>
-                        <ImageView fitHeight="187.0" fitWidth="171.0" layoutX="70.0" layoutY="-34.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="187.0" fitWidth="171.0" layoutX="44.0" layoutY="-47.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@ScheduleWorksLogo.png" />
                            </image>
@@ -43,14 +43,6 @@ you can put your changes in to the scene builder and you can see your results ac
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="346.0" layoutY="14.0" prefHeight="150.0" prefWidth="563.0">
-         <children>
-            <ImageView fitHeight="142.0" fitWidth="574.0" layoutX="-30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@DWLogo-crop.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
+      <AnchorPane layoutX="346.0" layoutY="14.0" prefHeight="150.0" prefWidth="563.0" />
    </children>
 </AnchorPane>

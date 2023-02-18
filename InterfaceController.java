@@ -28,7 +28,7 @@ public class InterfaceController {
         loginStage.setTitle("Login");
         loginStage.setScene(new Scene(root, 500, 375));
         loginStage.setResizable(false);
-        loginStage.show();
+        loginStage.show();// show the login page
 
         System.out.println("Login tab pressed");
     }
@@ -56,6 +56,8 @@ public class InterfaceController {
     public void viewCourseHistory() {
         stg.close();
     }
+
+    
 
     //  Close application
     @FXML private javafx.scene.control.Button Close_button;
