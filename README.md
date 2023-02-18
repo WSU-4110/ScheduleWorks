@@ -1,7 +1,10 @@
 # **ScheduleWorks**
+
+<p align="center">
+<img  src="https://github.com/WSU-4110/ScheduleWorks/blob/main/schedule-works-fe/src/main/resources/ScheduleWorksLogo.png" width=65% height=65%>
+</p>
+
 A desktop application that can build a class schedule given time & day filters. 
-
-
 
 # Requirements
 Installation can be either through a terminal or by directly downloading the required software
