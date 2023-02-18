@@ -14,7 +14,10 @@ Installation can be either through a terminal or by directly downloading the req
 
 <a href="https://www.google.com/chrome/">Google Chrome</a>
 
-<a href="https://www.oracle.com/java/technologies/downloads/">Java</a> (eventually)
+<a href="https://www.oracle.com/java/technologies/downloads/">Java</a>
+
+<a href="https://gluonhq.com/products/javafx/">JavaFX</a>
+
 
 
 ### Command Prompt (Windows)
@@ -52,7 +55,5 @@ pip install -r requirements.txt
  - improve javaFX look
  - optimize functions 
  - connect java frontend and python backend
- - save python output to a file for java to read
- - organize directories
+ - read file output to frontend
  - connect nub.py to dgraph to build a priority queue
- - add picture to the top of the github
