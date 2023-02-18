@@ -15,9 +15,9 @@ public class InterfaceMain extends Application {
     public void start(Stage primaryStage) throws Exception {
         stg = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("Interface.fxml"));
-        primaryStage.setTitle("ScheduleWorks");
-        primaryStage.setScene(new Scene(root, 930, 600));
-        primaryStage.setResizable(false);
+        primaryStage.setTitle("ScheduleWorks");// Title of the page of Interface
+        primaryStage.setScene(new Scene(root, 930, 600)); // sets up the size of the interface showm in the scene 
+        primaryStage.setResizable(false); // cannot change the size of the screen
         primaryStage.show();
     }
 
