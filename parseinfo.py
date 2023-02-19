@@ -26,15 +26,19 @@ for course in data["classInformation"]["classArray"]: #extract
 
 
 #Key of blockarray that contains classesAppliedtoRule and class arrar
-for course in data["blockArray"]["classesAppliedToRule. "]: #extract
-        for class_info in course["classesAppliedToRule"]["classArray"]:
-                discipline = class_info["discipline"]
-                number = class_info["number"]
-                credits = int(class_info["credits"])
-        if discipline not in courses:
-            courses[discipline] = {}
-        if number not in courses[discipline]:
-            courses[discipline][number] = credits
+for course in data["blockArray"]:
+    else_part = course.get("ifPart", {}).get("elsePart", {})
+    rule_array = else_part.get("ruleArray", [])
+    for rule in rule_array:
+        for class_info in rule.get("classesAppliedToRule", {}).get("classArray", []):
+            discipline = class_info["discipline"]
+            number = class_info["number"]
+            credits = int(class_info["credits"])
+            if discipline not in courses:
+                courses[discipline] = {}
+            if number not in courses[discipline]:
+                courses[discipline][number] = credits
+
 
 # calculate total 
 Tot_credits = sum(sum(courses[discipline].values()) for discipline in courses)
