@@ -4,25 +4,45 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="598.0" prefWidth="969.0" style="-fx-background-color: #E5E5E5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<!-- this fxml code is created through scene builder, you can edit the code here manually or
+you can put your changes in to the scene builder and you can see your results accordingly in here as well -->
+
+<AnchorPane fx:id="scenePane" prefHeight="598.0" prefWidth="872.0" style="-fx-background-color: #8FBC8F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="598.0" prefWidth="189.0" style="-fx-background-color: #0F5F52;">
+      <AnchorPane prefHeight="598.0" prefWidth="321.0" style="-fx-background-color: #0F5F52;">
          <children>
-            <VBox layoutY="186.0" prefHeight="412.0" prefWidth="189.0">
+            <AnchorPane layoutX="1.0" layoutY="-58.0" prefHeight="316.0" prefWidth="320.0" style="-fx-background-color: #F0F8FF;">
                <children>
-                  <Button fx:id="btn_login_tab" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="47.0" prefWidth="191.0" text="Login" />
-                  <Button fx:id="btn_retrieve_tab" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="49.0" prefWidth="193.0" text="Retrieve Courses" />
-                  <Button fx:id="btn_quit" mnemonicParsing="false" onAction="#closeApplication" prefHeight="49.0" prefWidth="193.0" text="Quit" textFill="RED" />
+                  <AnchorPane layoutX="34.0" layoutY="125.0" prefHeight="189.0" prefWidth="283.0">
+                     <children>
+                        <ImageView fitHeight="187.0" fitWidth="171.0" layoutX="44.0" layoutY="-47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@ScheduleWorksLogo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </children>
-            </VBox>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="27.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@ScheduleWorksLogo.png" />
-               </image>
-            </ImageView>
+            </AnchorPane>
+            <Button fx:id="btn_login_tab" layoutX="8.0" layoutY="291.0" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="47.0" prefWidth="191.0" text="Login" textFill="#0f1715">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_retrieve_tab" layoutX="7.0" layoutY="368.0" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="49.0" prefWidth="193.0" text="Retrieve Courses">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="Close_button" layoutX="7.0" layoutY="445.0" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="49.0" prefWidth="193.0" text="Quit" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
+      <AnchorPane layoutX="346.0" layoutY="14.0" prefHeight="150.0" prefWidth="563.0" />
    </children>
 </AnchorPane>

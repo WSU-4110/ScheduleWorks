@@ -3,36 +3,32 @@ package org.scheduleworks.dep;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-public class InterfaceMain extends Application {
+public class InterfaceMain extends Application{
     private static Stage stg;
 
-    public static void main(String[] args) {
-       
-
-        launch(args);
+    public static void main(String[] args){
+        launch(args); // necessary to start the application
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        System.out.println(getClass().getClassLoader().getResource("Interface.fxml").getPath());
+    public void start(Stage primaryStage) throws Exception{
         stg = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Interface.fxml"));
         loader.setController(new InterfaceController());
         Parent root = loader.load();
-        
-        primaryStage.setTitle("ScheduleWorks");
-        primaryStage.setScene(new Scene(root, 969, 598));
-        primaryStage.setResizable(false);
+        primaryStage.setTitle("ScheduleWorks");// Title of the page of Interface
+        primaryStage.setScene(new Scene(root,930,600)); // sets up the size of the interface showm in the scene 
+        primaryStage.setResizable(false); // cannot change the size of the screen
         primaryStage.show();
-
-        // System.out.println(FXMLLoader.load(getClass().getClassLoader().getResource("Interface.fxml")));
     }
+    
 
-    // public void changeScene(String fxml) throws Exception {
-    //     Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-    //     stg.getScene().setRoot(pane);
-    // }
+    public void changeScene(String fxml) throws Exception{
+        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+        stg.getScene().setRoot(pane);
+    }
 }
