@@ -1,9 +1,10 @@
+package org.scheduleworks.dep;
+
 import java.awt.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,13 +23,16 @@ public class InterfaceController {
     private static Stage stg;
     
     public void pressLoginTab() throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("InterfaceLogin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("InterfaceLogin.fxml"));
+        loader.setController(new InterfaceController());
+        Parent root = loader.load();
+
         Stage loginStage = new Stage();
         stg = loginStage;
         loginStage.setTitle("Login");
         loginStage.setScene(new Scene(root, 500, 375));
         loginStage.setResizable(false);
-        loginStage.show();// show the login page
+        loginStage.show();
 
         System.out.println("Login tab pressed");
     }
@@ -57,14 +61,9 @@ public class InterfaceController {
         stg.close();
     }
 
-    
-
     //  Close application
-    @FXML private javafx.scene.control.Button Close_button;
-
     public void closeApplication() throws Exception {
-        Stage stage = (Stage) Close_button.getScene().getWindow();
-        stage.close(); // this is to close the Application.
+        //stg.close();
 
         System.out.println("Application closed");
     }

@@ -2,6 +2,8 @@
 import time
 import json
 import os
+import click
+import re
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -11,10 +13,24 @@ import privateInfo
 import devolpment_shortcut
 
 
-def manual_endpoints(sid,passwd):
-    """something descriptive when this is done."""
+@click.command()
+@click.option(
+    "--sid",
+    "-s",
+    metavar="STRING",
+    help="Student ID.",
+)
+@click.option(
+    "--passwd",
+    "-p",
+    metavar="STRING",
+    help="Password for logging in.",
+)
+def get_json_data(sid, passwd):
+    """Provide json data by providing studentID and password."""
+    sid, passwd = sid.strip("'"), passwd.strip("'")
     chrome_options = Options()
-    #chrome_options.add_argument("--headless")
+    # chrome_options.add_argument("--headless")
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()), options=chrome_options
     )
@@ -23,10 +39,7 @@ def manual_endpoints(sid,passwd):
     driver.maximize_window()
 
     # go to where
-    driver.get(
-        "https://login.wayne.edu/" +
-        "?destination_url=https%3A%2F%2Facademica.aws.wayne.edu%2Fcas%2Flogin%3Fservice%3D" +
-        "https%253A%252F%252Fdegreeworks.wayne.edu%253A443%252Flogin%252Fcas")
+    driver.get("https://login.wayne.edu/")
 
     # find html id password and usrename
     username = driver.find_element("id", "accessid")
@@ -37,26 +50,34 @@ def manual_endpoints(sid,passwd):
     password.send_keys(passwd)
 
     # loginbutton clicky
+
     driver.find_element("id", "login-button").click()
     time.sleep(2)
-    driver.find_element(
-        "xpath", "//*[@id=\"idDiv_SAOTCS_Proofs\"]/div[1]/div/div").click()
-    # microsoft 2fa code
-    time.sleep(2)
-    code = input("code: ")
-    driver.find_element(
-        "xpath", "//*[@id=\"idTxtBx_SAOTCC_OTC\"]").send_keys(code)
-    driver.find_element(
-        "xpath", "//*[@id=\"idSubmit_SAOTCC_Continue\"]").click()
-    
+    if "microsoft" in driver.current_url:
+        driver.find_element("xpath", '//*[@id="idDiv_SAOTCS_Proofs"]/div[1]').click()
+        # microsoft 2fa code
+        while True:
+            with open("2fa_code.txt", "r", encoding="utf-8") as infile:
+                file_data = infile.read()
+            if "done" in file_data:
+                break
+            time.sleep(5)
+        code = re.findall("[+-]?\d+\.?\d*", file_data)
+        driver.find_element("xpath", '//*[@id="idTxtBx_SAOTCC_OTC"]').send_keys(code)
+        driver.find_element("xpath", '//*[@id="idSubmit_SAOTCC_Continue"]').click()
+
     # authentication finished, endpoints available
     time.sleep(2)
+    driver.get("https://degreeworks.wayne.edu/worksheets/WEB31")
+    time.sleep(2)
     driver.get("https://degreeworks.wayne.edu/api/students/myself")
+    time.sleep(2)
     soup = BeautifulSoup(driver.page_source, features="lxml")
     dict_from_json = json.loads(soup.find("body").text)
-    if not os.path.exists("data"):
-        os.makedirs("data")
-    with open("data/userData.json", "w+", encoding="utf-8") as outfile:
+    if not os.path.exists("../data"):
+        os.makedirs("../data")
+        
+    with open("../data/userData.json", "w+", encoding="utf-8") as outfile:
         json.dump(dict_from_json, outfile, indent=4)
     user_info = devolpment_shortcut.extract_user_info()
     audit_url = (
@@ -73,11 +94,9 @@ def manual_endpoints(sid,passwd):
     driver.get(audit_url)
     soup = BeautifulSoup(driver.page_source, features="lxml")
     dict_from_json = json.loads(soup.find("body").text)
-    with open("data/classData.json", 'w+', encoding="utf-8") as outfile:
+    with open("../data/classData.json", "w+", encoding="utf-8") as outfile:
         json.dump(dict_from_json, outfile, indent=4)
 
 
 if __name__ == "__main__":
-    manual_endpoints("HH8001",privateInfo.getPass())
-    devolpment_shortcut.view_degree_requirements()
-    devolpment_shortcut.view_course_history()
+    get_json_data()

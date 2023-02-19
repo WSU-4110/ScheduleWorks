@@ -47,10 +47,16 @@ dist/**
 package.nls.*.json
 l10n/
 #personal additions
+venv/
 privateInfo.py
 env/
-data/
+testing/
+*.log
+.vscode
 
 #java
 *.class
+schedule-works-fe/target/
+
+
 

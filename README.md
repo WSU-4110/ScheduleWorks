@@ -1,9 +1,19 @@
 # **ScheduleWorks**
+
+<p align="center">
+<img  src="https://github.com/WSU-4110/ScheduleWorks/blob/main/schedule-works-fe/src/main/resources/ScheduleWorksLogo.png" width=65% height=65%>
+</p>
+
+
 A desktop application that can build a class schedule given time & day filters. 
 
-
 # Contributors
-1. Mazen Mirzah 
+1. Mazen Mirza
+2. Aafnan Mahmood
+3. Mizanul Haue
+4. Faizan Bahtti
+5. Christopher Forkin
+
 
 # Requirements
 Installation can be either through a terminal or by directly downloading the required software
@@ -13,7 +23,10 @@ Installation can be either through a terminal or by directly downloading the req
 
 <a href="https://www.google.com/chrome/">Google Chrome</a>
 
-<a href="https://www.oracle.com/java/technologies/downloads/">Java</a> (eventually)
+<a href="https://www.oracle.com/java/technologies/downloads/">Java</a>
+
+<a href="https://gluonhq.com/products/javafx/">JavaFX</a>
+
 
 
 ### Command Prompt (Windows)
@@ -51,7 +64,5 @@ pip install -r requirements.txt
  - improve javaFX look
  - optimize functions 
  - connect java frontend and python backend
- - save python output to a file for java to read
- - organize directories
+ - read file output to frontend
  - connect nub.py to dgraph to build a priority queue
- - add picture to the top of the github

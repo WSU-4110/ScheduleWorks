@@ -1,0 +1,1 @@
+python manual_get_data.py --sid=%1 --passwd=%2
