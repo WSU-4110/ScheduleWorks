@@ -6,6 +6,14 @@
 
 A desktop application that can build a class schedule given time & day filters. 
 
+# Installation
+1. Download the repository into C:\Program Files\ using admin. (unzip if you need to)
+2. Right click the ScheduleWorks folder and select properties.
+3. Click on security.
+4. Click Edit.
+4. Enable Full Access for users and click apply.
+5. Run ScheduleWorks.exe and enjoy!
+
 # Requirements
 Installation can be either through a terminal or by directly downloading the required software
 ### Direct Installations
