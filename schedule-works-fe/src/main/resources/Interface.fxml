@@ -28,15 +28,21 @@ you can put your changes in to the scene builder and you can see your results ac
                   <Shadow />
                </effect>
             </ImageView>
-            <Button fx:id="btn_login_tab" graphicTextGap="0.0" layoutX="64.0" layoutY="258.0" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="47.0" prefWidth="200.0" text="Login" textFill="#0f1715">
+            <Button fx:id="btn_login_tab" graphicTextGap="0.0" layoutX="64.0" layoutY="258.0" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="47.0" prefWidth="200.0" styleClass="general_button" text="Login" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="32.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Button fx:id="btn_retrieve_tab" layoutX="64.0" layoutY="449.0" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="116.0" prefWidth="200.0" text="Retrieve Courses" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="btn_retrieve_tab" layoutX="64.0" layoutY="449.0" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="116.0" prefWidth="200.0" styleClass="general_button" text="Retrieve Courses" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Century Gothic Bold" size="30.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <ImageView fitHeight="187.0" fitWidth="178.0" layoutX="76.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,14 +54,17 @@ you can put your changes in to the scene builder and you can see your results ac
                   <Font name="Century Gothic Bold" size="17.0" />
                </font>
             </TextField>
-            <Button fx:id="btn_submit_code" layoutX="169.0" layoutY="351.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="63.0" prefWidth="95.0" text="Submit">
+            <Button fx:id="btn_submit_code" layoutX="169.0" layoutY="351.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="63.0" prefWidth="95.0" styleClass="general_button" text="Submit" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="20.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
       </AnchorPane>
-      <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="365.0" layoutY="77.0" opacity="0.72" prefHeight="531.0" prefWidth="477.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" wrapText="true">
+      <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="365.0" layoutY="77.0" opacity="0.7" prefHeight="531.0" prefWidth="477.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" wrapText="true">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -76,7 +85,7 @@ you can put your changes in to the scene builder and you can see your results ac
                   </Label>
                   <Button id="Close_button" fx:id="Close_button" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="46.0" prefWidth="46.0" styleClass="Close_button" stylesheets="@MainWindowStyle.css" text="X" textFill="WHITE">
                      <font>
-                        <Font name="Century Gothic Bold" size="23.0" />
+                        <Font name="Century Gothic Bold" size="12.0" />
                      </font>
                   </Button>
                </children>

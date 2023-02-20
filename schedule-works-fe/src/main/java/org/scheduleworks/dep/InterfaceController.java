@@ -84,7 +84,9 @@ public class InterfaceController {
         t.start();
 
         System.out.println(userInfo.getUsername());
+
         // System.out.println(userInfo.getPassword());
+        closeApplication();
     }
 
     //  Retrieve courses
