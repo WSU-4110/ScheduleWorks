@@ -1,0 +1,8 @@
+selenium
+webdriver_manager
+lxml
+bs4
+networkx
+matplotlib
+PyQt5
+click
