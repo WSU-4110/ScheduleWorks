@@ -61,20 +61,24 @@ public class InterfaceController {
         InterfaceMain x = new InterfaceMain();
         x.changeScene("Interface.fxml");
         */
-        pythonExecute.getInfo(userInfo.getUsername(),userInfo.getPassword());
+        Thread t = new Thread(new pythonExecute(userInfo.getUsername(),userInfo.getPassword()));
+        t.start();
 
         System.out.println(userInfo.getUsername());
-        System.out.println(userInfo.getPassword());
+        // System.out.println(userInfo.getPassword());
     }
 
     //  Retrieve courses
     public void retrieveCoursesTab(){
-
-        File file = new File("../data/courseHistory.txt");
+        taCoursesTaken.clear();
+        File file = new File("C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt");
 
        try{
         Scanner scan = new Scanner(file);
-
+        if (file.length()==0){
+            taCoursesTaken.clear();
+            taCoursesTaken.setPromptText("Please login and submit the 2FA Code");
+        }
         while(scan.hasNextLine()){
             taCoursesTaken.appendText(scan.nextLine() + "\n");
             }
@@ -86,7 +90,7 @@ public class InterfaceController {
 
     public void submitCode() {
         try{
-            BufferedWriter br = new BufferedWriter(new FileWriter(new File("2fa_code.txt")));
+            BufferedWriter br = new BufferedWriter(new FileWriter(new File("C:\\Program Files\\ScheduleWorks\\schedule-works-be\\2fa_code.txt")));
             br.write(code.getText().toString());
             br.write("done");
             br.close();
@@ -94,6 +98,8 @@ public class InterfaceController {
         catch (java.io.IOException e){
             e.printStackTrace();
         }
+        code.setPromptText(code.getText().toString());
+        code.clear();
     }
 
     public void viewCourseHistory(){

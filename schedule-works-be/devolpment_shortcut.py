@@ -34,10 +34,12 @@ def retrive_data(refresh_token: str, token: str, name: str) -> None:
     soup = BeautifulSoup(driver.page_source, features="lxml")
     dict_from_json = json.loads(soup.find("body").text)
 
-    if not os.path.exists("../data"):
-        os.makedirs("../data")
+    if not os.path.exists("C:/Program Files/ScheduleWorks/data"):
+        os.makedirs("C:/Program Files/ScheduleWorks/data")
 
-    with open("../data/userData.json", "w+", encoding="utf-8") as outfile:
+    with open(
+        "C:/Program Files/ScheduleWorks/data/userData.json", "w+", encoding="utf-8"
+    ) as outfile:
         json.dump(dict_from_json, outfile, indent=4)
 
     user_info = extract_user_info()
@@ -57,14 +59,21 @@ def retrive_data(refresh_token: str, token: str, name: str) -> None:
     driver.get(audit_url)
     soup = BeautifulSoup(driver.page_source, features="lxml")
     dict_from_json = json.loads(soup.find("body").text)
-    with open("../data/classData.json", "w+", encoding="utf-8") as outfile:
+    with open(
+        "C:/Program Files/ScheduleWorks/data/classData.json", "w+", encoding="utf-8"
+    ) as outfile:
         json.dump(dict_from_json, outfile, indent=4)
+    driver.close()
+    view_course_history()
+    view_degree_requirements()
 
 
 def extract_user_info() -> dict:
     """Extract user information from json file and returns relavant information in a dict."""
     try:
-        with open("../data/userData.json", encoding="utf-8") as file:
+        with open(
+            "C:/Program Files/ScheduleWorks/data/userData.json", encoding="utf-8"
+        ) as file:
             user_data = json.load(file)
     except FileNotFoundError as error:
         raise error
@@ -79,21 +88,23 @@ def extract_user_info() -> dict:
         "degree"
     ]["key"]
 
-    # try:
-    #     with open("../data/userData.txt", "w+", encoding="utf-8") as file:
-    #         file.write(
-    #             user_information["name"]
-    #             + "\n"
-    #             + user_information["term_code"]
-    #             + "\n"
-    #             + user_information["id"]
-    #             + "\n"
-    #             + user_information["level"]
-    #             + "\n"
-    #             + user_information["degree"]
-    #         )
-    # except FileNotFoundError as error:
-    #     raise error
+    try:
+        with open(
+            "C:/Program Files/ScheduleWorks/data/userData.txt", "w+", encoding="utf-8"
+        ) as file:
+            file.write(
+                user_information["name"]
+                + "\n"
+                + user_information["term_code"]
+                + "\n"
+                + user_information["id"]
+                + "\n"
+                + user_information["level"]
+                + "\n"
+                + user_information["degree"]
+            )
+    except FileNotFoundError as error:
+        raise error
 
     return user_information
 
@@ -101,13 +112,19 @@ def extract_user_info() -> dict:
 def view_course_history():
     """Extract course history from json audit file."""
     try:
-        with open("../data/classData.json", encoding="utf-8") as file:
+        with open(
+            "C:/Program Files/ScheduleWorks/data/classData.json", encoding="utf-8"
+        ) as file:
             audit_data = json.load(file)
     except FileNotFoundError as error:
         raise error
 
     try:
-        with open("../data/courseHistory.txt", "w+", encoding="utf-8") as file:
+        with open(
+            "C:/Program Files/ScheduleWorks/data/courseHistory.txt",
+            "w+",
+            encoding="utf-8",
+        ) as file:
             for course in audit_data["classInformation"]["classArray"]:
                 print(
                     f"{course['discipline']:<5}",
@@ -130,13 +147,19 @@ def view_course_history():
 def view_degree_requirements():
     """Extract degree requirments from json audit file."""
     try:
-        with open("../data/classData.json", encoding="utf-8") as file:
+        with open(
+            "C:/Program Files/ScheduleWorks/data/classData.json", encoding="utf-8"
+        ) as file:
             audit_data = json.load(file)
     except FileNotFoundError as error:
         raise error
 
     try:
-        with open("../data/degreeRequirments.txt", "w+", encoding="utf-8") as file:
+        with open(
+            "C:/Program Files/ScheduleWorks/data/degreeRequirments.txt",
+            "w+",
+            encoding="utf-8",
+        ) as file:
             for degree_block_requirement in audit_data["blockArray"]:
                 print(degree_block_requirement["title"])
                 file.write(degree_block_requirement["title"] + "\n")

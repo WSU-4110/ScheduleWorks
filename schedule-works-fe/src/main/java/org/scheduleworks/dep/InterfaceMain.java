@@ -6,9 +6,13 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 
 public class InterfaceMain extends Application{
     private static Stage stg;
+    private double x,y=0;
 
     public static void main(String[] args){
         launch(args); // necessary to start the application
@@ -20,10 +24,24 @@ public class InterfaceMain extends Application{
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Interface.fxml"));
         loader.setController(new InterfaceController());
         Parent root = loader.load();
+        primaryStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("ScheduleWorksLogo.png")));
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("ScheduleWorks");// Title of the page of Interface
-        primaryStage.setScene(new Scene(root,930,600)); // sets up the size of the interface showm in the scene 
+        primaryStage.setScene(new Scene(root)); // sets up the size of the interface showm in the scene 
+        
+
+        root.setOnMousePressed(mouseEvent ->{
+            x=mouseEvent.getSceneX();
+            y=mouseEvent.getSceneY();
+        });
+        root.setOnMouseDragged(mouseEvent ->{
+            primaryStage.setX(mouseEvent.getScreenX()-x);
+            primaryStage.setY(mouseEvent.getScreenY()-y);
+        });
+
         primaryStage.setResizable(false); // cannot change the size of the screen
         primaryStage.show();
+        
     }
     
 

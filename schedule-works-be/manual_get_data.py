@@ -57,7 +57,11 @@ def get_json_data(sid, passwd):
         driver.find_element("xpath", '//*[@id="idDiv_SAOTCS_Proofs"]/div[1]').click()
         # microsoft 2fa code
         while True:
-            with open("2fa_code.txt", "r", encoding="utf-8") as infile:
+            with open(
+                "C:/Program Files/ScheduleWorks/schedule-works-be/2fa_code.txt",
+                "r",
+                encoding="utf-8",
+            ) as infile:
                 file_data = infile.read()
             if "done" in file_data:
                 break
@@ -74,10 +78,12 @@ def get_json_data(sid, passwd):
     time.sleep(2)
     soup = BeautifulSoup(driver.page_source, features="lxml")
     dict_from_json = json.loads(soup.find("body").text)
-    if not os.path.exists("../data"):
-        os.makedirs("../data")
-        
-    with open("../data/userData.json", "w+", encoding="utf-8") as outfile:
+    if not os.path.exists("C:/Program Files/ScheduleWorks/data"):
+        os.makedirs("C:/Program Files/ScheduleWorks/data")
+
+    with open(
+        "C:/Program Files/ScheduleWorks/data/userData.json", "w+", encoding="utf-8"
+    ) as outfile:
         json.dump(dict_from_json, outfile, indent=4)
     user_info = devolpment_shortcut.extract_user_info()
     audit_url = (
@@ -94,8 +100,14 @@ def get_json_data(sid, passwd):
     driver.get(audit_url)
     soup = BeautifulSoup(driver.page_source, features="lxml")
     dict_from_json = json.loads(soup.find("body").text)
-    with open("../data/classData.json", "w+", encoding="utf-8") as outfile:
+    with open(
+        "C:/Program Files/ScheduleWorks/data/classData.json", "w+", encoding="utf-8"
+    ) as outfile:
         json.dump(dict_from_json, outfile, indent=4)
+
+    driver.close()
+    devolpment_shortcut.view_course_history()
+    devolpment_shortcut.view_degree_requirements()
 
 
 if __name__ == "__main__":

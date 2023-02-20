@@ -1,48 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <!-- this fxml code is created through scene builder, you can edit the code here manually or
 you can put your changes in to the scene builder and you can see your results accordingly in here as well -->
 
-<AnchorPane fx:id="scenePane" prefHeight="598.0" prefWidth="872.0" style="-fx-background-color: #8FBC8F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="scenePane" prefHeight="650.0" prefWidth="900.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="598.0" prefWidth="321.0" style="-fx-background-color: #0F5F52;">
+      <AnchorPane layoutY="52.0" prefHeight="598.0" prefWidth="321.0" style="-fx-background-color: #0F5F52;">
          <children>
-            <Button fx:id="btn_login_tab" layoutX="65.0" layoutY="252.0" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="47.0" prefWidth="191.0" text="Login" textFill="#0f1715">
+            <ImageView fitHeight="202.0" fitWidth="183.0" layoutX="68.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ScheduleWorksLogo.png" />
+               </image>
+               <effect>
+                  <Shadow />
+               </effect>
+            </ImageView>
+            <Button fx:id="btn_login_tab" graphicTextGap="0.0" layoutX="64.0" layoutY="258.0" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="47.0" prefWidth="200.0" text="Login" textFill="#0f1715">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Century Gothic Bold" size="32.0" />
                </font>
             </Button>
-            <Button fx:id="btn_retrieve_tab" layoutX="64.0" layoutY="429.0" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="49.0" prefWidth="193.0" text="Retrieve Courses">
+            <Button fx:id="btn_retrieve_tab" layoutX="64.0" layoutY="449.0" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="116.0" prefWidth="200.0" text="Retrieve Courses" textAlignment="CENTER" wrapText="true">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Century Gothic Bold" size="30.0" />
                </font>
             </Button>
-            <Button fx:id="Close_button" layoutX="64.0" layoutY="524.0" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="49.0" prefWidth="193.0" text="Quit" textFill="RED">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="187.0" fitWidth="171.0" layoutX="76.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="187.0" fitWidth="178.0" layoutX="76.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@ScheduleWorksLogo.png" />
                </image>
             </ImageView>
-            <TextField id="code" fx:id="code" layoutX="64.0" layoutY="333.0" prefHeight="49.0" prefWidth="86.0" promptText="code" />
-            <Button fx:id="btn_submit_code" layoutX="160.0" layoutY="333.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="49.0" prefWidth="92.0" text="Submit">
+            <TextField id="code" fx:id="code" layoutX="57.0" layoutY="351.0" prefHeight="63.0" prefWidth="95.0" promptText="code" styleClass="code">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Century Gothic Bold" size="17.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btn_submit_code" layoutX="169.0" layoutY="351.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="63.0" prefWidth="95.0" text="Submit">
+               <font>
+                  <Font name="Century Gothic Bold" size="20.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <TextArea fx:id="taCoursesTaken" layoutX="366.0" layoutY="34.0" prefHeight="531.0" prefWidth="477.0" wrapText="true" />
+      <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="365.0" layoutY="77.0" opacity="0.72" prefHeight="531.0" prefWidth="477.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" wrapText="true">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <font>
+            <Font name="Century Gothic Bold" size="14.0" />
+         </font></TextArea>
+      <AnchorPane prefHeight="49.0" prefWidth="872.0" styleClass="topbar" stylesheets="@MainWindowStyle.css">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="900.0">
+               <children>
+                  <Label text="ScheduleWorks                                                                            " textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic Bold" size="29.0" />
+                     </font>
+                  </Label>
+                  <Button id="Close_button" fx:id="Close_button" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="46.0" prefWidth="46.0" styleClass="Close_button" stylesheets="@MainWindowStyle.css" text="X" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic Bold" size="23.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
