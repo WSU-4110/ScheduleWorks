@@ -12,6 +12,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class InterfaceController {
     //  Login menu
@@ -21,6 +27,13 @@ public class InterfaceController {
     private PasswordField password;
     @FXML
     private Button loginButton;
+    @FXML
+    private TextField code;
+    @FXML
+    private TextArea taCoursesTaken;
+    @FXML
+    private Button btn_submit_code;
+
     private static Stage stg;
     
     public void pressLoginTab() throws Exception {
@@ -48,6 +61,7 @@ public class InterfaceController {
         InterfaceMain x = new InterfaceMain();
         x.changeScene("Interface.fxml");
         */
+        pythonExecute.getInfo(userInfo.getUsername(),userInfo.getPassword());
 
         System.out.println(userInfo.getUsername());
         System.out.println(userInfo.getPassword());
@@ -55,7 +69,31 @@ public class InterfaceController {
 
     //  Retrieve courses
     public void retrieveCoursesTab(){
-        System.out.println("Retrieve Courses button pressed");
+
+        File file = new File("../data/courseHistory.txt");
+
+       try{
+        Scanner scan = new Scanner(file);
+
+        while(scan.hasNextLine()){
+            taCoursesTaken.appendText(scan.nextLine() + "\n");
+            }
+        } 
+        catch (FileNotFoundException e){
+        e.printStackTrace();
+       }
+    }
+
+    public void submitCode() {
+        try{
+            BufferedWriter br = new BufferedWriter(new FileWriter(new File("2fa_code.txt")));
+            br.write(code.getText().toString());
+            br.write("done");
+            br.close();
+        }
+        catch (java.io.IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void viewCourseHistory(){

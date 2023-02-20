@@ -155,7 +155,7 @@ def refresh_data():
 
 
 if __name__ == "__main__":
-    # refresh_data()
+    refresh_data()
     view_course_history()
     view_degree_requirements()
     # extract_user_info()

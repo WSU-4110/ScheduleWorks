@@ -97,6 +97,7 @@ def main():
             ("CSC4710", "CSC3020"),
         ]
     )
+    show_graph(graph)
     make_priority_queue(graph)
 
 
