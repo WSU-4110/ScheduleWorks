@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,6 +19,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import javafx.scene.image.Image;
+
+
 
 public class InterfaceController {
     //  Login menu
@@ -35,17 +39,31 @@ public class InterfaceController {
     private Button btn_submit_code;
 
     private static Stage stg;
+    private double x,y=0;
     
     public void pressLoginTab() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("InterfaceLogin.fxml"));
         loader.setController(new InterfaceController());
         Parent root = loader.load();
-
         Stage loginStage = new Stage();
+
+        loginStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("ScheduleWorksLogo.png")));
+        loginStage.initStyle(StageStyle.UNDECORATED);
         stg = loginStage;
         loginStage.setTitle("Login");
-        loginStage.setScene(new Scene(root,500,375));
+        loginStage.setScene(new Scene(root));
         loginStage.setResizable(false);
+
+
+        root.setOnMousePressed(mouseEvent ->{
+            x=mouseEvent.getSceneX();
+            y=mouseEvent.getSceneY();
+        });
+        root.setOnMouseDragged(mouseEvent ->{
+            loginStage.setX(mouseEvent.getScreenX()-x);
+            loginStage.setY(mouseEvent.getScreenY()-y);
+        });
+
         loginStage.show();// show the login page
 
         System.out.println("Login tab pressed");

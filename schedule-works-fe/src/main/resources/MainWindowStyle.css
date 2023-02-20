@@ -34,3 +34,8 @@
 .text-field:empty:focused {
     -fx-alignment: center-left;
 }
+
+.general_button{
+    -fx-background-radius: 15px;
+    -fx-background-color: #0b463c
+}
