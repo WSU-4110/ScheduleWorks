@@ -20,6 +20,7 @@ import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import javafx.scene.image.Image;
+import java.io.IOException; 
 
 
 
@@ -90,6 +91,16 @@ public class InterfaceController {
     public void retrieveCoursesTab(){
         taCoursesTaken.clear();
         File file = new File("C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt");
+        try {
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+          }
 
        try{
         Scanner scan = new Scanner(file);
