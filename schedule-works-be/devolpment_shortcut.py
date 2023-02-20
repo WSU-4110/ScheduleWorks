@@ -11,7 +11,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
-import privateInfo
+# import privateInfo
 
 
 def retrive_data(refresh_token: str, token: str, name: str) -> None:
@@ -168,17 +168,17 @@ def view_degree_requirements():
         raise error
 
 
-def refresh_data():
-    """Use retrive_data with my own cookies for quick access when I need to refresh data."""
-    retrive_data(
-        privateInfo.get_refresh_token(),
-        privateInfo.get_x_auth(),
-        "%20Mazen%20A%20Mirza",
-    )
+# def refresh_data():
+#     """Use retrive_data with my own cookies for quick access when I need to refresh data."""
+#     retrive_data(
+#         privateInfo.get_refresh_token(),
+#         privateInfo.get_x_auth(),
+#         "%20Mazen%20A%20Mirza",
+#     )
 
 
 if __name__ == "__main__":
-    refresh_data()
+    # refresh_data()
     view_course_history()
     view_degree_requirements()
     # extract_user_info()
