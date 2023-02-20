@@ -1,6 +1,8 @@
 {
-    "courses": {
-       
+    "Course History": {
+        "ANT": {
+            "2200": 3
+        },
         "BE": {
             "1200": 3,
             "1500": 3,
@@ -68,5 +70,6 @@
             "2210": 3
         }
     },
-    "Tot_credits": 122
+    "Tot_credits": 122,
+    "Course Requirements": []
 }
