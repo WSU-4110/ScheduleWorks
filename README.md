@@ -4,6 +4,7 @@
 <img  src="https://github.com/WSU-4110/ScheduleWorks/blob/main/schedule-works-fe/src/main/resources/ScheduleWorksLogo.png" width=65% height=65%>
 </p>
 
+
 A desktop application that can build a class schedule given time & day filters. 
 
 # Installation
@@ -13,6 +14,14 @@ A desktop application that can build a class schedule given time & day filters.
 4. Click Edit.
 4. Enable Full Access for users and click apply.
 5. Run ScheduleWorks.exe and enjoy!
+
+# Contributors
+1. Mazen Mirza
+2. Aafnan Mahmood
+3. Mizanul Haue
+4. Faizan Bahtti
+5. Christopher Forkin
+
 
 # Requirements
 Installation can be either through a terminal or by directly downloading the required software
