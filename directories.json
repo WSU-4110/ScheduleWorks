@@ -1,0 +1,10 @@
+{
+    "directory": {
+        "base": "C:\\Program Files\\ScheduleWorks",
+        "storage": "\\data",
+        "backend": "\\schedule-works-be",
+        "frontend_java": "\\schedule-works-fe\\src\\main\\java\\org\\scheduleworks\\dep",
+        "frontend_resources": "\\schedule-works-fe\\src\\main\\resources",
+        "pom": "\\schedule-works-fe\\pom.xml"
+    }
+}
