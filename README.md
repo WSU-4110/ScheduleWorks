@@ -58,11 +58,23 @@ The project is still in devolpment, to install the required tools to manually ru
 pip install -r requirements.txt
 ```
 
-### todo
+### old todo
  - parse json for requirements
  - improve javaFX features
  - improve javaFX look
  - optimize functions 
- - connect java frontend and python backend
- - read file output to frontend
  - connect nub.py to dgraph to build a priority queue
+ 
+### new todo
+ - Manage selenium wait times based on website load speeds.
+ - Delete user information button.
+ - Save user cookies for quick data refresh.
+ - Display users name
+ - Dynamic frame sizing
+ - Incorrect code handling
+ - Incorrect login handling
+ - Minimizing functianality.
+ - Cohesive UI design to display information
+ - Convert output data to JSON for table formatting
+ - Display priority queue
+ - Display course directed graph diagram
