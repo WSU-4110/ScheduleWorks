@@ -1,0 +1,41 @@
+.text-area .content {
+    -fx-cursor: DEFAULT ;
+}
+
+.scenePane{
+    -fx-background-color: linear-gradient(to bottom right,#42af9d,#e4ce0f);
+    
+}
+ -fx-background-radius: 6px, 0px;
+.button{
+    -fx-background-color: #FFCC33;
+    -fx-background-radius: 15px;
+    -fx-text-fill: #ffffff;
+}
+.mainPanel{
+    -fx-background-color: #0b463c
+}
+
+.topbar{
+    -fx-background-color: #0b463c
+    
+}
+.Close_button{
+    -fx-background-color: #0b463c
+}
+.Close_button:hover{
+    -fx-background-color: #f30202
+}
+.code{
+    -fx-background-radius: 15px;  
+    -fx-alignment: center; 
+}
+
+.text-field:empty:focused {
+    -fx-alignment: center-left;
+}
+
+.general_button{
+    -fx-background-radius: 15px;
+    -fx-background-color: #0b463c
+}
