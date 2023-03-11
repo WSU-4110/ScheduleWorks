@@ -151,18 +151,102 @@ class Nub:
         track = False
         course_prereq_list = []
         word = ""
-        # print(str(prereq_table))
+
+        text_tokens = str(prereq_table).split(" ")
+
+        # parsing courses from trash
+        for i in range(len(text_tokens)):
+            # print(text_tokens[i])
+            if text_tokens[i] == "Course":
+                i += 3
+                saved_current_index = len(course_prereq_list)
+                course_prereq_list.append("")
+                while not text_tokens[i].isnumeric():
+                    course_prereq_list[saved_current_index] += text_tokens[i] + " "
+                    i += 1
+                if text_tokens[i].isnumeric():
+                    course_prereq_list[saved_current_index] += text_tokens[i]
+            elif "or" in text_tokens[i]:
+                course_prereq_list.append("or")
+
+        # cleaning up repeating or statements
+        for i, word in enumerate(course_prereq_list):
+            if (
+                word == "or"
+                and (
+                    i + 1 < len(course_prereq_list)
+                    and course_prereq_list[i + 1] != "or"
+                )
+                or i == len(course_prereq_list) - 1
+            ):
+                course_prereq_list.pop(i)
+
+        print()
+        for i, word in enumerate(course_prereq_list):
+            print(word)
+        print()
+
+        course_prereq_dict = []
+
+        i = 0
+        while i < len(course_prereq_list):
+            print(course_prereq_list[i])
+            if course_prereq_list[i] != "or":
+                course_prereq_dict.append(
+                    [
+                        {
+                            "course": re.sub(
+                                r"[^a-zA-Z ]+", "", course_prereq_list[i]
+                            ).strip(),
+                            "code": re.findall(r"\d+", course_prereq_list[i])[0],
+                        }
+                    ]
+                )
+            else:
+                course_prereq_dict[i - 1].append(
+                    {
+                        "course": re.sub(
+                            r"[^a-zA-Z ]+", "", course_prereq_list[i + 1]
+                        ).strip(),
+                        "code": re.findall(r"\d+", course_prereq_list[i + 1])[0],
+                    }
+                )
+                i += 1  # skipping course that was just added
+            i += 1  # increment for while
+
+        # for i, course in enumerate(course_prereq_list):
+        #     if course != "or":
+        #         course_prereq_dict.append(
+        #             [
+        #                 {
+        #                     "course": re.sub(r"[^a-zA-Z ]+", "", course).strip(),
+        #                     "code": re.findall(r"\d+", course)[0],
+        #                 }
+        #             ]
+        #         )
+        #     else:
+        #         course_prereq_dict[i - 1].append(
+        #             {
+        #                 "course": "OR",
+        #                 "code": "OR",
+        #             }
+        #         )
+        print(course_prereq_dict)
+
+        return
+
         for letter in str(prereq_table):
             if letter == "\n" and word != "":
                 track = False
-                course_prereq_list.append(word)
+                course_prereq_list.append([word])
                 word = ""
             if track:
                 word += letter
             if letter == ":":
                 track = True
 
-        # print(course_prereq_list)
+        print(prereq_table)
+        print(course_prereq_list)
 
         for i, course in enumerate(course_prereq_list[1::]):
             course_prereq_list[i + 1] = {
@@ -170,7 +254,6 @@ class Nub:
                 "code": re.findall(r"\d+", course)[0],
             }
         course_prereq_list.pop(0)
-        # print(course_prereq_list)
 
         known_conversion = {}
         for course_data in course_prereq_list:
@@ -204,7 +287,7 @@ def main():
     print(nub.get_terms(maximum=5))
     nub.set_term("202301")
     nub.enable_search()
-    print(nub.get_prerequistes("CSC", "2200"))
+    print(nub.get_prerequistes("CSC", "4500"))
 
 
 if __name__ == "__main__":
