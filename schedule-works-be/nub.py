@@ -181,16 +181,11 @@ class Nub:
             ):
                 course_prereq_list.pop(i)
 
-        print()
-        for i, word in enumerate(course_prereq_list):
-            print(word)
-        print()
-
         course_prereq_dict = []
 
         i = 0
         while i < len(course_prereq_list):
-            print(course_prereq_list[i])
+            # print(course_prereq_list[i])
             if course_prereq_list[i] != "or":
                 course_prereq_dict.append(
                     [
@@ -214,58 +209,17 @@ class Nub:
                 i += 1  # skipping course that was just added
             i += 1  # increment for while
 
-        # for i, course in enumerate(course_prereq_list):
-        #     if course != "or":
-        #         course_prereq_dict.append(
-        #             [
-        #                 {
-        #                     "course": re.sub(r"[^a-zA-Z ]+", "", course).strip(),
-        #                     "code": re.findall(r"\d+", course)[0],
-        #                 }
-        #             ]
-        #         )
-        #     else:
-        #         course_prereq_dict[i - 1].append(
-        #             {
-        #                 "course": "OR",
-        #                 "code": "OR",
-        #             }
-        #         )
-        print(course_prereq_dict)
-
-        return
-
-        for letter in str(prereq_table):
-            if letter == "\n" and word != "":
-                track = False
-                course_prereq_list.append([word])
-                word = ""
-            if track:
-                word += letter
-            if letter == ":":
-                track = True
-
-        print(prereq_table)
-        print(course_prereq_list)
-
-        for i, course in enumerate(course_prereq_list[1::]):
-            course_prereq_list[i + 1] = {
-                "course": re.sub(r"[^a-zA-Z ]+", "", course).strip(),
-                "code": re.findall(r"\d+", course)[0],
-            }
-        course_prereq_list.pop(0)
-
         known_conversion = {}
-        for course_data in course_prereq_list:
-            course_name = course_data["course"]
-            if course_name in known_conversion:
-                course_data["course"] = known_conversion[course_name]
-            else:
-                code = self.get_subject_code(course_name)[0]["code"]
-                known_conversion[course_name] = code
-                course_data["course"] = code
-
-        return course_prereq_list
+        for course_set in course_prereq_dict:
+            for course_data in course_set:
+                course_name = course_data["course"]
+                if course_name in known_conversion:
+                    course_data["course"] = known_conversion[course_name]
+                else:
+                    code = self.get_subject_code(course_name)[0]["code"]
+                    known_conversion[course_name] = code
+                    course_data["course"] = code
+        return course_prereq_dict
 
     def get_prerequistes(self, subject_code, course_code):
         """Obtain an array with course prequeistes given a course code and id."""
