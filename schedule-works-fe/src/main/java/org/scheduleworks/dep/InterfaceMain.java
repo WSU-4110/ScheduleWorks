@@ -19,16 +19,19 @@ public class InterfaceMain extends Application{
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         stg = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Interface.fxml"));
         loader.setController(new InterfaceController());
         Parent root = loader.load();
+
         primaryStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("ScheduleWorksLogo.png")));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setTitle("ScheduleWorks");// Title of the page of Interface
+        primaryStage.initStyle(StageStyle.DECORATED);
+        primaryStage.sizeToScene();
+        primaryStage.setTitle("ScheduleWorks"); // Title of the page of Interface
         primaryStage.setScene(new Scene(root)); // sets up the size of the interface showm in the scene 
-        
+        primaryStage.setMinWidth(900);
+        primaryStage.setMinHeight(650);
 
         root.setOnMousePressed(mouseEvent ->{
             x=mouseEvent.getSceneX();
@@ -39,13 +42,13 @@ public class InterfaceMain extends Application{
             primaryStage.setY(mouseEvent.getScreenY()-y);
         });
 
-        primaryStage.setResizable(false); // cannot change the size of the screen
+        primaryStage.setResizable(true); // cannot change the size of the screen
         primaryStage.show();
         
     }
     
 
-    public void changeScene(String fxml) throws Exception{
+    public void changeScene(String fxml) throws Exception {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);
     }

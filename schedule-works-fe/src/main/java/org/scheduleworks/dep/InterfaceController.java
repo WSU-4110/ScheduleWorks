@@ -76,16 +76,11 @@ public class InterfaceController {
         userInfo.setPassword(password.getText().toString());
         stg.close();
         
-        /*
-        InterfaceMain x = new InterfaceMain();
-        x.changeScene("Interface.fxml");
-        */
         Thread t = new Thread(new pythonExecute(userInfo.getUsername(),userInfo.getPassword()));
         t.start();
 
         System.out.println(userInfo.getUsername());
 
-        // System.out.println(userInfo.getPassword());
         closeApplication();
     }
 

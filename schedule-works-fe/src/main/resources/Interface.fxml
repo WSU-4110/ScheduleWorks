@@ -11,16 +11,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <!-- this fxml code is created through scene builder, you can edit the code here manually or
 you can put your changes in to the scene builder and you can see your results accordingly in here as well -->
 
-<AnchorPane fx:id="scenePane" prefHeight="650.0" prefWidth="900.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="scenePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutY="52.0" prefHeight="598.0" prefWidth="321.0" style="-fx-background-color: #0F5F52;">
+      <AnchorPane layoutY="52.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="277.0" style="-fx-background-color: #0F5F52;">
          <children>
-            <ImageView fitHeight="202.0" fitWidth="183.0" layoutX="68.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="202.0" fitWidth="183.0" layoutX="47.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@ScheduleWorksLogo.png" />
                </image>
@@ -28,40 +29,31 @@ you can put your changes in to the scene builder and you can see your results ac
                   <Shadow />
                </effect>
             </ImageView>
-            <Button fx:id="btn_login_tab" graphicTextGap="0.0" layoutX="64.0" layoutY="258.0" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="47.0" prefWidth="200.0" styleClass="general_button" text="Login" textFill="WHITE">
-               <font>
-                  <Font name="Century Gothic Bold" size="32.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="btn_retrieve_tab" layoutX="64.0" layoutY="449.0" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="116.0" prefWidth="200.0" styleClass="general_button" text="Retrieve Courses" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font name="Century Gothic Bold" size="30.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <ImageView fitHeight="187.0" fitWidth="178.0" layoutX="76.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="187.0" fitWidth="178.0" layoutX="55.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@ScheduleWorksLogo.png" />
                </image>
             </ImageView>
-            <TextField id="code" fx:id="code" layoutX="57.0" layoutY="351.0" prefHeight="63.0" prefWidth="95.0" promptText="code" styleClass="code">
-               <font>
-                  <Font name="Century Gothic Bold" size="17.0" />
-               </font>
-            </TextField>
-            <Button fx:id="btn_submit_code" layoutX="169.0" layoutY="351.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="63.0" prefWidth="95.0" styleClass="general_button" text="Submit" textFill="WHITE">
-               <font>
-                  <Font name="Century Gothic Bold" size="20.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+            <VBox layoutX="-1.0" layoutY="257.0" prefHeight="341.0" prefWidth="277.0">
+               <children>
+                  <Button fx:id="btn_login_tab" graphicTextGap="0.0" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Login" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic Bold" size="26.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btn_retrieve_tab" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Retrieve Courses" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Century Gothic Bold" size="26.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
       <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="365.0" layoutY="77.0" opacity="0.7" prefHeight="531.0" prefWidth="477.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" wrapText="true">
@@ -76,7 +68,7 @@ you can put your changes in to the scene builder and you can see your results ac
          </font></TextArea>
       <AnchorPane prefHeight="49.0" prefWidth="872.0" styleClass="topbar" stylesheets="@MainWindowStyle.css">
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="900.0">
+            <HBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="55.0" prefWidth="900.0">
                <children>
                   <Label text="ScheduleWorks                                                                            " textFill="WHITE">
                      <font>
@@ -95,5 +87,18 @@ you can put your changes in to the scene builder and you can see your results ac
             </HBox>
          </children>
       </AnchorPane>
+      <TextField id="code" fx:id="code" layoutX="455.0" layoutY="191.0" prefHeight="63.0" prefWidth="95.0" promptText="code" styleClass="code">
+         <font>
+            <Font name="Century Gothic Bold" size="17.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btn_submit_code" layoutX="567.0" layoutY="191.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="63.0" prefWidth="95.0" styleClass="general_button" text="Submit" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>
