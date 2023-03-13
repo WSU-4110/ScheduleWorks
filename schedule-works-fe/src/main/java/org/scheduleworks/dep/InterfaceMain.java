@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
 
 public class InterfaceMain extends Application{
     private static Stage stg;
-    private double x,y=0;
+    private double x,y = 0;
 
     public static void main(String[] args){
         launch(args); // necessary to start the application
@@ -27,7 +27,6 @@ public class InterfaceMain extends Application{
 
         primaryStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("ScheduleWorksLogo.png")));
         primaryStage.initStyle(StageStyle.DECORATED);
-        primaryStage.sizeToScene();
         primaryStage.setTitle("ScheduleWorks"); // Title of the page of Interface
         primaryStage.setScene(new Scene(root)); // sets up the size of the interface showm in the scene 
         primaryStage.setMinWidth(900);
@@ -44,12 +43,16 @@ public class InterfaceMain extends Application{
 
         primaryStage.setResizable(true); // cannot change the size of the screen
         primaryStage.show();
-        
+
     }
     
 
     public void changeScene(String fxml) throws Exception {
-        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-        stg.getScene().setRoot(pane);
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(fxml));
+        loader.setController(new InterfaceController());
+        Parent root = loader.load();
+
+        Scene newScene = new Scene(root);
+        stg.setScene(newScene);
     }
 }

@@ -22,9 +22,7 @@ import java.io.FileWriter;
 import javafx.scene.image.Image;
 import java.io.IOException; 
 
-
-
-public class InterfaceController {
+public class InterfaceController extends InterfaceMain {
     //  Login menu
     @FXML
     private TextField username;
@@ -38,12 +36,14 @@ public class InterfaceController {
     private TextArea taCoursesTaken;
     @FXML
     private Button btn_submit_code;
-
     private static Stage stg;
+
     private double x,y=0;
     
     public void pressLoginTab() throws Exception {
+        /*
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("InterfaceLogin.fxml"));
+
         loader.setController(new InterfaceController());
         Parent root = loader.load();
         Stage loginStage = new Stage();
@@ -55,7 +55,6 @@ public class InterfaceController {
         loginStage.setScene(new Scene(root));
         loginStage.setResizable(false);
 
-
         root.setOnMousePressed(mouseEvent ->{
             x=mouseEvent.getSceneX();
             y=mouseEvent.getSceneY();
@@ -65,23 +64,24 @@ public class InterfaceController {
             loginStage.setY(mouseEvent.getScreenY()-y);
         });
 
-        loginStage.show();// show the login page
+        // show the login page
+        loginStage.show();
+        */
 
-        System.out.println("Login tab pressed");
+        changeScene("InterfaceLogin.fxml");
     }
 
     public void pressLoginButton() throws Exception{
         privateInfo userInfo = new privateInfo();
         userInfo.setUsername(username.getText().toString());
         userInfo.setPassword(password.getText().toString());
-        stg.close();
+        //stg.close();
+        changeScene("Interface.fxml");
         
         Thread t = new Thread(new pythonExecute(userInfo.getUsername(),userInfo.getPassword()));
         t.start();
 
-        System.out.println(userInfo.getUsername());
-
-        closeApplication();
+        //closeApplication();
     }
 
     //  Retrieve courses
@@ -137,9 +137,11 @@ public class InterfaceController {
     //  Close application
     @FXML private javafx.scene.control.Button Close_button;
 
-    public void closeApplication() throws Exception{
+    public void closeApplication() throws Exception {
         Stage stage = (Stage) Close_button.getScene().getWindow();
         stage.close(); // this is to close the Application.
         System.out.println("Application closed");
+
+        System.exit(0);
     }
 }
