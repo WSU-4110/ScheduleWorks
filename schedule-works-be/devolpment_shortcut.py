@@ -30,7 +30,6 @@ def retrive_data(refresh_token: str, token: str, name: str) -> None:
     driver.add_cookie({"name": "NAME", "value": name})
 
     driver.get("https://degreeworks.wayne.edu/api/students/myself")
-    time.sleep(59999)
     soup = BeautifulSoup(driver.page_source, features="lxml")
     dict_from_json = json.loads(soup.find("body").text)
 
