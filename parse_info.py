@@ -39,5 +39,5 @@ for course in data["inProgress"]["classArray"]:
 Tot_credits = sum(sum(courses[discipline].values()) for discipline in courses)
 
 # Write the output to a JSON file(output)
-with open("output.json", "w") as f:
+with open("data/output.json", "w") as f:
     json.dump({"Course History": courses, "Tot_credits": Tot_credits, "Course Requirements": course_req}, f, indent=4)
