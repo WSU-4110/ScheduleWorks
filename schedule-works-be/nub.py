@@ -185,7 +185,6 @@ class Nub:
 
         i = 0
         while i < len(course_prereq_list):
-            # print(course_prereq_list[i])
             if course_prereq_list[i] != "or":
                 course_prereq_dict.append(
                     [
