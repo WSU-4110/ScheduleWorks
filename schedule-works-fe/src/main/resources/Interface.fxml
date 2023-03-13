@@ -11,6 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -19,7 +20,7 @@ you can put your changes in to the scene builder and you can see your results ac
 
 <AnchorPane fx:id="scenePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutY="52.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="277.0" style="-fx-background-color: #0F5F52;">
+      <AnchorPane layoutY="52.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="277.0" style="-fx-background-color: #0F5F52;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="52.0">
          <children>
             <ImageView fitHeight="202.0" fitWidth="183.0" layoutX="47.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -56,7 +57,7 @@ you can put your changes in to the scene builder and you can see your results ac
             </VBox>
          </children>
       </AnchorPane>
-      <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="365.0" layoutY="77.0" opacity="0.7" prefHeight="531.0" prefWidth="477.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" wrapText="true">
+      <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="307.0" layoutY="83.0" opacity="0.7" prefHeight="539.0" prefWidth="563.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" wrapText="true" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="83.0">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -66,18 +67,22 @@ you can put your changes in to the scene builder and you can see your results ac
          <font>
             <Font name="Century Gothic Bold" size="14.0" />
          </font></TextArea>
-      <AnchorPane prefHeight="49.0" prefWidth="872.0" styleClass="topbar" stylesheets="@MainWindowStyle.css">
+      <AnchorPane prefHeight="49.0" prefWidth="872.0" styleClass="topbar" stylesheets="@MainWindowStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <HBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="55.0" prefWidth="900.0">
+            <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="55.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Label text="ScheduleWorks                                                                            " textFill="WHITE">
+                  <Label text="ScheduleWorks  " textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="Century Gothic Bold" size="29.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </Label>
-                  <Button id="Close_button" fx:id="Close_button" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="46.0" prefWidth="46.0" styleClass="Close_button" stylesheets="@MainWindowStyle.css" text="X" textFill="WHITE">
+                  <Region prefHeight="45.0" prefWidth="617.0" HBox.hgrow="ALWAYS" />
+                  <Button id="Close_button" fx:id="Close_button" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="46.0" prefWidth="46.0" styleClass="Close_button" stylesheets="@MainWindowStyle.css" text="x" textAlignment="CENTER" textFill="WHITE" translateY="-2.0" HBox.hgrow="ALWAYS">
                      <font>
-                        <Font name="Century Gothic Bold" size="12.0" />
+                        <Font name="Century Gothic Bold" size="20.0" />
                      </font>
                   </Button>
                </children>
