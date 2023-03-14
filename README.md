@@ -86,3 +86,5 @@ pip install -r requirements.txt
  - Convert output data to JSON for table formatting
  - Display priority queue
  - Display course directed graph diagram
+ - make topo sort for dgraph.py 
+ - make dgraph.py a class instead of just functions
