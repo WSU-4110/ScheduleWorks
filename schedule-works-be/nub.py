@@ -165,6 +165,8 @@ class Nub:
                 saved_current_index = len(course_prereq_list)
                 course_prereq_list.append("")
                 while not text_tokens[i].isnumeric():
+                    if "Attributes" in text_tokens[i]:
+                        break
                     course_prereq_list[saved_current_index] += text_tokens[i] + " "
                     i += 1
                 if text_tokens[i].isnumeric():
@@ -187,8 +189,10 @@ class Nub:
         course_prereq_dict = []
 
         i = 0
+        or_counter = 0
         while i < len(course_prereq_list):
             if course_prereq_list[i] != "or":
+                or_counter = 0
                 course_prereq_dict.append(
                     [
                         {
@@ -200,7 +204,15 @@ class Nub:
                     ]
                 )
             else:
-                course_prereq_dict[i - 1].append(
+                or_counter += 2
+                print(i - or_counter, course_prereq_dict, course_prereq_list[i + 1])
+                if (
+                    course_prereq_list[i + 1] == "or"
+                    or "Attributes" not in course_prereq_list[i + 1]
+                ):
+                    # del course_prereq_list[i + 1 : :]
+                    break
+                course_prereq_dict[i - or_counter].append(
                     {
                         "course": re.sub(
                             r"[^a-zA-Z ]+", "", course_prereq_list[i + 1]
@@ -258,6 +270,24 @@ class Nub:
                     )
         return course_list
 
+    def import_all_courses(self):
+        """This should be in a different file. Temprarory location"""
+        course_list = self.import_courses()
+
+        try:
+            with open(
+                "C:/Program Files/ScheduleWorks/data/courseHistory.json",
+                encoding="utf-8",
+            ) as file:
+                course_history = json.load(file)
+        except FileNotFoundError as error:
+            raise error
+
+        for course in course_history:
+            course_list.append(course["discipline"] + " " + course["number"])
+
+        return course_list
+
     def make_adjancancy_mtrx(self):
         adjancancy_mtrx = []
         course_list_degree = self.import_courses()
@@ -276,10 +306,10 @@ class Nub:
                     ]
                 )
         return adjancancy_mtrx
-    
+
     def make_adjancancy_mtrx_full(self):
         adjancancy_mtrx = []
-        course_list_degree = self.import_courses()
+        course_list_degree = self.import_all_courses()
         for course_degree in course_list_degree:
             print(course_degree)
             course_preqs = self.get_prerequistes(
@@ -303,10 +333,11 @@ def main():
     print(nub.get_terms(maximum=5))
     nub.set_term("202301")
     nub.enable_search()
-    adj_mtrx = nub.make_adjancancy_mtrx()
-    graph = nx.DiGraph()
+
+    graph = dgraph.Dgraph()
+    adj_mtrx = nub.make_adjancancy_mtrx_full()
     graph.add_edges_from(adj_mtrx)
-    dgraph.show_graph(graph)
+    graph.show_graph()
 
     # print(nub.get_prerequistes("CSC", "4500"))
 

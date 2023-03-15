@@ -89,6 +89,10 @@ class Dgraph:
         )
         plt.show()
 
+    def add_edges_from(self, adj_mtrx):
+        """Copy of add_edges_from from networkX."""
+        self.graph.add_edges_from(adj_mtrx)
+
 
 def main():
     """Example Usage."""
