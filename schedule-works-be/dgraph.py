@@ -4,6 +4,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 
+
 def course_sum(graph: nx.DiGraph, course: str, memo: dict) -> set:
     """
     Determine a given course's dependency list. See make_priority_queue() to use properly.
@@ -63,6 +64,10 @@ def make_priority_queue(graph: nx.DiGraph) -> dict:
     return memo
 
 
+def topo_sort():
+    pass
+
+
 def show_graph(graph):
     """Print a graph out to show node connections."""
 
@@ -79,16 +84,14 @@ def show_graph(graph):
     )
     plt.show()
 
-def 
-
 
 def main():
     """Example Usage."""
     graph = nx.DiGraph()
     graph.add_edges_from(
         [
-            ("CSC3100", "CSC2200"),
-            ("CSC2200", "CSC2110"),
+            ["CSC 3100", "CSC 2200"],
+            ("CSC 2200", "CSC 2110"),
             ("CSC4410", "CSC2200"),
             ("CSC4410", "CSC3100"),
             ("CSC2200", "CSC1500"),

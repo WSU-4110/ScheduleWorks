@@ -1,7 +1,10 @@
 """Wrapper class to maintain cookies from NU Banner API."""
 import re
 import requests
+import json
 from bs4 import BeautifulSoup
+import dgraph
+import networkx as nx
 
 
 class Nub:
@@ -233,6 +236,47 @@ class Nub:
 
         return self.clean_prereq_list(prereq_table)
 
+    def import_courses(self):
+        """This should be in a different file. Temprarory location"""
+        try:
+            with open(
+                "C:/Program Files/ScheduleWorks/data/requirements.json",
+                encoding="utf-8",
+            ) as file:
+                audit_data = json.load(file)
+        except FileNotFoundError as error:
+            raise error
+        course_list = []
+        for discipline in audit_data["requirements"]:
+            required_courses = audit_data["requirements"][discipline]["requiredCourses"]
+            if required_courses:
+                # only accesses the first element in the list does not work with or's
+                for course_dict in required_courses:
+                    # course_name_id = course_list[0]
+                    course_list.append(
+                        course_dict["discipline"] + " " + course_dict["number"]
+                    )
+        return course_list
+
+    def make_adjancancy_mtrx(self):
+        adjancancy_mtrx = []
+        course_list_degree = self.import_courses()
+        for course_degree in course_list_degree:
+            print(course_degree)
+            course_preqs = self.get_prerequistes(
+                course_degree.split(" ")[0], course_degree.split(" ")[1]
+            )
+            if course_preqs and course_preqs[0] == "Error":
+                continue
+            for required_courses in course_preqs:
+                adjancancy_mtrx.append(
+                    [
+                        course_degree,
+                        required_courses[0]["course"] + required_courses[0]["code"],
+                    ]
+                )
+        return adjancancy_mtrx
+
 
 def main():
     """Give an example use case."""
@@ -240,7 +284,12 @@ def main():
     print(nub.get_terms(maximum=5))
     nub.set_term("202301")
     nub.enable_search()
-    print(nub.get_prerequistes("CSC", "4500"))
+    adj_mtrx = nub.make_adjancancy_mtrx()
+    graph = nx.DiGraph()
+    graph.add_edges_from(adj_mtrx)
+    dgraph.show_graph(graph)
+
+    # print(nub.get_prerequistes("CSC", "4500"))
 
 
 if __name__ == "__main__":
