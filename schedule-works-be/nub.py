@@ -276,6 +276,25 @@ class Nub:
                     ]
                 )
         return adjancancy_mtrx
+    
+    def make_adjancancy_mtrx_full(self):
+        adjancancy_mtrx = []
+        course_list_degree = self.import_courses()
+        for course_degree in course_list_degree:
+            print(course_degree)
+            course_preqs = self.get_prerequistes(
+                course_degree.split(" ")[0], course_degree.split(" ")[1]
+            )
+            if course_preqs and course_preqs[0] == "Error":
+                continue
+            for required_courses in course_preqs:
+                adjancancy_mtrx.append(
+                    [
+                        course_degree,
+                        required_courses[0]["course"] + required_courses[0]["code"],
+                    ]
+                )
+        return adjancancy_mtrx
 
 
 def main():
