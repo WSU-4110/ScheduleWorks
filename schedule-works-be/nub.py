@@ -165,7 +165,9 @@ class Nub:
                 saved_current_index = len(course_prereq_list)
                 course_prereq_list.append("")
                 while not text_tokens[i].isnumeric():
-                    if "Attributes" in text_tokens[i]:
+                    if (
+                        "Attributes" in text_tokens[i]
+                    ):  # english 3060 made me put this here i dont know why
                         break
                     course_prereq_list[saved_current_index] += text_tokens[i] + " "
                     i += 1
@@ -206,12 +208,13 @@ class Nub:
             else:
                 or_counter += 2
                 print(i - or_counter, course_prereq_dict, course_prereq_list[i + 1])
+                # use or here to ignore "or masters"
+                # use or here to ignore "or atribute in xyz"
                 if (
                     course_prereq_list[i + 1] == "or"
                     or "Attributes" not in course_prereq_list[i + 1]
                 ):
-                    # del course_prereq_list[i + 1 : :]
-                    break
+                    break  # check english 3010 and BE1200 for example
                 course_prereq_dict[i - or_counter].append(
                     {
                         "course": re.sub(
@@ -337,6 +340,7 @@ def main():
     graph = dgraph.Dgraph()
     adj_mtrx = nub.make_adjancancy_mtrx_full()
     graph.add_edges_from(adj_mtrx)
+    graph.make_priority_queue()
     graph.show_graph()
 
     # print(nub.get_prerequistes("CSC", "4500"))
