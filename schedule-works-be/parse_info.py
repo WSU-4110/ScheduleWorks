@@ -37,6 +37,45 @@ def course_requirements():
         raise error
 
 
+def view_course_history():
+    """Extract course history from json audit file."""
+    try:
+        with open(
+            "C:/Program Files/ScheduleWorks/data/classData.json", encoding="utf-8"
+        ) as file:
+            audit_data = json.load(file)
+    except FileNotFoundError as error:
+        raise error
+
+    courses_passed_list = []
+
+    for course in audit_data["classInformation"]["classArray"]:
+        courses_passed_list.append(
+            {
+                "courseTitle": course["courseTitle"],
+                "discipline": course["discipline"],
+                "number": course["number"],
+                "credits": course["credits"],
+                "passed": course["passed"],
+                "inProgress": course["inProgress"],
+                "attributeArray": course["attributeArray"],
+            }
+        )
+        # TODO
+        # manage a list of known attriubutes
+        # clean out DWSISKEY and other ? attributes (idk what 2YR means)
+        # remove attribute list from first append, clean right after and then
+        # courses_passed_list[-1]["attributeArray"]:cleaned_attribute_list
+
+    try:
+        with open(
+            "C:/Program Files/ScheduleWorks/data/courseHistory.json",
+            "w+",
+            encoding="utf-8",
+        ) as outfile:
+            json.dump(courses_passed_list, outfile, indent=4)
+    except FileNotFoundError as error:
+        raise error
 
 
 def idk():
@@ -117,6 +156,7 @@ def idk():
             f,
             indent=4,
         )
+
 
 if __name__ == "__main__":
     course_requirements()
