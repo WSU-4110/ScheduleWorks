@@ -71,7 +71,8 @@ class Dgraph:
         return memo
 
     def topo_sort(self):
-        pass
+        """Topological sort of directed graph."""
+        return
 
     def show_graph(self):
         """Print a graph out to show node connections."""
