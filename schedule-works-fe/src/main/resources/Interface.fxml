@@ -16,7 +16,7 @@
 <!-- this fxml code is created through scene builder, you can edit the code here manually or
 you can put your changes in to the scene builder and you can see your results accordingly in here as well -->
 
-<AnchorPane fx:id="scenePane" prefHeight="650.0" prefWidth="900.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="scenePane" prefHeight="650.0" prefWidth="900.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutY="52.0" prefHeight="598.0" prefWidth="321.0" style="-fx-background-color: #0F5F52;">
          <children>
@@ -93,6 +93,18 @@ you can put your changes in to the scene builder and you can see your results ac
                   <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                </padding>
             </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="504.0" layoutY="-3.0" prefHeight="55.0" prefWidth="169.0">
+         <children>
+            <Button fx:id="btn_Help" graphicTextGap="0.0" layoutX="-100.0" layoutY="-4.0" mnemonicParsing="false" onAction="#pressHelp" prefHeight="55.0" prefWidth="200.0" styleClass="general_button" text="HELP" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic Bold" size="32.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
    </children>

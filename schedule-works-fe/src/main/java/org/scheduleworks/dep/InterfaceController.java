@@ -147,4 +147,30 @@ public class InterfaceController {
         stage.close(); // this is to close the Application.
         System.out.println("Application closed");
     }
+        public void pressHelp() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Help.fxml"));
+        loader.setController(new InterfaceController());
+        Parent root = loader.load();
+        Stage helpStage = new Stage();
+
+
+        //loginStage.initStyle(StageStyle.UNDECORATED);
+        stg = helpStage;
+        helpStage.setTitle("Help");
+        helpStage.setScene(new Scene(root));
+        helpStage.setResizable(false);
+
+
+        root.setOnMousePressed(mouseEvent ->{
+            x=mouseEvent.getSceneX();
+            y=mouseEvent.getSceneY();
+        });
+        root.setOnMouseDragged(mouseEvent ->{
+            helpStage.setX(mouseEvent.getScreenX()-x);
+            helpStage.setY(mouseEvent.getScreenY()-y);
+        });
+
+        helpStage.show();
+
+    }
 }
