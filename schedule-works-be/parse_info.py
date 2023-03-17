@@ -77,7 +77,46 @@ def view_course_history():
     except FileNotFoundError as error:
         raise error
 
+def get_courses():
+        """This should be in a different file. Temprarory location."""
+        try:
+            with open(
+                "C:/Program Files/ScheduleWorks/data/requirements.json",
+                encoding="utf-8",
+            ) as file:
+                audit_data = json.load(file)
+        except FileNotFoundError as error:
+            raise error
+        course_list = []
+        for discipline in audit_data["requirements"]:
+            required_courses = audit_data["requirements"][discipline]["requiredCourses"]
+            if required_courses:
+                # only accesses the first element in the list does not work with or's
+                for course_dict in required_courses:
+                    # course_name_id = course_list[0]
+                    course_list.append(
+                        course_dict["discipline"] + " " + course_dict["number"]
+                    )
+        return course_list
 
+def get_all_courses():
+        """This should be in a different file. Temprarory location."""
+        course_list = get_courses()
+
+        try:
+            with open(
+                "C:/Program Files/ScheduleWorks/data/courseHistory.json",
+                encoding="utf-8",
+            ) as file:
+                course_history = json.load(file)
+        except FileNotFoundError as error:
+            raise error
+
+        for course in course_history:
+            course_list.append(course["discipline"] + " " + course["number"])
+
+        return course_list
+        
 def idk():
     # Open jsonfile
     open_f = open("data.json")

@@ -1,9 +1,9 @@
 """Wrapper class to maintain cookies from NU Banner API."""
 import re
-import json
 import requests
 from bs4 import BeautifulSoup
 import dgraph
+import parse_info
 
 
 class Nub:
@@ -252,50 +252,10 @@ class Nub:
 
         return self.clean_prereq_list(prereq_table)
 
-    def import_courses(self):
-        """This should be in a different file. Temprarory location."""
-        try:
-            with open(
-                "C:/Program Files/ScheduleWorks/data/requirements.json",
-                encoding="utf-8",
-            ) as file:
-                audit_data = json.load(file)
-        except FileNotFoundError as error:
-            raise error
-        course_list = []
-        for discipline in audit_data["requirements"]:
-            required_courses = audit_data["requirements"][discipline]["requiredCourses"]
-            if required_courses:
-                # only accesses the first element in the list does not work with or's
-                for course_dict in required_courses:
-                    # course_name_id = course_list[0]
-                    course_list.append(
-                        course_dict["discipline"] + " " + course_dict["number"]
-                    )
-        return course_list
-
-    def import_all_courses(self):
-        """This should be in a different file. Temprarory location."""
-        course_list = self.import_courses()
-
-        try:
-            with open(
-                "C:/Program Files/ScheduleWorks/data/courseHistory.json",
-                encoding="utf-8",
-            ) as file:
-                course_history = json.load(file)
-        except FileNotFoundError as error:
-            raise error
-
-        for course in course_history:
-            course_list.append(course["discipline"] + " " + course["number"])
-
-        return course_list
-
     def make_adjancancy_mtrx(self):
         """Produce an adjancancy matrix for courses still in progress."""
         adjancancy_mtrx = []
-        course_list_degree = self.import_courses()
+        course_list_degree = parse_info.get_courses()
         for course_degree in course_list_degree:
             print(course_degree)
             course_preqs = self.get_prerequistes(
@@ -318,7 +278,7 @@ class Nub:
     def make_adjancancy_mtrx_full(self):
         """Produce an adjancancy matrix for all courses in a degree."""
         adjancancy_mtrx = []
-        course_list_degree = self.import_all_courses()
+        course_list_degree = parse_info.get_all_courses()
         for course_degree in course_list_degree:
             print(course_degree)
             course_preqs = self.get_prerequistes(
