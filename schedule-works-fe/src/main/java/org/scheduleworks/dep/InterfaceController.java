@@ -1,5 +1,6 @@
 package org.scheduleworks.dep;
 
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,6 +12,7 @@ import javafx.stage.StageStyle;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
@@ -20,7 +22,12 @@ import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import javafx.scene.image.Image;
-import java.io.IOException; 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException; 
+import java.awt.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 
 
@@ -154,7 +161,6 @@ public class InterfaceController {
         Stage helpStage = new Stage();
 
 
-        //loginStage.initStyle(StageStyle.UNDECORATED);
         stg = helpStage;
         helpStage.setTitle("Help");
         helpStage.setScene(new Scene(root));
@@ -173,4 +179,12 @@ public class InterfaceController {
         helpStage.show();
 
     }
+    @FXML
+    private javafx.scene.control.Button Email_button;
+    public void EmailPage() throws Exception{
+        System.out.println("Link clicked");
+        Desktop.getDesktop().browse(new URI("https://mail.google.com/mail/u/0/#inbox"));
+    }
+   
+    
 }
