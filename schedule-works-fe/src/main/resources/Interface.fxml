@@ -18,7 +18,7 @@
 <!-- this fxml code is created through scene builder, you can edit the code here manually or
 you can put your changes in to the scene builder and you can see your results accordingly in here as well -->
 
-<AnchorPane fx:id="scenePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutY="52.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="277.0" style="-fx-background-color: #0F5F52;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="52.0">
          <children>
@@ -45,7 +45,7 @@ you can put your changes in to the scene builder and you can see your results ac
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btn_retrieve_tab" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Retrieve Courses" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="btn_retrieve_tab" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Retrieve Courses" textFill="WHITE">
                      <font>
                         <Font name="Century Gothic Bold" size="26.0" />
                      </font>
@@ -55,9 +55,22 @@ you can put your changes in to the scene builder and you can see your results ac
                   </Button>
                </children>
             </VBox>
+            <TextField id="code" fx:id="code" layoutX="39.0" layoutY="618.0" prefHeight="63.0" prefWidth="95.0" promptText="code" styleClass="code">
+               <font>
+                  <Font name="Century Gothic Bold" size="17.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btn_submit_code" layoutX="151.0" layoutY="618.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="63.0" prefWidth="95.0" styleClass="general_button" text="Submit" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic Bold" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
-      <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="307.0" layoutY="83.0" opacity="0.7" prefHeight="539.0" prefWidth="563.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" wrapText="true" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="83.0">
+      <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="307.0" layoutY="83.0" opacity="0.7" prefHeight="689.0" prefWidth="944.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" visible="false" wrapText="true" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="83.0">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -80,7 +93,7 @@ you can put your changes in to the scene builder and you can see your results ac
                      </HBox.margin>
                   </Label>
                   <Region prefHeight="45.0" prefWidth="617.0" HBox.hgrow="ALWAYS" />
-                  <Button id="Close_button" fx:id="Close_button" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="46.0" prefWidth="46.0" styleClass="Close_button" stylesheets="@MainWindowStyle.css" text="x" textAlignment="CENTER" textFill="WHITE" translateY="-2.0" HBox.hgrow="ALWAYS">
+                  <Button id="Close_button" fx:id="Close_button" alignment="CENTER" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="46.0" prefWidth="46.0" styleClass="Close_button" stylesheets="@MainWindowStyle.css" text="x" textAlignment="CENTER" textFill="WHITE" translateY="-2.0" visible="false" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="Century Gothic Bold" size="20.0" />
                      </font>
@@ -92,18 +105,5 @@ you can put your changes in to the scene builder and you can see your results ac
             </HBox>
          </children>
       </AnchorPane>
-      <TextField id="code" fx:id="code" layoutX="455.0" layoutY="191.0" prefHeight="63.0" prefWidth="95.0" promptText="code" styleClass="code">
-         <font>
-            <Font name="Century Gothic Bold" size="17.0" />
-         </font>
-      </TextField>
-      <Button fx:id="btn_submit_code" layoutX="567.0" layoutY="191.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="63.0" prefWidth="95.0" styleClass="general_button" text="Submit" textFill="WHITE">
-         <font>
-            <Font name="Century Gothic Bold" size="20.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
    </children>
 </AnchorPane>

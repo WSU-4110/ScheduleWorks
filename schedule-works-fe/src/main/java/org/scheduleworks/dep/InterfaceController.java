@@ -23,7 +23,7 @@ import javafx.scene.image.Image;
 import java.io.IOException; 
 
 public class InterfaceController extends InterfaceMain {
-    //  Login menu
+    //  BUTTON LIST
     @FXML
     private TextField username;
     @FXML
@@ -36,56 +36,34 @@ public class InterfaceController extends InterfaceMain {
     private TextArea taCoursesTaken;
     @FXML
     private Button btn_submit_code;
+    //  Global variables
     private static Stage stg;
-
-    private double x,y=0;
+    private double x, y = 0;
     
+
+    //  LOGIN TAB
     public void pressLoginTab() throws Exception {
-        /*
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("InterfaceLogin.fxml"));
-
-        loader.setController(new InterfaceController());
-        Parent root = loader.load();
-        Stage loginStage = new Stage();
-
-        loginStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("ScheduleWorksLogo.png")));
-        loginStage.initStyle(StageStyle.UNDECORATED);
-        stg = loginStage;
-        loginStage.setTitle("Login");
-        loginStage.setScene(new Scene(root));
-        loginStage.setResizable(false);
-
-        root.setOnMousePressed(mouseEvent ->{
-            x=mouseEvent.getSceneX();
-            y=mouseEvent.getSceneY();
-        });
-        root.setOnMouseDragged(mouseEvent ->{
-            loginStage.setX(mouseEvent.getScreenX()-x);
-            loginStage.setY(mouseEvent.getScreenY()-y);
-        });
-
-        // show the login page
-        loginStage.show();
-        */
-
         changeScene("InterfaceLogin.fxml");
+        System.out.println("Login tab pressed");    //  Test print, can be removed later
     }
 
-    public void pressLoginButton() throws Exception{
+    public void pressLoginButton() throws Exception {
         privateInfo userInfo = new privateInfo();
         userInfo.setUsername(username.getText().toString());
         userInfo.setPassword(password.getText().toString());
-        //stg.close();
-        changeScene("Interface.fxml");
+
+        System.out.println(userInfo.getUsername());     //  Test print, can be removed later
         
         Thread t = new Thread(new pythonExecute(userInfo.getUsername(),userInfo.getPassword()));
         t.start();
 
-        //closeApplication();
+        changeScene("Interface.fxml");
     }
 
-    //  Retrieve courses
-    public void retrieveCoursesTab(){
+
+    //  RETRIEVE COURSES TAB
+    public void retrieveCoursesTab() throws Exception {
+        changeScene("InterfaceRetrieve.fxml");
         taCoursesTaken.clear();
         File file = new File("C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt");
         try {
