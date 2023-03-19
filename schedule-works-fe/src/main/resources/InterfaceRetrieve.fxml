@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -111,34 +112,44 @@ you can put your changes in to the scene builder and you can see your results ac
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Text fill="WHITE" layoutX="391.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the 2FA code below if prompted" textAlignment="CENTER" wrappingWidth="152.21875">
-         <font>
-            <Font name="Century Gothic Bold" size="20.0" />
-         </font>
-      </Text>
-      <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="660.0" layoutY="83.0" opacity="0.7" prefHeight="689.0" prefWidth="591.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" wrapText="true" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="660.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="83.0">
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <font>
-            <Font name="Century Gothic Bold" size="14.0" />
-         </font>
-      </TextArea>
-      <TextField id="code" fx:id="code" layoutX="366.0" layoutY="455.0" prefHeight="63.0" prefWidth="95.0" promptText="code" styleClass="code">
-         <font>
-            <Font name="Century Gothic Bold" size="17.0" />
-         </font>
-      </TextField>
-      <Button fx:id="btn_submit_code" layoutX="472.0" layoutY="455.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="63.0" prefWidth="95.0" styleClass="general_button" text="Submit" textFill="WHITE">
-         <font>
-            <Font name="Century Gothic Bold" size="20.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
+      <AnchorPane layoutX="291.0" layoutY="69.0" prefHeight="716.0" prefWidth="975.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="69.0">
+         <children>
+            <Text id="userText" fill="WHITE" layoutX="2.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Retrieve Courses">
+               <font>
+                  <Font name="Century Gothic Bold" size="35.0" />
+               </font>
+            </Text>
+            <Line endX="711.5" layoutX="255.0" layoutY="48.0" startX="-252.0" stroke="WHITE" strokeWidth="5.0" AnchorPane.bottomAnchor="665.5" AnchorPane.leftAnchor="0.5" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="45.5" />
+            <Text fill="WHITE" layoutX="24.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the 2FA code below if prompted" wrappingWidth="357.21875">
+               <font>
+                  <Font name="Century Gothic Bold" size="25.0" />
+               </font>
+            </Text>
+            <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="440.0" layoutY="78.0" opacity="0.7" prefHeight="625.0" prefWidth="520.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" wrapText="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="78.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </TextArea>
+            <TextField id="code" fx:id="code" layoutX="24.0" layoutY="157.0" prefHeight="63.0" prefWidth="95.0" promptText="code" styleClass="code">
+               <font>
+                  <Font name="Century Gothic Bold" size="17.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btn_submit_code" layoutX="130.0" layoutY="157.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="63.0" prefWidth="95.0" styleClass="general_button" text="Submit" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic Bold" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
