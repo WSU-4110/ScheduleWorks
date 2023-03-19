@@ -20,10 +20,13 @@ import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import java.io.IOException; 
 
 public class InterfaceController extends InterfaceMain {
     //  BUTTON LIST
+    @FXML
+    private Text userText;
     @FXML
     private TextField username;
     @FXML
@@ -36,28 +39,39 @@ public class InterfaceController extends InterfaceMain {
     private TextArea taCoursesTaken;
     @FXML
     private Button btn_submit_code;
-    //  Global variables
+
+    //  GLOBAL VARIABLES
     private static Stage stg;
     private double x, y = 0;
-    
+    privateInfo userInfo = new privateInfo();
 
     //  LOGIN TAB
     public void pressLoginTab() throws Exception {
         changeScene("InterfaceLogin.fxml");
         System.out.println("Login tab pressed");    //  Test print, can be removed later
+        
+        //  FIX THIS if possible, comment out otherwise
+        changeUserText();
+    }
+
+    /*  This doesn't need to be in it's own method, this is just for debugging purposes  */
+    /*  since doing userInfo.setText doesn't execute correctly within pressLoginTab()    */
+    public void changeUserText() throws Exception {
+        if (userInfo.getUsername() == "")
+            userText.setText("Not currently logged in ⚠");
+        else
+            userText.setText("Welcome " + userInfo.getUsername());
     }
 
     public void pressLoginButton() throws Exception {
-        privateInfo userInfo = new privateInfo();
         userInfo.setUsername(username.getText().toString());
         userInfo.setPassword(password.getText().toString());
+        changeUserText();
 
         System.out.println(userInfo.getUsername());     //  Test print, can be removed later
         
         Thread t = new Thread(new pythonExecute(userInfo.getUsername(),userInfo.getPassword()));
         t.start();
-
-        changeScene("Interface.fxml");
     }
 
 
