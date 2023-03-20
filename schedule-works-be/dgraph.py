@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
+
 def course_sum(graph: nx.DiGraph, course: str, memo: dict) -> set:
     """
     Determine a given course's dependency list. See make_priority_queue() to use properly.
@@ -35,7 +36,6 @@ def course_sum(graph: nx.DiGraph, course: str, memo: dict) -> set:
     return included_courses
 
 
-
 def topological_sort(graph: nx.DiGraph) -> list:
     """
     Return a list of nodes in topological order.
@@ -51,7 +51,7 @@ def topological_sort(graph: nx.DiGraph) -> list:
         node = zero_in_degree_nodes.pop(0)
         topo_order.append(node)
 
-        for successor in graph.successors(node):
+        for successor in list(graph.successors(node)):
             graph.remove_edge(node, successor)
             if graph.in_degree(successor) == 0:
                 zero_in_degree_nodes.append(successor)
@@ -60,9 +60,6 @@ def topological_sort(graph: nx.DiGraph) -> list:
         raise ValueError("Graph is not acyclic")
     else:
         return topo_order
-
-
-
 
 
 def make_priority_queue(graph: nx.DiGraph) -> dict:
@@ -125,3 +122,7 @@ def main():
 
     topo_order = topological_sort(graph)
     print("Topological order:", topo_order)
+
+
+if __name__ == "__main__":
+    main()
