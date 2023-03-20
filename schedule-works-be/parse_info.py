@@ -37,8 +37,86 @@ def course_requirements():
         raise error
 
 
+def view_course_history():
+    """Extract course history from json audit file."""
+    try:
+        with open(
+            "C:/Program Files/ScheduleWorks/data/classData.json", encoding="utf-8"
+        ) as file:
+            audit_data = json.load(file)
+    except FileNotFoundError as error:
+        raise error
 
+    courses_passed_list = []
 
+    for course in audit_data["classInformation"]["classArray"]:
+        courses_passed_list.append(
+            {
+                "courseTitle": course["courseTitle"],
+                "discipline": course["discipline"],
+                "number": course["number"],
+                "credits": course["credits"],
+                "passed": course["passed"],
+                "inProgress": course["inProgress"],
+                "attributeArray": course["attributeArray"],
+            }
+        )
+        # TODO
+        # manage a list of known attriubutes
+        # clean out DWSISKEY and other ? attributes (idk what 2YR means)
+        # remove attribute list from first append, clean right after and then
+        # courses_passed_list[-1]["attributeArray"]:cleaned_attribute_list
+
+    try:
+        with open(
+            "C:/Program Files/ScheduleWorks/data/courseHistory.json",
+            "w+",
+            encoding="utf-8",
+        ) as outfile:
+            json.dump(courses_passed_list, outfile, indent=4)
+    except FileNotFoundError as error:
+        raise error
+
+def get_courses():
+        """This should be in a different file. Temprarory location."""
+        try:
+            with open(
+                "C:/Program Files/ScheduleWorks/data/requirements.json",
+                encoding="utf-8",
+            ) as file:
+                audit_data = json.load(file)
+        except FileNotFoundError as error:
+            raise error
+        course_list = []
+        for discipline in audit_data["requirements"]:
+            required_courses = audit_data["requirements"][discipline]["requiredCourses"]
+            if required_courses:
+                # only accesses the first element in the list does not work with or's
+                for course_dict in required_courses:
+                    # course_name_id = course_list[0]
+                    course_list.append(
+                        course_dict["discipline"] + " " + course_dict["number"]
+                    )
+        return course_list
+
+def get_all_courses():
+        """This should be in a different file. Temprarory location."""
+        course_list = get_courses()
+
+        try:
+            with open(
+                "C:/Program Files/ScheduleWorks/data/courseHistory.json",
+                encoding="utf-8",
+            ) as file:
+                course_history = json.load(file)
+        except FileNotFoundError as error:
+            raise error
+
+        for course in course_history:
+            course_list.append(course["discipline"] + " " + course["number"])
+
+        return course_list
+        
 def idk():
     # Open jsonfile
     open_f = open("data.json")
@@ -117,6 +195,7 @@ def idk():
             f,
             indent=4,
         )
+
 
 if __name__ == "__main__":
     course_requirements()

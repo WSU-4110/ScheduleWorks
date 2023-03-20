@@ -2,6 +2,8 @@
 import re
 import requests
 from bs4 import BeautifulSoup
+import dgraph
+import parse_info
 
 
 class Nub:
@@ -148,20 +150,23 @@ class Nub:
 
     def clean_prereq_list(self, prereq_table):
         """Parse data from html source code."""
-        track = False
         course_prereq_list = []
         word = ""
 
         text_tokens = str(prereq_table).split(" ")
 
         # parsing courses from trash
-        for i in range(len(text_tokens)):
+        for i, word in enumerate(text_tokens):
             # print(text_tokens[i])
             if text_tokens[i] == "Course":
                 i += 3
                 saved_current_index = len(course_prereq_list)
                 course_prereq_list.append("")
                 while not text_tokens[i].isnumeric():
+                    if (
+                        "Attributes" in text_tokens[i]
+                    ):  # english 3060 made me put this here i dont know why
+                        break
                     course_prereq_list[saved_current_index] += text_tokens[i] + " "
                     i += 1
                 if text_tokens[i].isnumeric():
@@ -184,8 +189,10 @@ class Nub:
         course_prereq_dict = []
 
         i = 0
+        or_counter = 0
         while i < len(course_prereq_list):
             if course_prereq_list[i] != "or":
+                or_counter = 0
                 course_prereq_dict.append(
                     [
                         {
@@ -197,7 +204,16 @@ class Nub:
                     ]
                 )
             else:
-                course_prereq_dict[i - 1].append(
+                or_counter += 2
+                print(i - or_counter, course_prereq_dict, course_prereq_list[i + 1])
+                # use or here to ignore "or masters"
+                # use or here to ignore "or atribute in xyz"
+                if (
+                    course_prereq_list[i + 1] == "or"
+                    or "Attributes" not in course_prereq_list[i + 1]
+                ):
+                    break  # check english 3010 and BE1200 for example
+                course_prereq_dict[i - or_counter].append(
                     {
                         "course": re.sub(
                             r"[^a-zA-Z ]+", "", course_prereq_list[i + 1]
@@ -207,7 +223,10 @@ class Nub:
                 )
                 i += 1  # skipping course that was just added
             i += 1  # increment for while
+        return self.convert_to_codes(course_prereq_dict)
 
+    def convert_to_codes(self, course_prereq_dict):
+        """Converts a class into its simlplified code."""
         known_conversion = {}
         for course_set in course_prereq_dict:
             for course_data in course_set:
@@ -233,6 +252,50 @@ class Nub:
 
         return self.clean_prereq_list(prereq_table)
 
+    def make_adjancancy_mtrx(self):
+        """Produce an adjancancy matrix for courses still in progress."""
+        adjancancy_mtrx = []
+        course_list_degree = parse_info.get_courses()
+        for course_degree in course_list_degree:
+            print(course_degree)
+            course_preqs = self.get_prerequistes(
+                course_degree.split(" ")[0], course_degree.split(" ")[1]
+            )
+            if course_preqs and course_preqs[0] == "Error":
+                continue
+            for required_courses in course_preqs:
+                course = dict(
+                    required_courses[0]
+                )  # linting caught some error without this here
+                adjancancy_mtrx.append(
+                    [
+                        course_degree,
+                        course["course"] + course["code"],
+                    ]
+                )
+        return adjancancy_mtrx
+
+    def make_adjancancy_mtrx_full(self):
+        """Produce an adjancancy matrix for all courses in a degree."""
+        adjancancy_mtrx = []
+        course_list_degree = parse_info.get_all_courses()
+        for course_degree in course_list_degree:
+            print(course_degree)
+            course_preqs = self.get_prerequistes(
+                course_degree.split(" ")[0], course_degree.split(" ")[1]
+            )
+            if course_preqs and course_preqs[0] == "Error":
+                continue
+            for required_courses in course_preqs:
+                course = dict(required_courses[0])
+                adjancancy_mtrx.append(
+                    [
+                        course_degree,
+                        course["course"] + course["code"],
+                    ]
+                )
+        return adjancancy_mtrx
+
 
 def main():
     """Give an example use case."""
@@ -240,7 +303,13 @@ def main():
     print(nub.get_terms(maximum=5))
     nub.set_term("202301")
     nub.enable_search()
-    print(nub.get_prerequistes("CSC", "4500"))
+
+    graph = dgraph.Dgraph()
+    graph.add_edges_from(nub.make_adjancancy_mtrx_full())
+    graph.make_priority_queue()
+    graph.save_graph("testing2", dpi=600)
+
+    # print(nub.get_prerequistes("CSC", "4500"))
 
 
 if __name__ == "__main__":
