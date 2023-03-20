@@ -1,31 +1,26 @@
 package org.scheduleworks.dep;
 
-import java.awt.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.TextArea;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import java.io.IOException; 
 
-
-
-public class InterfaceController {
-    //  Login menu
+public class InterfaceController extends InterfaceMain {
+    //  BUTTON LIST
+    @FXML
+    private Button btn_login_tab;
+    @FXML
+    private Text userText;
     @FXML
     private TextField username;
     @FXML
@@ -33,65 +28,123 @@ public class InterfaceController {
     @FXML
     private Button loginButton;
     @FXML
+    private ToggleButton toggle_selenium_bg;
+    @FXML
+    private ToggleButton toggle_save_cookies;
+
+    @FXML
     private TextField code;
+    @FXML
+    private Button retrieveStartButton;
     @FXML
     private TextArea taCoursesTaken;
     @FXML
     private Button btn_submit_code;
 
+    //  GLOBAL VARIABLES
     private static Stage stg;
-    private double x,y=0;
-    
+    private double x, y = 0;
+    static privateInfo userInfo = new privateInfo();
+
+    //  LOGIN TAB
     public void pressLoginTab() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("InterfaceLogin.fxml"));
-        loader.setController(new InterfaceController());
-        Parent root = loader.load();
-        Stage loginStage = new Stage();
+        changeScene("InterfaceLogin.fxml");
 
-        loginStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("ScheduleWorksLogo.png")));
-        loginStage.initStyle(StageStyle.UNDECORATED);
-        stg = loginStage;
-        loginStage.setTitle("Login");
-        loginStage.setScene(new Scene(root));
-        loginStage.setResizable(false);
-
-
-        root.setOnMousePressed(mouseEvent ->{
-            x=mouseEvent.getSceneX();
-            y=mouseEvent.getSceneY();
-        });
-        root.setOnMouseDragged(mouseEvent ->{
-            loginStage.setX(mouseEvent.getScreenX()-x);
-            loginStage.setY(mouseEvent.getScreenY()-y);
-        });
-
-        loginStage.show();// show the login page
-
-        System.out.println("Login tab pressed");
+        //changeUserText();         //  FIX THIS if possible, remove/comment out otherwise
     }
 
-    public void pressLoginButton() throws Exception{
-        privateInfo userInfo = new privateInfo();
+    public void changeUserText() throws Exception {
+        if (userInfo.getUsername() == "") {
+            userText.setText("Not currently logged in ⚠");
+            //btn_login_tab.setText("Login");
+        }
+        else {
+            userText.setText("Welcome " + userInfo.getUsername());
+            //btn_login_tab.setText("Welcome " + userInfo.getUsername());
+        }
+    }
+
+    public void pressLoginButton() throws Exception {
         userInfo.setUsername(username.getText().toString());
         userInfo.setPassword(password.getText().toString());
-        stg.close();
+        changeUserText();
+
+        System.out.println(userInfo.getUsername());     //  Test print, can be removed later
         
-        /*
-        InterfaceMain x = new InterfaceMain();
-        x.changeScene("Interface.fxml");
-        */
         Thread t = new Thread(new pythonExecute(userInfo.getUsername(),userInfo.getPassword()));
         t.start();
 
-        System.out.println(userInfo.getUsername());
-
-        // System.out.println(userInfo.getPassword());
-        closeApplication();
+        username.clear();
+        password.clear();
     }
 
-    //  Retrieve courses
-    public void retrieveCoursesTab(){
+    public void seleniumBackgroundButton() throws Exception {
+        boolean isSelected = toggle_selenium_bg.isSelected();
+        if (isSelected) {
+            toggle_selenium_bg.setText("On");
+            userInfo.setSeleniumToggle(true);
+        }
+        else {
+            toggle_selenium_bg.setText("Off");
+            userInfo.setSeleniumToggle(false);
+        }
+    }
+
+    public void saveCookiesButton() throws Exception {
+        boolean isSelected = toggle_save_cookies.isSelected();
+        if (isSelected) {
+            toggle_save_cookies.setText("On");
+            userInfo.setSaveCookiesToggle(true);
+        }
+        else {
+            toggle_save_cookies.setText("Off");
+            userInfo.setSaveCookiesToggle(false);
+        }
+    }
+
+    //  RETRIEVE COURSES TAB
+    public void retrieveCoursesTab() throws Exception {
+        changeScene("InterfaceRetrieve.fxml");
+        /*   OLD CODE, DELETE LATER
         taCoursesTaken.clear();
+        File file = new File("C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt");
+        try {
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+          }
+
+       try{
+        Scanner scan = new Scanner(file);
+        if (file.length()==0){
+            taCoursesTaken.clear();
+            taCoursesTaken.setPromptText("Please login and submit the 2FA Code");
+        }
+        while(scan.hasNextLine()){
+            taCoursesTaken.appendText(scan.nextLine() + "\n");
+            }
+        } 
+        catch (FileNotFoundException e){
+        e.printStackTrace();
+       }
+       */
+    }
+
+    public void pressRetrieveStartButton() throws Exception {
+        System.out.println("RETRIEVE START");
+        taCoursesTaken.clear();
+
+        //  No login info present
+        if (userInfo.getUsername() == "" || userInfo.getPassword() == "") {
+            taCoursesTaken.appendText("Username and/or password not entered\nEnter login info in the \"Login\" tab");
+            return;
+        }
+
         File file = new File("C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt");
         try {
             if (file.createNewFile()) {
@@ -120,6 +173,7 @@ public class InterfaceController {
     }
 
     public void submitCode() {
+        System.out.println("Code submitted");
         try{
             BufferedWriter br = new BufferedWriter(new FileWriter(new File("C:\\Program Files\\ScheduleWorks\\schedule-works-be\\2fa_code.txt")));
             br.write(code.getText().toString());
@@ -137,14 +191,21 @@ public class InterfaceController {
         stg.close();
     }
 
+    //  RETRIEVE COURSES TAB
+    public void createScheduleTab() throws Exception {
+        changeScene("InterfaceCreateSchedule.fxml");
+    }
+
     
 
     //  Close application
     @FXML private javafx.scene.control.Button Close_button;
 
-    public void closeApplication() throws Exception{
+    public void closeApplication() throws Exception {
         Stage stage = (Stage) Close_button.getScene().getWindow();
         stage.close(); // this is to close the Application.
         System.out.println("Application closed");
+
+        System.exit(0);
     }
 }

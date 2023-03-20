@@ -3,28 +3,50 @@
 }
 
 .scenePane{
-    -fx-background-color: linear-gradient(to bottom right,#42af9d,#e4ce0f);
-    
-}
- -fx-background-radius: 6px, 0px;
-.button{
-    -fx-background-color: #FFCC33;
-    -fx-background-radius: 15px;
-    -fx-text-fill: #ffffff;
-}
-.mainPanel{
-    -fx-background-color: #0b463c
+    -fx-background-color: linear-gradient(to bottom right,#42af9d,#dfca0f);
+    /* -fx-background-radius: 6px, 0px; */
 }
 
+/*  BUTTON CODE  */
+.button{
+    /* -fx-background-radius: 15px; */
+    -fx-text-fill: #ffffff;
+    -fx-skin: 'org.scheduleworks.dep.SWButtonSkin'
+}
+.button:hover{
+    -fx-background-color: #0b463c;
+}
+.button:pressed{
+    -fx-background-color: #FFCC33;
+}
+.toggle-button{
+    -fx-background-color: #6a6a6a;
+    -fx-text-fill: #ffffff;
+}
+.toggle-button:hover{
+    -fx-background-color: rgb(73, 73, 73);
+    -fx-text-fill: #ffffff;
+}
+.toggle-button:selected{
+    -fx-background-color: #0F5F52;
+    -fx-text-fill: #ffffff;
+}
+.toggle-button:pressed {
+    -fx-background-color: #0b463c;
+}
+
+.mainPanel{
+    -fx-background-color: #0b463c;
+}
 .topbar{
-    -fx-background-color: #0b463c
+    -fx-background-color: #0b463c;
     
 }
 .Close_button{
-    -fx-background-color: #0b463c
+    -fx-background-color: #0b463c;
 }
 .Close_button:hover{
-    -fx-background-color: #f30202
+    -fx-background-color: #f30202;
 }
 .code{
     -fx-background-radius: 15px;  
@@ -36,6 +58,6 @@
 }
 
 .general_button{
-    -fx-background-radius: 15px;
-    -fx-background-color: #0b463c
+    /* -fx-background-radius: 15px; */
+    -fx-background-color: #0F5F52;
 }

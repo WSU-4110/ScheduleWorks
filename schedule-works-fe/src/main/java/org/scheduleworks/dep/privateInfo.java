@@ -1,14 +1,19 @@
 package org.scheduleworks.dep;
-//  Private info class for login, for testing login
+//  Private info class for login & app settings
 
 public class privateInfo {
     //  Username and password
     private String username;
     private String password;
+    //  App settings toggles
+    private boolean seleniumToggle;
+    private boolean saveCookiesToggle;
 
     public privateInfo() {
         setUsername("");
         setPassword("");
+        setSeleniumToggle(true);
+        setSaveCookiesToggle(true);
     }
 
     protected void setUsername(String username) {
@@ -22,5 +27,18 @@ public class privateInfo {
     }
     protected String getPassword() {
         return password;
+    }
+
+    protected void setSeleniumToggle(boolean seleniumToggle) {
+        this.seleniumToggle = seleniumToggle;
+    }
+    protected boolean getSeleniumToggle() {
+        return seleniumToggle;
+    }
+    protected void setSaveCookiesToggle(boolean saveCookiesToggle) {
+        this.saveCookiesToggle = saveCookiesToggle;
+    }
+    protected boolean getSaveCookiesToggle() {
+        return saveCookiesToggle;
     }
 }

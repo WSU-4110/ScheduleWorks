@@ -13,7 +13,7 @@ class Dgraph:
         self.graph = nx.DiGraph()
 
     def course_sum(self, course: str, memo: dict) -> set:
-        """
+      """
         Determine a given course's dependency list. See make_priority_queue() to use properly.
 
         Wrapper function to clarify args used during recursion.
@@ -48,6 +48,35 @@ class Dgraph:
 
         course_summate(course)
         return included_courses
+
+
+
+    def topological_sort(self,graph: nx.DiGraph) -> list:
+        """
+        Return a list of nodes in topological order.
+        Args:
+            graph: A directed graph.
+        Returns:
+            A list of nodes in topological order.
+        """
+        topo_order = []
+        zero_in_degree_nodes = [n for n, d in graph.in_degree() if d == 0]
+
+        while zero_in_degree_nodes:
+            node = zero_in_degree_nodes.pop(0)
+            topo_order.append(node)
+
+            for successor in list(graph.successors(node)):
+                graph.remove_edge(node, successor)
+                if graph.in_degree(successor) == 0:
+                    zero_in_degree_nodes.append(successor)
+
+        if graph.edges():
+            raise ValueError("Graph is not acyclic")
+        else:
+            return topo_order
+
+
 
     def make_priority_queue(self) -> dict:
         """
@@ -135,9 +164,14 @@ def main():
             ("CSC4710", "CSC3020"),
         ]
     )
+
     courses_graph.save_graph("testing")
     courses_graph.make_priority_queue()
 
+    show_graph(graph)
+
+    topo_order = topological_sort(graph)
+    print("Topological order:", topo_order)
 
 if __name__ == "__main__":
     main()
