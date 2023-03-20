@@ -159,6 +159,8 @@ public class InterfaceController {
         loader.setController(new InterfaceController());
         Parent root = loader.load();
         Stage helpStage = new Stage();
+        helpStage.initStyle(StageStyle.UNDECORATED);
+
 
 
         stg = helpStage;
@@ -183,7 +185,7 @@ public class InterfaceController {
     private javafx.scene.control.Button Email_button;
     public void EmailPage() throws Exception{
         System.out.println("Link clicked");
-        Desktop.getDesktop().browse(new URI("https://mail.google.com/mail/u/0/#inbox"));
+        Desktop.getDesktop().browse(new URI("https://mail.google.com/mail"));
     }
    
     

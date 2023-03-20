@@ -5,53 +5,62 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="998.0" style="-fx-background-color: #7FFFD4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="946.0" style="-fx-background-color: #0F5F52;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="101.0" prefWidth="973.0">
          <children>
-            <Button id="Close_button" fx:id="Close_button" layoutX="937.0" layoutY="-17.0" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="46.0" prefWidth="46.0" styleClass="Close_button" stylesheets="@MainWindowStyle.css" text="X" textFill="WHITE">
+            <Button id="Close_button" fx:id="Close_button" layoutX="881.0" layoutY="-9.0" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="46.0" prefWidth="46.0" styleClass="Close_button" stylesheets="@MainWindowStyle.css" text="X" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="12.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="182.0" prefHeight="451.0" prefWidth="998.0">
+      <AnchorPane layoutY="186.0" prefHeight="447.0" prefWidth="950.0">
          <children>
-            <Text layoutX="220.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can aslo reach us out at" wrappingWidth="450.6708984375">
+            <Text fill="WHITE" layoutX="227.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can also reach us out at" textAlignment="CENTER" wrappingWidth="450.6708984375">
                <font>
                   <Font size="35.0" />
                </font>
             </Text>
-            <Text layoutX="139.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Contact Customer Service with given number below" wrappingWidth="720.6708984375">
+            <Text fill="#f2f2f2" layoutX="139.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Contact Customer Service with " wrappingWidth="720.6708984375">
                <font>
-                  <Font size="34.0" />
+                  <Font name="Century Gothic" size="34.0" />
                </font>
             </Text>
-            <Text fill="#00a138" fontSmoothingType="LCD" layoutX="335.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="586-328-3573" textAlignment="CENTER" wrappingWidth="220.6708984375">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="342.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="586-328-3573" textAlignment="CENTER" wrappingWidth="220.6708984375">
                <font>
                   <Font size="35.0" />
                </font>
             </Text>
             <AnchorPane layoutX="333.0" layoutY="336.0" prefHeight="111.0" prefWidth="239.0">
                <children>
-                  <Button fx:id="Email_button" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#EmailPage" prefHeight="76.0" prefWidth="221.0" text="Click here to access mail" />
+                  <Button fx:id="Email_button" layoutX="9.0" layoutY="18.0" mnemonicParsing="false" onAction="#EmailPage" prefHeight="76.0" prefWidth="221.0" text="Click here to access mail" textAlignment="CENTER" textFill="#007226" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="323.0" layoutY="276.0" prefHeight="60.0" prefWidth="258.0">
                <children>
-                  <Text fill="#170101" layoutX="27.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gw8056@wayne.edu" textAlignment="CENTER" wrappingWidth="204.99999786168337">
+                  <Text fill="WHITE" layoutX="27.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gw8056@wayne.edu" textAlignment="CENTER" wrappingWidth="204.99999786168337">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
+            <AnchorPane layoutX="139.0" layoutY="97.0" prefHeight="42.0" prefWidth="721.0">
+               <children>
+                  <Text fill="WHITE" layoutX="4.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="with given number below" textAlignment="CENTER" wrappingWidth="714.3427734375">
+                     <font>
+                        <Font name="Century Gothic" size="34.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-      <Text fill="#44bf32" layoutX="24.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Customer Support" wrappingWidth="949.6708984375">
+      <Text fill="WHITE" fontSmoothingType="LCD" layoutX="2.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Customer Support" textAlignment="CENTER" wrappingWidth="945.9999936819077">
          <font>
-            <Font size="67.0" />
+            <Font name="Century Gothic" size="46.0" />
          </font>
       </Text>
    </children>
