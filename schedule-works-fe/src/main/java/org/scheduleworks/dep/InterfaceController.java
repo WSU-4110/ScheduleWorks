@@ -1,30 +1,24 @@
 package org.scheduleworks.dep;
 
-import java.awt.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.TextArea;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import java.io.IOException; 
 
 public class InterfaceController extends InterfaceMain {
     //  BUTTON LIST
+    @FXML
+    private Button btn_login_tab;
     @FXML
     private Text userText;
     @FXML
@@ -34,7 +28,14 @@ public class InterfaceController extends InterfaceMain {
     @FXML
     private Button loginButton;
     @FXML
+    private ToggleButton toggle_selenium_bg;
+    @FXML
+    private ToggleButton toggle_save_cookies;
+
+    @FXML
     private TextField code;
+    @FXML
+    private Button retrieveStartButton;
     @FXML
     private TextArea taCoursesTaken;
     @FXML
@@ -43,24 +44,24 @@ public class InterfaceController extends InterfaceMain {
     //  GLOBAL VARIABLES
     private static Stage stg;
     private double x, y = 0;
-    privateInfo userInfo = new privateInfo();
+    static privateInfo userInfo = new privateInfo();
 
     //  LOGIN TAB
     public void pressLoginTab() throws Exception {
         changeScene("InterfaceLogin.fxml");
-        System.out.println("Login tab pressed");    //  Test print, can be removed later
-        
-        //  FIX THIS if possible, comment out otherwise
-        changeUserText();
+
+        //changeUserText();         //  FIX THIS if possible, remove/comment out otherwise
     }
 
-    /*  This doesn't need to be in it's own method, this is just for debugging purposes  */
-    /*  since doing userInfo.setText doesn't execute correctly within pressLoginTab()    */
     public void changeUserText() throws Exception {
-        if (userInfo.getUsername() == "")
+        if (userInfo.getUsername() == "") {
             userText.setText("Not currently logged in ⚠");
-        else
+            //btn_login_tab.setText("Login");
+        }
+        else {
             userText.setText("Welcome " + userInfo.getUsername());
+            //btn_login_tab.setText("Welcome " + userInfo.getUsername());
+        }
     }
 
     public void pressLoginButton() throws Exception {
@@ -72,13 +73,78 @@ public class InterfaceController extends InterfaceMain {
         
         Thread t = new Thread(new pythonExecute(userInfo.getUsername(),userInfo.getPassword()));
         t.start();
+
+        username.clear();
+        password.clear();
     }
 
+    public void seleniumBackgroundButton() throws Exception {
+        boolean isSelected = toggle_selenium_bg.isSelected();
+        if (isSelected) {
+            toggle_selenium_bg.setText("On");
+            userInfo.setSeleniumToggle(true);
+        }
+        else {
+            toggle_selenium_bg.setText("Off");
+            userInfo.setSeleniumToggle(false);
+        }
+    }
+
+    public void saveCookiesButton() throws Exception {
+        boolean isSelected = toggle_save_cookies.isSelected();
+        if (isSelected) {
+            toggle_save_cookies.setText("On");
+            userInfo.setSaveCookiesToggle(true);
+        }
+        else {
+            toggle_save_cookies.setText("Off");
+            userInfo.setSaveCookiesToggle(false);
+        }
+    }
 
     //  RETRIEVE COURSES TAB
     public void retrieveCoursesTab() throws Exception {
         changeScene("InterfaceRetrieve.fxml");
+        /*   OLD CODE, DELETE LATER
         taCoursesTaken.clear();
+        File file = new File("C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt");
+        try {
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+          }
+
+       try{
+        Scanner scan = new Scanner(file);
+        if (file.length()==0){
+            taCoursesTaken.clear();
+            taCoursesTaken.setPromptText("Please login and submit the 2FA Code");
+        }
+        while(scan.hasNextLine()){
+            taCoursesTaken.appendText(scan.nextLine() + "\n");
+            }
+        } 
+        catch (FileNotFoundException e){
+        e.printStackTrace();
+       }
+       */
+    }
+
+    public void pressRetrieveStartButton() throws Exception {
+        System.out.println("RETRIEVE START");
+        taCoursesTaken.clear();
+
+        //  No login info present
+        if (userInfo.getUsername() == "" || userInfo.getPassword() == "") {
+            taCoursesTaken.appendText("Username and/or password not entered\nEnter login info in the \"Login\" tab");
+            return;
+        }
+
         File file = new File("C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt");
         try {
             if (file.createNewFile()) {
@@ -107,6 +173,7 @@ public class InterfaceController extends InterfaceMain {
     }
 
     public void submitCode() {
+        System.out.println("Code submitted");
         try{
             BufferedWriter br = new BufferedWriter(new FileWriter(new File("C:\\Program Files\\ScheduleWorks\\schedule-works-be\\2fa_code.txt")));
             br.write(code.getText().toString());
@@ -122,6 +189,11 @@ public class InterfaceController extends InterfaceMain {
 
     public void viewCourseHistory(){
         stg.close();
+    }
+
+    //  RETRIEVE COURSES TAB
+    public void createScheduleTab() throws Exception {
+        changeScene("InterfaceCreateSchedule.fxml");
     }
 
     

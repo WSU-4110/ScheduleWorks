@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -53,21 +52,16 @@ you can put your changes in to the scene builder and you can see your results ac
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button fx:id="btn_create_schedule" mnemonicParsing="false" onAction="#createScheduleTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Create Schedule" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Century Gothic Bold" size="26.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </VBox>
-            <TextField id="code" fx:id="code" layoutX="39.0" layoutY="618.0" prefHeight="63.0" prefWidth="95.0" promptText="code" styleClass="code">
-               <font>
-                  <Font name="Century Gothic Bold" size="17.0" />
-               </font>
-            </TextField>
-            <Button fx:id="btn_submit_code" layoutX="151.0" layoutY="618.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="63.0" prefWidth="95.0" styleClass="general_button" text="Submit" textFill="WHITE">
-               <font>
-                  <Font name="Century Gothic Bold" size="20.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
          </children>
       </AnchorPane>
       <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="307.0" layoutY="83.0" opacity="0.7" prefHeight="689.0" prefWidth="944.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" visible="false" wrapText="true" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="83.0">

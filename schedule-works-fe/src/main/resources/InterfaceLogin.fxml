@@ -10,6 +10,7 @@ you can put your changes in to the scene builder and you can see your results ac
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -23,7 +24,7 @@ you can put your changes in to the scene builder and you can see your results ac
 
 <AnchorPane prefHeight="400.0" prefWidth="550.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="scenePane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane layoutY="52.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="277.0" style="-fx-background-color: #0F5F52;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="52.0">
                <children>
@@ -42,7 +43,7 @@ you can put your changes in to the scene builder and you can see your results ac
                   </ImageView>
                   <VBox layoutX="-1.0" layoutY="257.0" prefHeight="341.0" prefWidth="277.0">
                      <children>
-                        <Button fx:id="btn_login_tab" graphicTextGap="0.0" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Login" textFill="WHITE">
+                        <Button fx:id="btn_login_tab1" graphicTextGap="0.0" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Login" textFill="WHITE">
                            <font>
                               <Font name="Century Gothic Bold" size="26.0" />
                            </font>
@@ -50,7 +51,15 @@ you can put your changes in to the scene builder and you can see your results ac
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btn_retrieve_tab" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Retrieve Courses" textFill="WHITE">
+                        <Button fx:id="btn_retrieve_tab1" mnemonicParsing="false" onAction="#retrieveCoursesTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Retrieve Courses" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic Bold" size="26.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btn_create_schedule" mnemonicParsing="false" onAction="#createScheduleTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Create Schedule" textFill="WHITE" wrapText="true">
                            <font>
                               <Font name="Century Gothic Bold" size="26.0" />
                            </font>
@@ -60,22 +69,9 @@ you can put your changes in to the scene builder and you can see your results ac
                         </Button>
                      </children>
                   </VBox>
-                  <TextField id="code" fx:id="code" layoutX="39.0" layoutY="618.0" prefHeight="63.0" prefWidth="95.0" promptText="code" styleClass="code">
-                     <font>
-                        <Font name="Century Gothic Bold" size="17.0" />
-                     </font>
-                  </TextField>
-                  <Button fx:id="btn_submit_code" layoutX="151.0" layoutY="618.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="63.0" prefWidth="95.0" styleClass="general_button" text="Submit" textFill="WHITE">
-                     <font>
-                        <Font name="Century Gothic Bold" size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
                </children>
             </AnchorPane>
-            <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="307.0" layoutY="83.0" opacity="0.7" prefHeight="689.0" prefWidth="944.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" visible="false" wrapText="true" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="83.0">
+            <TextArea id="mainPanel" fx:id="taCoursesTaken1" editable="false" layoutX="307.0" layoutY="83.0" opacity="0.7" prefHeight="689.0" prefWidth="944.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" visible="false" wrapText="true" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="83.0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -99,7 +95,7 @@ you can put your changes in to the scene builder and you can see your results ac
                            </HBox.margin>
                         </Label>
                         <Region prefHeight="45.0" prefWidth="617.0" HBox.hgrow="ALWAYS" />
-                        <Button id="Close_button" fx:id="Close_button" alignment="CENTER" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="46.0" prefWidth="46.0" styleClass="Close_button" stylesheets="@MainWindowStyle.css" text="x" textAlignment="CENTER" textFill="WHITE" translateY="-2.0" visible="false" HBox.hgrow="ALWAYS">
+                        <Button id="Close_button" fx:id="Close_button1" alignment="CENTER" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="46.0" prefWidth="46.0" styleClass="Close_button" stylesheets="@MainWindowStyle.css" text="x" textAlignment="CENTER" textFill="WHITE" translateY="-2.0" visible="false" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="Century Gothic Bold" size="20.0" />
                            </font>
@@ -121,12 +117,12 @@ you can put your changes in to the scene builder and you can see your results ac
                </font>
             </Text>
             <Line endX="711.5" layoutX="254.5" layoutY="48.0" startX="-252.0" stroke="WHITE" strokeWidth="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Text fill="WHITE" layoutX="23.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update login info">
+            <Text fill="WHITE" layoutX="23.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update login info">
                <font>
                   <Font name="Century Gothic Bold" size="30.0" />
                </font>
             </Text>
-            <Button fx:id="btn_login" alignment="CENTER" layoutX="266.0" layoutY="185.0" mnemonicParsing="false" onAction="#pressLoginButton" prefHeight="47.0" prefWidth="151.0" styleClass="general_button" stylesheets="@MainWindowStyle.css" text="  Login➧" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+            <Button fx:id="btn_login" alignment="CENTER" layoutX="266.0" layoutY="193.0" mnemonicParsing="false" onAction="#pressLoginButton" prefHeight="47.0" prefWidth="151.0" styleClass="general_button" stylesheets="@MainWindowStyle.css" text="  Login➧" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                <font>
                   <Font name="Century Gothic Bold" size="24.0" />
                </font>
@@ -154,6 +150,36 @@ you can put your changes in to the scene builder and you can see your results ac
                   <Font name="Century Gothic Bold" size="22.0" />
                </font>
             </Label>
+            <Line endX="711.5" layoutX="255.0" layoutY="323.0" startX="-252.0" stroke="WHITE" strokeWidth="3.0" />
+            <ToggleButton fx:id="toggle_selenium_bg" layoutX="298.0" layoutY="436.0" mnemonicParsing="false" onAction="#seleniumBackgroundButton" prefHeight="43.0" prefWidth="58.0" text="Off">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font></ToggleButton>
+            <Label layoutX="80.0" layoutY="426.0" prefHeight="63.0" prefWidth="183.0" text="Open Selenium in background" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Century Gothic Bold" size="22.0" />
+               </font>
+            </Label>
+            <ToggleButton fx:id="toggle_save_cookies" layoutX="299.0" layoutY="505.0" mnemonicParsing="false" onAction="#saveCookiesButton" prefHeight="43.0" prefWidth="58.0" text="Off">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font></ToggleButton>
+            <Label layoutX="81.0" layoutY="495.0" prefHeight="63.0" prefWidth="195.0" text="Save user cookies" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Century Gothic Bold" size="22.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" layoutX="23.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="App settings">
+               <font>
+                  <Font name="Century Gothic Bold" size="30.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>

@@ -1,18 +1,21 @@
 package org.scheduleworks.dep;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.*;
-import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
 public class InterfaceMain extends Application{
     private static Stage stg;
-    private double x,y = 0;
+    private double x, y = 0;
+    //static privateInfo userInfo = new privateInfo();
 
     public static void main(String[] args){
         launch(args); // necessary to start the application
@@ -43,9 +46,8 @@ public class InterfaceMain extends Application{
             primaryStage.setY(mouseEvent.getScreenY()-y);
         });
 
-        primaryStage.setResizable(true); // cannot change the size of the screen
+        primaryStage.setResizable(true);
         primaryStage.show();
-
     }
     
 
@@ -55,6 +57,15 @@ public class InterfaceMain extends Application{
         Parent root = loader.load();
 
         Scene newScene = new Scene(root);
+        //fadeOut();
         stg.setScene(newScene);
+    }
+
+    @FXML
+    private StackPane rootPane;
+    void fadeOut() {
+        FadeTransition fadeInTransition = new FadeTransition(Duration.millis(1500));
+        fadeInTransition.setFromValue(0.0);
+        fadeInTransition.setToValue(1.0);
     }
 }
