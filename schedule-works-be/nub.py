@@ -305,8 +305,7 @@ def main():
     nub.enable_search()
 
     graph = dgraph.Dgraph()
-    adj_mtrx = nub.make_adjancancy_mtrx_full()
-    graph.add_edges_from(adj_mtrx)
+    graph.add_edges_from(nub.make_adjancancy_mtrx_full())
     graph.make_priority_queue()
     graph.show_graph()
 
