@@ -90,6 +90,29 @@ class Dgraph:
         )
         plt.show()
 
+    def save_graph(self, filename, dpi=100):
+        """Print a graph out to show node connections."""
+
+        def label_shift(pos, x_shift, y_shift):
+            """Shift x and y values given pos tuple list."""
+            return {n: (x + x_shift, y + y_shift) for n, (x, y) in pos.items()}
+
+        pos = nx.circular_layout(self.graph)
+        nodenames = {n: n[0:3] + "\n" + n[3:] for n in self.graph.nodes()}
+        pos_nodes = label_shift(pos, 0.03, 0)
+        nx.draw(self.graph, pos, node_shape="s", node_size=150)
+        nx.draw_networkx_labels(
+            self.graph,
+            pos_nodes,
+            horizontalalignment="right",
+            labels=nodenames,
+            font_size=5,
+        )
+        plt.rc
+        plt.savefig(
+            "C:\Program Files\ScheduleWorks\data\\" + filename + ".png", dpi=dpi
+        )
+
     def add_edges_from(self, adj_mtrx):
         """Copy of add_edges_from from networkX."""
         self.graph.add_edges_from(adj_mtrx)
@@ -112,7 +135,7 @@ def main():
             ("CSC4710", "CSC3020"),
         ]
     )
-    courses_graph.show_graph()
+    courses_graph.save_graph("testing")
     courses_graph.make_priority_queue()
 
 

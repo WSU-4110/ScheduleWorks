@@ -307,7 +307,7 @@ def main():
     graph = dgraph.Dgraph()
     graph.add_edges_from(nub.make_adjancancy_mtrx_full())
     graph.make_priority_queue()
-    graph.show_graph()
+    graph.save_graph("testing2", dpi=600)
 
     # print(nub.get_prerequistes("CSC", "4500"))
 
