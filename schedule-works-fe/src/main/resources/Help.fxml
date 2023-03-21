@@ -18,12 +18,12 @@
       </AnchorPane>
       <AnchorPane layoutY="186.0" prefHeight="447.0" prefWidth="950.0">
          <children>
-            <Text fill="WHITE" layoutX="227.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can also reach us out at" textAlignment="CENTER" wrappingWidth="450.6708984375">
+            <Text fill="WHITE" layoutX="-2.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can also reach us out at" textAlignment="CENTER" wrappingWidth="946.0000102519989">
                <font>
                   <Font size="35.0" />
                </font>
             </Text>
-            <Text fill="#f2f2f2" layoutX="139.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Contact Customer Service with " wrappingWidth="720.6708984375">
+            <Text fill="#f2f2f2" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Contact Customer Service " textAlignment="CENTER" wrappingWidth="950.0000022649765">
                <font>
                   <Font name="Century Gothic" size="34.0" />
                </font>
@@ -33,23 +33,23 @@
                   <Font size="35.0" />
                </font>
             </Text>
-            <AnchorPane layoutX="333.0" layoutY="336.0" prefHeight="111.0" prefWidth="239.0">
+            <AnchorPane layoutX="-2.0" layoutY="336.0" prefHeight="111.0" prefWidth="952.0">
                <children>
-                  <Button fx:id="Email_button" layoutX="9.0" layoutY="18.0" mnemonicParsing="false" onAction="#EmailPage" prefHeight="76.0" prefWidth="221.0" text="Click here to access mail" textAlignment="CENTER" textFill="#007226" />
+                  <Button fx:id="Email_button" layoutX="288.0" layoutY="18.0" mnemonicParsing="false" onAction="#EmailPage" prefHeight="76.0" prefWidth="376.0" text="Click here to access mail" textAlignment="CENTER" textFill="#007226" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="323.0" layoutY="276.0" prefHeight="60.0" prefWidth="258.0">
+            <AnchorPane layoutX="1.0" layoutY="276.0" prefHeight="60.0" prefWidth="946.0">
                <children>
-                  <Text fill="WHITE" layoutX="27.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gw8056@wayne.edu" textAlignment="CENTER" wrappingWidth="204.99999786168337">
+                  <Text fill="WHITE" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gw8056@wayne.edu" textAlignment="CENTER" wrappingWidth="946.0000397264957">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="139.0" layoutY="97.0" prefHeight="42.0" prefWidth="721.0">
+            <AnchorPane layoutX="-2.0" layoutY="175.0" prefHeight="42.0" prefWidth="946.0">
                <children>
-                  <Text fill="WHITE" layoutX="4.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="with given number below" textAlignment="CENTER" wrappingWidth="714.3427734375">
+                  <Text fill="WHITE" layoutX="4.0" layoutY="-41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="with given number below" textAlignment="CENTER" wrappingWidth="949.9999942183495">
                      <font>
                         <Font name="Century Gothic" size="34.0" />
                      </font>

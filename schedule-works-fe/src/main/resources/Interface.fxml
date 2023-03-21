@@ -64,7 +64,7 @@ you can put your changes in to the scene builder and you can see your results ac
             </Button>
             <AnchorPane layoutX="217.0" layoutY="202.0" prefHeight="37.0" prefWidth="95.0">
                <children>
-                  <Button fx:id="btn_Help" graphicTextGap="0.0" layoutY="5.0" mnemonicParsing="false" onAction="#pressHelp" prefHeight="37.0" prefWidth="95.0" styleClass="general_button" text="HELP" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="btn_Help" graphicTextGap="0.0" layoutY="-4.0" mnemonicParsing="false" onAction="#pressHelp" prefHeight="37.0" prefWidth="95.0" styleClass="general_button" text="HELP" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Century Gothic Bold" size="18.0" />
                      </font>
@@ -76,7 +76,7 @@ you can put your changes in to the scene builder and you can see your results ac
             </AnchorPane>
          </children>
       </AnchorPane>
-      <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="365.0" layoutY="77.0" opacity="0.7" prefHeight="531.0" prefWidth="477.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" wrapText="true">
+      <TextArea id="mainPanel" fx:id="taCoursesTaken" editable="false" layoutX="362.0" layoutY="77.0" opacity="0.7" prefHeight="531.0" prefWidth="477.0" styleClass="mainPanel" stylesheets="@MainWindowStyle.css" wrapText="true">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
