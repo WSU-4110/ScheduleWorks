@@ -24,7 +24,9 @@ import java.io.FileReader;
 import javafx.scene.control.TableColumn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+import java.io.IOException;
+import java.net.URI;
+import java.awt.Desktop;
 
 public class InterfaceController extends InterfaceMain {
     //  BUTTON LIST
@@ -333,4 +335,14 @@ public class InterfaceController extends InterfaceMain {
         System.exit(0);
     }
 
-}
+
+    public void pressHelp() throws Exception {
+        changeScene("Help.fxml");
+        
+    }
+    public void EmailPage() throws Exception{
+        System.out.println("Link clicked");
+        Desktop.getDesktop().browse(new URI("https://mail.google.com/mail"));
+    }
+    }
+

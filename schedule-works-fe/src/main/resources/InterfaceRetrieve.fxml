@@ -66,6 +66,14 @@ you can put your changes in to the scene builder and you can see your results ac
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Button fx:id="btn_Help" graphicTextGap="0.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#pressHelp" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="HELP" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic Bold" size="26.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </VBox>
                </children>
