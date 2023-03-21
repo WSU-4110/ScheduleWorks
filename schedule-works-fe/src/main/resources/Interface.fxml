@@ -60,6 +60,14 @@ you can put your changes in to the scene builder and you can see your results ac
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button fx:id="btn_Help" graphicTextGap="0.0" mnemonicParsing="false" onAction="#pressHelp" prefHeight="55.0" prefWidth="282.0" styleClass="general_button" text="HELP" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic Bold" size="26.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </VBox>
          </children>
@@ -86,6 +94,7 @@ you can put your changes in to the scene builder and you can see your results ac
                         <Insets />
                      </HBox.margin>
                   </Label>
+                  <AnchorPane prefHeight="55.0" prefWidth="73.0" />
                   <Region prefHeight="45.0" prefWidth="617.0" HBox.hgrow="ALWAYS" />
                   <Button id="Close_button" fx:id="Close_button" alignment="CENTER" mnemonicParsing="false" onAction="#closeApplication" onMouseClicked="#closeApplication" prefHeight="46.0" prefWidth="46.0" styleClass="Close_button" stylesheets="@MainWindowStyle.css" text="x" textAlignment="CENTER" textFill="WHITE" translateY="-2.0" visible="false" HBox.hgrow="ALWAYS">
                      <font>
@@ -101,3 +110,4 @@ you can put your changes in to the scene builder and you can see your results ac
       </AnchorPane>
    </children>
 </AnchorPane>
+
