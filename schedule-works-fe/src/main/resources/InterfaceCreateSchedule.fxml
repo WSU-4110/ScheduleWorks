@@ -114,7 +114,7 @@ you can put your changes in to the scene builder and you can see your results ac
       </AnchorPane>
       <AnchorPane fx:id="createSchedulePane" layoutX="291.0" layoutY="69.0" prefHeight="716.0" prefWidth="975.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="69.0">
          <children>
-            <ImageView fx:id="graphView" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="graphView" layoutX="20.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="btn_show_graph_full" layoutX="27.0" layoutY="537.0" mnemonicParsing="false" onAction="#showGraphFull" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Show Full Graph" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Century Gothic Bold" size="26.0" />
