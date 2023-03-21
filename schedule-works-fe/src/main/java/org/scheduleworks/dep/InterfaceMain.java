@@ -13,6 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 public class InterfaceMain extends Application{
+
     private static Stage stg;
     private double x, y = 0;
     //static privateInfo userInfo = new privateInfo();
@@ -67,5 +68,9 @@ public class InterfaceMain extends Application{
         FadeTransition fadeInTransition = new FadeTransition(Duration.millis(1500));
         fadeInTransition.setFromValue(0.0);
         fadeInTransition.setToValue(1.0);
+    }
+
+    public Stage getPane(){
+        return stg;
     }
 }

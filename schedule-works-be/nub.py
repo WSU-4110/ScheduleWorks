@@ -205,7 +205,7 @@ class Nub:
                 )
             else:
                 or_counter += 2
-                print(i - or_counter, course_prereq_dict, course_prereq_list[i + 1])
+                # print(i - or_counter, course_prereq_dict, course_prereq_list[i + 1])
                 # use or here to ignore "or masters"
                 # use or here to ignore "or atribute in xyz"
                 if (
@@ -257,7 +257,7 @@ class Nub:
         adjancancy_mtrx = []
         course_list_degree = parse_info.get_courses()
         for course_degree in course_list_degree:
-            print(course_degree)
+            # print(course_degree)
             course_preqs = self.get_prerequistes(
                 course_degree.split(" ")[0], course_degree.split(" ")[1]
             )
@@ -280,7 +280,7 @@ class Nub:
         adjancancy_mtrx = []
         course_list_degree = parse_info.get_all_courses()
         for course_degree in course_list_degree:
-            print(course_degree)
+            # print(course_degree)
             course_preqs = self.get_prerequistes(
                 course_degree.split(" ")[0], course_degree.split(" ")[1]
             )
@@ -303,13 +303,11 @@ def main():
     print(nub.get_terms(maximum=5))
     nub.set_term("202301")
     nub.enable_search()
-
     graph = dgraph.Dgraph()
+    graph.add_edges_from(nub.make_adjancancy_mtrx())
+    graph.save_graph("graph_small", dpi=600)
     graph.add_edges_from(nub.make_adjancancy_mtrx_full())
-    graph.make_priority_queue()
-    graph.save_graph("testing2", dpi=600)
-
-    # print(nub.get_prerequistes("CSC", "4500"))
+    graph.save_graph("graph_full", dpi=600)
 
 
 if __name__ == "__main__":

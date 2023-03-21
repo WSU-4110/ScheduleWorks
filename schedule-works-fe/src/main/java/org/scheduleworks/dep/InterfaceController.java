@@ -4,8 +4,12 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import javafx.scene.control.TextArea;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,6 +18,13 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import javafx.scene.text.Text;
 import java.io.IOException; 
+import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import javafx.scene.control.TableColumn;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 
 public class InterfaceController extends InterfaceMain {
     //  BUTTON LIST
@@ -31,7 +42,7 @@ public class InterfaceController extends InterfaceMain {
     private ToggleButton toggle_selenium_bg;
     @FXML
     private ToggleButton toggle_save_cookies;
-
+   
     @FXML
     private TextField code;
     @FXML
@@ -40,7 +51,18 @@ public class InterfaceController extends InterfaceMain {
     private TextArea taCoursesTaken;
     @FXML
     private Button btn_submit_code;
-
+    @FXML
+    private Button btn_show_graph;
+    @FXML
+    private Button btn_show_graph_full;
+   
+    @FXML
+    private TableView<Course> tableCourses;
+ 
+    //  IMAGE LIST
+    @FXML
+    private ImageView graphView;
+    
     //  GLOBAL VARIABLES
     private static Stage stg;
     private double x, y = 0;
@@ -105,6 +127,10 @@ public class InterfaceController extends InterfaceMain {
     //  RETRIEVE COURSES TAB
     public void retrieveCoursesTab() throws Exception {
         changeScene("InterfaceRetrieve.fxml");
+
+
+
+
         /*   OLD CODE, DELETE LATER
         taCoursesTaken.clear();
         File file = new File("C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt");
@@ -134,42 +160,73 @@ public class InterfaceController extends InterfaceMain {
        }
        */
     }
+    public void setUpTable(){
+        
+        TableColumn<Course, String>attributeColumn = new TableColumn<>("Discipline");
+        attributeColumn.setMinWidth(50);
+        attributeColumn.setCellValueFactory(new PropertyValueFactory<>("discipline"));
+        
+
+        TableColumn<Course, String>passColumn = new TableColumn<>("Passed");
+        passColumn.setMinWidth(60);
+        passColumn.setCellValueFactory(new PropertyValueFactory<>("pass"));
+        
+
+        TableColumn<Course, String>nameColumn = new TableColumn<>("Name");
+        nameColumn.setMinWidth(200);
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        
+
+        TableColumn<Course, String>creditColumn = new TableColumn<>("Credit");
+        creditColumn.setMinWidth(40);
+        creditColumn.setCellValueFactory(new PropertyValueFactory<>("credit"));
+        
+
+        TableColumn<Course, String>numberColumn = new TableColumn<>("Number");
+        numberColumn.setMinWidth(50);
+        numberColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
+    
+        
+        tableCourses.setItems(getCoursedList());
+        tableCourses.getColumns().addAll(attributeColumn,numberColumn,creditColumn,nameColumn,passColumn);
+    }
 
     public void pressRetrieveStartButton() throws Exception {
         System.out.println("RETRIEVE START");
-        taCoursesTaken.clear();
+        // taCoursesTaken.clear();
+        setUpTable();
+    //     //  No login info present
+    //     if (userInfo.getUsername() == "" || userInfo.getPassword() == "") {
+    //         taCoursesTaken.appendText("Username and/or password not entered\nEnter login info in the \"Login\" tab");
+    //         return;
+    //     }
 
-        //  No login info present
-        if (userInfo.getUsername() == "" || userInfo.getPassword() == "") {
-            taCoursesTaken.appendText("Username and/or password not entered\nEnter login info in the \"Login\" tab");
-            return;
-        }
+    //     File file = new File("C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt");
+    //     try {
+    //         if (file.createNewFile()) {
+    //             System.out.println("File created: " + file.getName());
+    //         } else {
+    //             System.out.println("File already exists.");
+    //         }
+    //     } catch (IOException e) {
+    //         System.out.println("An error occurred.");
+    //         e.printStackTrace();
+    //       }
 
-        File file = new File("C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt");
-        try {
-            if (file.createNewFile()) {
-                System.out.println("File created: " + file.getName());
-            } else {
-                System.out.println("File already exists.");
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-          }
+    //    try{
+    //     Scanner scan = new Scanner(file);
+    //     if (file.length()==0){
+    //         taCoursesTaken.clear();
+    //         taCoursesTaken.setPromptText("Please login and submit the 2FA Code");
+    //     }
+    //     while(scan.hasNextLine()){
+    //         taCoursesTaken.appendText(scan.nextLine() + "\n");
+    //         }
+    //     } 
+    //     catch (FileNotFoundException e){
+    //     e.printStackTrace();
+    //    }
 
-       try{
-        Scanner scan = new Scanner(file);
-        if (file.length()==0){
-            taCoursesTaken.clear();
-            taCoursesTaken.setPromptText("Please login and submit the 2FA Code");
-        }
-        while(scan.hasNextLine()){
-            taCoursesTaken.appendText(scan.nextLine() + "\n");
-            }
-        } 
-        catch (FileNotFoundException e){
-        e.printStackTrace();
-       }
     }
 
     public void submitCode() {
@@ -193,8 +250,75 @@ public class InterfaceController extends InterfaceMain {
 
     //  RETRIEVE COURSES TAB
     public void createScheduleTab() throws Exception {
+
         changeScene("InterfaceCreateSchedule.fxml");
     }
+
+    public void showGraphFull() throws Exception {
+        System.out.println(getPane().widthProperty().getValue());
+        graphView.setFitWidth(getPane().widthProperty().getValue()/2); 
+        graphView.setLayoutX(getPane().widthProperty().getValue()/5);
+        graphView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("graph_full.png")));
+        btn_show_graph.setVisible(false);
+        btn_show_graph_full.setVisible(false);
+
+    }
+    public void showGraph() throws Exception {
+        System.out.println(getPane().widthProperty().getValue());
+        graphView.setFitWidth(getPane().widthProperty().getValue()/2); 
+        graphView.setLayoutX(getPane().widthProperty().getValue()/5);
+        graphView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("graph_small.png")));
+        btn_show_graph.setVisible(false);
+        btn_show_graph_full.setVisible(false);
+        
+    }
+
+    public ArrayList<ArrayList<String>> getCourseData() {
+        ArrayList<ArrayList<String>> arrList = new ArrayList<ArrayList<String>>();
+
+        File file = new File("C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt");
+        BufferedReader reader;
+        int iter=0;
+        ArrayList<String> tempList = new ArrayList<String>();
+
+		try {
+			reader = new BufferedReader(new FileReader(file));
+			String line = reader.readLine();
+
+			while (line != null) {
+				// System.out.println(line);
+                int col = iter % 5;
+                if(col%5==0 && tempList.size()>0){
+                    arrList.add((ArrayList<String>)tempList.clone());
+                    tempList.clear();
+                }
+                tempList.add(line);
+				line = reader.readLine();
+                iter+=1;
+			}
+
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        // System.out.println(Arrays.deepToString(arrList.toArray()));
+
+        return arrList;
+
+    }
+
+    public ObservableList<Course> getCoursedList(){
+        ObservableList<Course> data = FXCollections.observableArrayList();
+
+        for(ArrayList<String> tempList: getCourseData()){
+            System.out.println(tempList.get(4)+tempList.get(3)+tempList.get(2)+tempList.get(0)+tempList.get(1));
+            data.add(new Course(tempList.get(4),tempList.get(3),tempList.get(2),tempList.get(0),tempList.get(1)));
+        }
+
+    
+        return data;
+    }
+
 
     
 
@@ -208,4 +332,5 @@ public class InterfaceController extends InterfaceMain {
 
         System.exit(0);
     }
+
 }

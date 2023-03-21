@@ -46,6 +46,7 @@ dist/**
 *.xlf
 package.nls.*.json
 l10n/
+
 #personal additions
 venv/
 privateInfo.py
@@ -53,7 +54,8 @@ env/
 testing/
 *.log
 .vscode
-
+build/
+*.spec
 #java
 *.class
 schedule-works-fe/target/

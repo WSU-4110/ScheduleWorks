@@ -13,7 +13,7 @@ class Dgraph:
         self.graph = nx.DiGraph()
 
     def course_sum(self, course: str, memo: dict) -> set:
-      """
+        """
         Determine a given course's dependency list. See make_priority_queue() to use properly.
 
         Wrapper function to clarify args used during recursion.
@@ -49,9 +49,7 @@ class Dgraph:
         course_summate(course)
         return included_courses
 
-
-
-    def topological_sort(self,graph: nx.DiGraph) -> list:
+    def topological_sort(self, graph: nx.DiGraph) -> list:
         """
         Return a list of nodes in topological order.
         Args:
@@ -75,8 +73,6 @@ class Dgraph:
             raise ValueError("Graph is not acyclic")
         else:
             return topo_order
-
-
 
     def make_priority_queue(self) -> dict:
         """
@@ -103,19 +99,23 @@ class Dgraph:
         """Topological sort of directed graph."""
         return
 
-    def show_graph(self):
+    def show_graph(self, dpi=100):
         """Print a graph out to show node connections."""
 
         def label_shift(pos, x_shift, y_shift):
             """Shift x and y values given pos tuple list."""
             return {n: (x + x_shift, y + y_shift) for n, (x, y) in pos.items()}
 
-        pos = nx.circular_layout(self.graph)
+        pos = nx.kamada_kawai_layout(self.graph)
         nodenames = {n: n[0:3] + "\n" + n[3:] for n in self.graph.nodes()}
-        pos_nodes = label_shift(pos, 0.06, 0)
-        nx.draw(self.graph, pos, node_shape="s", node_size=600)
+        pos_nodes = label_shift(pos, 0.025, 0)
+        nx.draw(self.graph, pos, node_shape="s", node_size=100)
         nx.draw_networkx_labels(
-            self.graph, pos_nodes, horizontalalignment="right", labels=nodenames
+            self.graph,
+            pos_nodes,
+            horizontalalignment="right",
+            labels=nodenames,
+            font_size=2,
         )
         plt.show()
 
@@ -128,18 +128,21 @@ class Dgraph:
 
         pos = nx.circular_layout(self.graph)
         nodenames = {n: n[0:3] + "\n" + n[3:] for n in self.graph.nodes()}
-        pos_nodes = label_shift(pos, 0.03, 0)
-        nx.draw(self.graph, pos, node_shape="s", node_size=150)
+        pos_nodes = label_shift(pos, 0.022, 0)
+        plt.figure(figsize=(10, 10))
+        nx.draw(self.graph, pos, node_shape="s")
         nx.draw_networkx_labels(
             self.graph,
             pos_nodes,
             horizontalalignment="right",
             labels=nodenames,
-            font_size=5,
+            font_size=7,
         )
-        plt.rc
         plt.savefig(
-            "C:\Program Files\ScheduleWorks\data\\" + filename + ".png", dpi=dpi
+            "C:\\Program Files\\ScheduleWorks\\schedule-works-fe\\src\\main\\resources\\"
+            + filename
+            + ".png",
+            dpi=dpi,
         )
 
     def add_edges_from(self, adj_mtrx):
@@ -165,13 +168,14 @@ def main():
         ]
     )
 
-    courses_graph.save_graph("testing")
-    courses_graph.make_priority_queue()
+    courses_graph.save_graph("testing", dpi=200)
+    # courses_graph.make_priority_queue()
 
-    show_graph(graph)
+    # courses_graph.show_graph()
 
-    topo_order = topological_sort(graph)
-    print("Topological order:", topo_order)
+    # topo_order = courses_graph.topological_sort()
+    # print("Topological order:", topo_order)
+
 
 if __name__ == "__main__":
     main()
