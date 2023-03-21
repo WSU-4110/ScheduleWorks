@@ -260,7 +260,13 @@ public class InterfaceController extends InterfaceMain {
         System.out.println(getPane().widthProperty().getValue());
         graphView.setFitWidth(getPane().widthProperty().getValue()/2); 
         graphView.setLayoutX(getPane().widthProperty().getValue()/5);
+        try{
         graphView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("graph_full.png")));
+        }
+        catch(java.lang.RuntimeException e){
+            System.out.println("Couldn't find image");
+            return;
+        }
         btn_show_graph.setVisible(false);
         btn_show_graph_full.setVisible(false);
 
@@ -269,7 +275,13 @@ public class InterfaceController extends InterfaceMain {
         System.out.println(getPane().widthProperty().getValue());
         graphView.setFitWidth(getPane().widthProperty().getValue()/2); 
         graphView.setLayoutX(getPane().widthProperty().getValue()/5);
-        graphView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("graph_small.png")));
+        try{
+            graphView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("graph_small.png")));
+        }
+        catch(java.lang.RuntimeException e){
+            System.out.println("Couldn't find image");
+            return;
+        }
         btn_show_graph.setVisible(false);
         btn_show_graph_full.setVisible(false);
         
@@ -313,7 +325,7 @@ public class InterfaceController extends InterfaceMain {
         ObservableList<Course> data = FXCollections.observableArrayList();
 
         for(ArrayList<String> tempList: getCourseData()){
-            System.out.println(tempList.get(4)+tempList.get(3)+tempList.get(2)+tempList.get(0)+tempList.get(1));
+            // System.out.println(tempList.get(4)+tempList.get(3)+tempList.get(2)+tempList.get(0)+tempList.get(1));
             data.add(new Course(tempList.get(4),tempList.get(3),tempList.get(2),tempList.get(0),tempList.get(1)));
         }
 

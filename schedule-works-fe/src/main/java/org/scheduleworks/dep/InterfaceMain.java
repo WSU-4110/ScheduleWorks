@@ -34,9 +34,10 @@ public class InterfaceMain extends Application{
         primaryStage.setTitle("ScheduleWorks"); // Title of the page of Interface
         primaryStage.setScene(new Scene(root)); // sets up the size of the interface showm in the scene 
         primaryStage.setMinWidth(1280);
-        primaryStage.setMinHeight(800);
+        primaryStage.setMinHeight(840);
+
         primaryStage.setWidth(1280);
-        primaryStage.setHeight(800);
+        primaryStage.setHeight(840);
 
         root.setOnMousePressed(mouseEvent ->{
             x=mouseEvent.getSceneX();

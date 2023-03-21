@@ -142,7 +142,7 @@ you can put your changes in to the scene builder and you can see your results ac
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="retrieveStartButton" alignment="CENTER" layoutX="230.0" layoutY="623.0" mnemonicParsing="false" onAction="#pressRetrieveStartButton" prefHeight="47.0" prefWidth="151.0" styleClass="general_button" stylesheets="@MainWindowStyle.css" text="  Start➧" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+            <Button fx:id="retrieveStartButton" alignment="CENTER" layoutX="251.0" layoutY="615.0" mnemonicParsing="false" onAction="#pressRetrieveStartButton" prefHeight="47.0" prefWidth="151.0" styleClass="general_button" stylesheets="@MainWindowStyle.css" text="Update" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                <font>
                   <Font name="Century Gothic Bold" size="24.0" />
                </font>
@@ -150,7 +150,7 @@ you can put your changes in to the scene builder and you can see your results ac
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TableView fx:id="tableCourses" layoutX="440.0" layoutY="75.0" prefHeight="567.0" prefWidth="475.0" />
+            <TableView fx:id="tableCourses" layoutX="458.0" layoutY="95.0" prefHeight="567.0" prefWidth="475.0" />
          </children>
       </AnchorPane>
    </children>
