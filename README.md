@@ -18,7 +18,7 @@ A desktop application that can build a class schedule given time & day filters.
 # Contributors
 1. Mazen Mirza
 2. Aafnan Mahmood
-3. Mizanul Haue
+3. Mizanul Haque
 4. Faizan Bahtti
 5. Christopher Forkin
 
@@ -67,24 +67,15 @@ pip install -r requirements.txt
 ```
 
 ### old todo
- - parse json for requirements
- - improve javaFX features
- - improve javaFX look
  - optimize functions 
- - connect nub.py to dgraph to build a priority queue
  
 ### new todo
  - Manage selenium wait times based on website load speeds.
  - Delete user information button.
  - Save user cookies for quick data refresh.
  - Display users name
- - Dynamic frame sizing
  - Incorrect code handling
  - Incorrect login handling
- - Minimizing functianality.
- - Cohesive UI design to display information
  - Convert output data to JSON for table formatting
  - Display priority queue
- - Display course directed graph diagram
- - make topo sort for dgraph.py 
- - make dgraph.py a class instead of just functions
+
