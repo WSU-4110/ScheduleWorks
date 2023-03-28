@@ -66,10 +66,9 @@ The project is still in devolpment, to install the required tools to manually ru
 pip install -r requirements.txt
 ```
 
-### old todo
- - optimize functions 
  
-### new todo
+### todo
+ - Optimize functions 
  - Manage selenium wait times based on website load speeds.
  - Delete user information button.
  - Save user cookies for quick data refresh.
@@ -78,4 +77,9 @@ pip install -r requirements.txt
  - Incorrect login handling
  - Convert output data to JSON for table formatting
  - Display priority queue
+ - Add functionality for the Selenium in BG and Save User Cookies (if implemented) toggles
+ - Add FAQ page to interface (in place of help page)
+ - Save login info & add "Remember me" function
+ - Zoom in/out of interface through scaling the DPI
+ - Scene transitions between interface pages (fade in/out)
 
