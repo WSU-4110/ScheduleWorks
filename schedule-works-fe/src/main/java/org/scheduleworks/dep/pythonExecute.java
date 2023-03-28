@@ -30,7 +30,7 @@ public class pythonExecute implements Runnable{
 
 
         long start = System.currentTimeMillis();
-        long end = start + 80*1000; // 80 seconds * 1000 ms/sec
+        long end = start + 180*1000; // 180 seconds
         while (System.currentTimeMillis() < end)
         {
             try{Thread.sleep(10000);}catch(InterruptedException e){System.out.println(e);}   

@@ -9,8 +9,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
+import nub
+
 # import privateInfo
-import devolpment_shortcut
+import parse_info
 
 
 @click.command()
@@ -85,7 +87,7 @@ def get_json_data(sid, passwd):
         "C:/Program Files/ScheduleWorks/data/userData.json", "w+", encoding="utf-8"
     ) as outfile:
         json.dump(dict_from_json, outfile, indent=4)
-    user_info = devolpment_shortcut.extract_user_info()
+    user_info = parse_info.extract_user_info()
     audit_url = (
         "https://degreeworks.wayne.edu/api/audit?studentId={sid}"
         + "&school={school}"
@@ -106,8 +108,11 @@ def get_json_data(sid, passwd):
         json.dump(dict_from_json, outfile, indent=4)
 
     driver.close()
-    devolpment_shortcut.view_course_history()
-    devolpment_shortcut.view_degree_requirements()
+    parse_info.view_course_history()
+    parse_info.view_degree_requirements()
+    parse_info.course_requirements()
+    parse_info.course_history_txt()
+    nub.main()
 
 
 if __name__ == "__main__":
