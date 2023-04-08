@@ -188,6 +188,24 @@ you can put your changes in to the scene builder and you can see your results ac
                   <Font name="Century Gothic Bold" size="30.0" />
                </font>
             </Text>
+            <Text fill="WHITE" layoutX="550.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the 2FA code below if prompted" wrappingWidth="357.21875">
+               <font>
+                  <Font name="Century Gothic Bold" size="22.0" />
+               </font>
+            </Text>
+            <TextField id="code" fx:id="code" layoutX="550.0" layoutY="203.0" prefHeight="55.0" prefWidth="95.0" promptText="code" styleClass="code">
+               <font>
+                  <Font name="Century Gothic Bold" size="17.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btn_submit_code" layoutX="656.0" layoutY="203.0" mnemonicParsing="false" onAction="#submitCode" prefHeight="55.0" prefWidth="95.0" styleClass="general_button" text="Submit" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic Bold" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
    </children>
