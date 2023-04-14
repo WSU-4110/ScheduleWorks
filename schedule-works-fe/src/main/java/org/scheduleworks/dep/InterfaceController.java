@@ -12,8 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.control.TextArea;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import javafx.scene.text.Text;
@@ -24,7 +22,6 @@ import java.io.FileReader;
 import javafx.scene.control.TableColumn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import java.io.IOException;
 import java.net.URI;
 import java.awt.Desktop;
 
@@ -73,18 +70,18 @@ public class InterfaceController extends InterfaceMain {
     //  LOGIN TAB
     public void pressLoginTab() throws Exception {
         changeScene("InterfaceLogin.fxml");
-
-        //changeUserText();         //  FIX THIS if possible, remove/comment out otherwise
+        
+        changeUserText();         //  FIX THIS if possible, remove/comment out otherwise
     }
 
     public void changeUserText() throws Exception {
         if (userInfo.getUsername() == "") {
             userText.setText("Not currently logged in ⚠");
-            //btn_login_tab.setText("Login");
+            btn_login_tab.setText("Login");
         }
         else {
             userText.setText("Welcome " + userInfo.getUsername());
-            //btn_login_tab.setText("Welcome " + userInfo.getUsername());
+            btn_login_tab.setText("Welcome " + userInfo.getUsername());
         }
     }
 
@@ -129,9 +126,6 @@ public class InterfaceController extends InterfaceMain {
     //  RETRIEVE COURSES TAB
     public void retrieveCoursesTab() throws Exception {
         changeScene("InterfaceRetrieve.fxml");
-
-
-
 
         /*   OLD CODE, DELETE LATER
         taCoursesTaken.clear();
