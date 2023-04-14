@@ -2,7 +2,6 @@
 import re
 import requests
 from bs4 import BeautifulSoup
-import dgraph
 import parse_info
 
 
@@ -318,9 +317,8 @@ class Nub:
 
         data = response.json()["data"]
         print(len(data))
-        print(data[0].keys())
+        print(data)
 
-    
         # pprint.pprint(response.json())
 
 
@@ -331,12 +329,7 @@ def main():
     nub.set_term("202309")
     nub.enable_search()
     nub.search_class("CSC", "2200")
-    # graph = dgraph.Dgraph()
-    # print(nub.make_adjancancy_mtrx())
-    # graph.add_edges_from(nub.make_adjancancy_mtrx())
-    # graph.save_graph("graph_small", dpi=600)
-    # graph.add_edges_from(nub.make_adjancancy_mtrx_full())
-    # graph.save_graph("graph_full", dpi=600)
+    print(nub.make_adjancancy_mtrx())
 
 
 if __name__ == "__main__":
