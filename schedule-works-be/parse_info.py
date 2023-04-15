@@ -79,7 +79,7 @@ def view_course_history():
 
 
 def get_courses():
-    """This should be in a different file. Temprarory location."""
+    """Retrives required courses that have yet to be taken."""
     try:
         with open(
             "C:/Program Files/ScheduleWorks/data/requirements.json",
@@ -102,7 +102,7 @@ def get_courses():
 
 
 def get_all_courses():
-    """This should be in a different file. Temprarory location."""
+    """Gives all the courses required by a degree inlcuding those taken and those yet to be taken."""
     course_list = get_courses()
 
     try:
@@ -118,6 +118,22 @@ def get_all_courses():
         course_list.append(course["discipline"] + " " + course["number"])
 
     return course_list
+
+
+def get_courses_taken() -> list:
+    """Get all the courses taken or currently registered for."""
+    try:
+        with open(
+            "C:/Program Files/ScheduleWorks/data/courseHistory.json",
+            encoding="utf-8",
+        ) as file:
+            course_history = json.load(file)
+    except FileNotFoundError as error:
+        raise error
+    courses_taken = []
+    for course in course_history:
+        courses_taken.append(course["discipline"] + " " + course["number"])
+    return courses_taken
 
 
 def extract_user_info() -> dict:

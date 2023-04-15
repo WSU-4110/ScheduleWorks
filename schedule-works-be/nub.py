@@ -255,21 +255,28 @@ class Nub:
         """Produce an adjancancy matrix for courses still in progress."""
         adjancancy_mtrx = []
         course_list_degree = parse_info.get_courses()
+        courses_taken = parse_info.get_courses_taken()
+        # print(courses_taken)
+
         for course_degree in course_list_degree:
-            # print(course_degree)
             course_preqs = self.get_prerequistes(
                 course_degree.split(" ")[0], course_degree.split(" ")[1]
             )
             if course_preqs and course_preqs[0] == "Error":
                 continue
             for required_courses in course_preqs:
+                if (
+                    required_courses[0]["course"] + " " + required_courses[0]["code"]
+                    in courses_taken
+                ):
+                    continue
                 course = dict(
                     required_courses[0]
                 )  # linting caught some error without this here
                 adjancancy_mtrx.append(
                     [
                         course_degree,
-                        course["course"] + course["code"],
+                        course["course"] + " " + course["code"],
                     ]
                 )
         return adjancancy_mtrx
@@ -316,8 +323,6 @@ class Nub:
             return [{"Error": "Cannot find class"}]
 
         data = response.json()["data"]
-        print(len(data))
-        print(data)
 
         # pprint.pprint(response.json())
 
@@ -329,7 +334,6 @@ def main():
     nub.set_term("202309")
     nub.enable_search()
     nub.search_class("CSC", "2200")
-    print(nub.make_adjancancy_mtrx())
 
 
 if __name__ == "__main__":

@@ -74,7 +74,7 @@ class Dgraph:
         else:
             return topo_order
 
-    def make_priority_queue(self) -> dict:
+    def make_priority_queue(self) -> list:
         """
         Produce a priority queue of courses from a directed graph.
 
@@ -91,9 +91,13 @@ class Dgraph:
             dependent_courses = self.course_sum(node, memo)
 
             memo[node] = dependent_courses
-            print(node, ": ", len(dependent_courses))
 
-        return memo
+        queue = []
+        for entries in memo:
+            queue.append([entries, len(memo[entries])])
+        queue.sort(key=lambda course: course[1], reverse=True)
+
+        return queue
 
     def topo_sort(self):
         """Topological sort of directed graph."""
