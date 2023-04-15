@@ -3,6 +3,9 @@ package org.scheduleworks.dep;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +17,12 @@ class privateInfoTest {
     @BeforeEach
     void setup() {
         user = new privateInfo();
+    }
+
+    @AfterEach
+    void tearDown() {
+        user = null;
+        assertNull(user);
     }
 
     //  Testing with default values

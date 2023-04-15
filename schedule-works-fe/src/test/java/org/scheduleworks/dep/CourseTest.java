@@ -3,6 +3,7 @@ package org.scheduleworks.dep;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +15,12 @@ public class CourseTest {
     @BeforeEach
     void setup() {
         test = new Course("password", "Aafnan", "120", "discipline", "number");
+    }
+
+    @AfterEach
+    void tearDown() {
+        test = null;
+        assertNull(test);
     }
 
     @Test
