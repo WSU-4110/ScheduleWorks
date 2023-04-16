@@ -26,7 +26,7 @@ public class InterfaceMain extends Application{
     public void start(Stage primaryStage) throws Exception {
         stg = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Interface.fxml"));
-        loader.setController(new InterfaceController());
+        //loader.setController(new InterfaceController());
         Parent root = loader.load();
 
         primaryStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("ScheduleWorksLogo.png")));

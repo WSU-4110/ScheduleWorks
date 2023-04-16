@@ -70,13 +70,15 @@ public class InterfaceController extends InterfaceMain {
     //  LOGIN TAB
     public void pressLoginTab() throws Exception {
         changeScene("InterfaceLogin.fxml");
+
+        btn_login_tab.setText("Welcome " + userInfo.getUsername());
         
-        changeUserText();         //  FIX THIS if possible, remove/comment out otherwise
+        //changeUserText();         //  FIX THIS if possible, remove/comment out otherwise
     }
 
     public void changeUserText() throws Exception {
         if (userInfo.getUsername() == "") {
-            userText.setText("Not currently logged in ⚠");
+            userText.setText("Not currently logged inn ⚠");
             btn_login_tab.setText("Login");
         }
         else {
@@ -88,7 +90,7 @@ public class InterfaceController extends InterfaceMain {
     public void pressLoginButton() throws Exception {
         userInfo.setUsername(username.getText().toString());
         userInfo.setPassword(password.getText().toString());
-        changeUserText();
+        //changeUserText();
 
         System.out.println(userInfo.getUsername());     //  Test print, can be removed later
         
@@ -244,10 +246,10 @@ public class InterfaceController extends InterfaceMain {
         stg.close();
     }
 
-    //  RETRIEVE COURSES TAB
-    public void createScheduleTab() throws Exception {
+    //  COURSE GRAPH TAB
+    public void CourseGraphTab() throws Exception {
 
-        changeScene("InterfaceCreateSchedule.fxml");
+        changeScene("InterfaceCourseGraph.fxml");
     }
 
     public void showGraphFull() throws Exception {
@@ -312,7 +314,6 @@ public class InterfaceController extends InterfaceMain {
         // System.out.println(Arrays.deepToString(arrList.toArray()));
 
         return arrList;
-
     }
 
     public ObservableList<Course> getCoursedList(){
@@ -327,7 +328,10 @@ public class InterfaceController extends InterfaceMain {
         return data;
     }
 
-
+    //  CREATE SCHEDULE TAB
+    public void CreateScheduleTab() throws Exception {
+        changeScene("InterfaceCreateSchedule.fxml");
+    }
     
 
     //  Close application

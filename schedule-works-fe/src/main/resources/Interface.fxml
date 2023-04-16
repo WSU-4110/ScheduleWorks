@@ -17,7 +17,7 @@
 <!-- this fxml code is created through scene builder, you can edit the code here manually or
 you can put your changes in to the scene builder and you can see your results accordingly in here as well -->
 
-<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.scheduleworks.dep.InterfaceController">
    <children>
       <AnchorPane layoutY="52.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="277.0" style="-fx-background-color: #0F5F52;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="52.0">
          <children>
@@ -34,7 +34,7 @@ you can put your changes in to the scene builder and you can see your results ac
                   <Image url="@ScheduleWorksLogo.png" />
                </image>
             </ImageView>
-            <VBox layoutX="-1.0" layoutY="257.0" prefHeight="341.0" prefWidth="277.0">
+            <VBox layoutX="-1.0" layoutY="257.0" prefHeight="419.0" prefWidth="277.0">
                <children>
                   <Button fx:id="btn_login_tab" graphicTextGap="0.0" mnemonicParsing="false" onAction="#pressLoginTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Login" textFill="WHITE">
                      <font>
@@ -52,7 +52,15 @@ you can put your changes in to the scene builder and you can see your results ac
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btn_create_schedule" mnemonicParsing="false" onAction="#createScheduleTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Create Schedule" textFill="WHITE" wrapText="true">
+                  <Button fx:id="btn_graph_tab" mnemonicParsing="false" onAction="#CourseGraphTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Course Graph" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Century Gothic Bold" size="26.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btn_create_schedule" mnemonicParsing="false" onAction="#CreateScheduleTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Create Schedule" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Century Gothic Bold" size="26.0" />
                      </font>
@@ -110,4 +118,3 @@ you can put your changes in to the scene builder and you can see your results ac
       </AnchorPane>
    </children>
 </AnchorPane>
-
