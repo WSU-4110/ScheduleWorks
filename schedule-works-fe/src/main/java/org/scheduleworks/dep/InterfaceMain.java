@@ -1,5 +1,6 @@
 package org.scheduleworks.dep;
 
+import java.awt.*;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -11,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+
+import javafx.stage.Screen;
 
 public class InterfaceMain extends Application{
 
@@ -33,9 +36,12 @@ public class InterfaceMain extends Application{
         primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.setTitle("ScheduleWorks"); // Title of the page of Interface
         primaryStage.setScene(new Scene(root)); // sets up the size of the interface showm in the scene 
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        primaryStage.setMaxWidth(screenSize.getWidth());
+        primaryStage.setMaxHeight(screenSize.getHeight());
         primaryStage.setMinWidth(1280);
         primaryStage.setMinHeight(810);
-
         primaryStage.setWidth(1280);
         primaryStage.setHeight(810);
 
@@ -61,6 +67,15 @@ public class InterfaceMain extends Application{
         Scene newScene = new Scene(root);
         //fadeOut();
         stg.setScene(newScene);
+        
+        //  Changes the width very slightly so that all scene objects are at the correct resolution
+        double width = stg.getWidth();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        if (width % 1 == 0)
+            stg.setWidth(width * 1.00007812);
+        else
+            stg.setWidth(Math.floor(width));
+        System.out.println("Width: " + width);
     }
 
     @FXML

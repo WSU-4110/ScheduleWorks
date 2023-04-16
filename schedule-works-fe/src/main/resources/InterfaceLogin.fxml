@@ -16,7 +16,7 @@ you can put your changes in to the scene builder and you can see your results ac
 
 <AnchorPane prefHeight="400.0" prefWidth="550.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <fx:include source="Interface.fxml" />
+      <fx:include source="Interface.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="loginPane" layoutX="291.0" layoutY="69.0" prefHeight="716.0" prefWidth="986.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="69.0">
          <children>
             <Text id="userText" fx:id="userText" fill="WHITE" layoutX="2.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not currently logged in ⚠ ">
