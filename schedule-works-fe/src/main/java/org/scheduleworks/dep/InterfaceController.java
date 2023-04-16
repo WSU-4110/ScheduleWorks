@@ -356,5 +356,32 @@ public class InterfaceController extends InterfaceMain {
         System.out.println("Link clicked");
         Desktop.getDesktop().browse(new URI("https://mail.google.com/mail"));
     }
+
+
+    //function to delete files from the user's directory
+    //files classData.json, courseHistory.json, courseHistory.txt, degreeRequirment.txt,userData.json,userData.txt
+    
+//add button
+
+
+private void deleteAllFiles() {
+    String[] fileNames = {"classData.json", "courseHistory.json", "courseHistory.txt",
+                          "degreeRequirement.txt", "userData.json", "userData.txt"};
+    for (String fileName : fileNames) {
+        File file = new File(fileName);
+        if (file.delete()) {
+            System.out.println(fileName + " deleted successfully.");
+        } else {
+            System.out.println(fileName + " does not exist.");
+        }
+    }
+}
+
+public static void main(String[] args) {
+    launch(args);
+}
+
+
+
     }
 
