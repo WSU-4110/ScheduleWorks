@@ -2,12 +2,7 @@
 
 package org.scheduleworks.dep;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.simple.JSONObject;
-
 public class privateInfo {
-    JSONObject loginData = new JSONObject();
     //  Username and password
     private String username;
     private String password;
