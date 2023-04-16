@@ -12,8 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.control.TextArea;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import javafx.scene.text.Text;
@@ -24,7 +22,6 @@ import java.io.FileReader;
 import javafx.scene.control.TableColumn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import java.io.IOException;
 import java.net.URI;
 import java.awt.Desktop;
 
@@ -34,6 +31,8 @@ public class InterfaceController extends InterfaceMain {
     private Button btn_login_tab;
     @FXML
     private Text userText;
+    @FXML
+    private Text incorrectLoginIndicator;
     @FXML
     private TextField username;
     @FXML
@@ -46,6 +45,8 @@ public class InterfaceController extends InterfaceMain {
     private ToggleButton toggle_save_cookies;
    
     @FXML
+    private Button btn_retrieve_tab;
+    @FXML
     private TextField code;
     @FXML
     private Button retrieveStartButton;
@@ -53,10 +54,18 @@ public class InterfaceController extends InterfaceMain {
     private TextArea taCoursesTaken;
     @FXML
     private Button btn_submit_code;
+
+    @FXML
+    private Button btn_graph_tab;
     @FXML
     private Button btn_show_graph;
     @FXML
     private Button btn_show_graph_full;
+
+    @FXML
+    private Button btn_create_schedule_tab;
+    @FXML
+    private Button btn_help_tab;
    
     @FXML
     private TableView<Course> tableCourses;
@@ -74,32 +83,46 @@ public class InterfaceController extends InterfaceMain {
     public void pressLoginTab() throws Exception {
         changeScene("InterfaceLogin.fxml");
 
+        btn_login_tab.setText("Welcome " + userInfo.getUsername());
+        
         //changeUserText();         //  FIX THIS if possible, remove/comment out otherwise
     }
 
     public void changeUserText() throws Exception {
         if (userInfo.getUsername() == "") {
-            userText.setText("Not currently logged in ⚠");
-            //btn_login_tab.setText("Login");
+            userText.setText("Not currently logged inn ⚠");
+            btn_login_tab.setText("Login");
         }
         else {
             userText.setText("Welcome " + userInfo.getUsername());
-            //btn_login_tab.setText("Welcome " + userInfo.getUsername());
+            btn_login_tab.setText("Welcome " + userInfo.getUsername());
         }
     }
 
     public void pressLoginButton() throws Exception {
-        userInfo.setUsername(username.getText().toString());
-        userInfo.setPassword(password.getText().toString());
-        changeUserText();
+        if (username.getText().toString() == "" || password.getText().toString() == "") {
+            incorrectLoginIndicator.setOpacity(1);
+        }
+        else {
+            incorrectLoginIndicator.setOpacity(0);
+            userInfo.setUsername(username.getText().toString());
+            userInfo.setPassword(password.getText().toString());
+            //changeUserText();
 
-        System.out.println(userInfo.getUsername());     //  Test print, can be removed later
+            System.out.println(userInfo.getUsername());     //  Test print, can be removed later
         
-        Thread t = new Thread(new pythonExecute(userInfo.getUsername(),userInfo.getPassword()));
-        t.start();
+            Thread t = new Thread(new pythonExecute(userInfo.getUsername(),userInfo.getPassword()));
+            t.start();
 
-        username.clear();
-        password.clear();
+            username.clear();
+            password.clear();
+
+            //  Enable other tabs
+            btn_retrieve_tab.setDisable(false);
+            btn_graph_tab.setDisable(false);
+            btn_create_schedule_tab.setDisable(false);
+            btn_help_tab.setDisable(false);
+        }
     }
 
     public void seleniumBackgroundButton() throws Exception {
@@ -129,9 +152,6 @@ public class InterfaceController extends InterfaceMain {
     //  RETRIEVE COURSES TAB
     public void retrieveCoursesTab() throws Exception {
         changeScene("InterfaceRetrieve.fxml");
-
-
-
 
         /*   OLD CODE, DELETE LATER
         taCoursesTaken.clear();
@@ -250,10 +270,10 @@ public class InterfaceController extends InterfaceMain {
         stg.close();
     }
 
-    //  RETRIEVE COURSES TAB
-    public void createScheduleTab() throws Exception {
+    //  COURSE GRAPH TAB
+    public void courseGraphTab() throws Exception {
 
-        changeScene("InterfaceCreateSchedule.fxml");
+        changeScene("InterfaceCourseGraph.fxml");
     }
 
     public void showGraphFull() throws Exception {
@@ -318,7 +338,6 @@ public class InterfaceController extends InterfaceMain {
         // System.out.println(Arrays.deepToString(arrList.toArray()));
 
         return arrList;
-
     }
 
     public ObservableList<Course> getCoursedList(){
@@ -333,7 +352,10 @@ public class InterfaceController extends InterfaceMain {
         return data;
     }
 
-
+    //  CREATE SCHEDULE TAB
+    public void createScheduleTab() throws Exception {
+        changeScene("InterfaceCreateSchedule.fxml");
+    }
     
 
     //  Close application
@@ -356,32 +378,25 @@ public class InterfaceController extends InterfaceMain {
         System.out.println("Link clicked");
         Desktop.getDesktop().browse(new URI("https://mail.google.com/mail"));
     }
-
+    
 
     //function to delete files from the user's directory
     //files classData.json, courseHistory.json, courseHistory.txt, degreeRequirment.txt,userData.json,userData.txt
     
-//add button
+    //add button
 
 
-private void deleteAllFiles() {
-    String[] fileNames = {"classData.json", "courseHistory.json", "courseHistory.txt",
-                          "degreeRequirement.txt", "userData.json", "userData.txt"};
-    for (String fileName : fileNames) {
-        File file = new File(fileName);
-        if (file.delete()) {
-            System.out.println(fileName + " deleted successfully.");
-        } else {
-            System.out.println(fileName + " does not exist.");
+    private void deleteAllFiles() {
+        String[] fileNames = {"classData.json", "courseHistory.json", "courseHistory.txt",
+                              "degreeRequirement.txt", "userData.json", "userData.txt"};
+        for (String fileName : fileNames) {
+            File file = new File(fileName);
+            if (file.delete()) {
+                System.out.println(fileName + " deleted successfully.");
+            } else {
+                System.out.println(fileName + " does not exist.");
+            }
         }
     }
 }
-
-public static void main(String[] args) {
-    launch(args);
-}
-
-
-
-    }
 
