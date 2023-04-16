@@ -15,7 +15,6 @@ you can put your changes in to the scene builder and you can see your results ac
       <fx:include source="Interface.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="createSchedulePane" layoutX="291.0" layoutY="69.0" prefHeight="716.0" prefWidth="975.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="69.0">
          <children>
-            <ImageView fx:id="graphView" layoutX="20.0" pickOnBounds="true" preserveRatio="true" />
             <Text id="userText" fill="WHITE" layoutX="281.0" layoutY="451.0" lineSpacing="1.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to ScheduleWorks" textAlignment="CENTER" wrappingWidth="411.60205078125" AnchorPane.bottomAnchor="194.578125" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="282.39794921875" AnchorPane.topAnchor="402.71875">
                <font>
                   <Font name="Century Gothic Bold" size="48.0" />
