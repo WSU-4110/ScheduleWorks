@@ -19,7 +19,7 @@ A desktop application that can build a class schedule given time & day filters.
 1. Mazen Mirza
 2. Aafnan Mahmood
 3. Mizanul Haque
-4. Faizan Bahtti
+4. Faizan Bhatti
 5. Christopher Forkin
 
 
