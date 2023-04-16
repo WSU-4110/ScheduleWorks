@@ -32,6 +32,8 @@ public class InterfaceController extends InterfaceMain {
     @FXML
     private Text userText;
     @FXML
+    private Text incorrectLoginIndicator;
+    @FXML
     private TextField username;
     @FXML
     private PasswordField password;
@@ -43,6 +45,8 @@ public class InterfaceController extends InterfaceMain {
     private ToggleButton toggle_save_cookies;
    
     @FXML
+    private Button btn_retrieve_tab;
+    @FXML
     private TextField code;
     @FXML
     private Button retrieveStartButton;
@@ -50,10 +54,18 @@ public class InterfaceController extends InterfaceMain {
     private TextArea taCoursesTaken;
     @FXML
     private Button btn_submit_code;
+
+    @FXML
+    private Button btn_graph_tab;
     @FXML
     private Button btn_show_graph;
     @FXML
     private Button btn_show_graph_full;
+
+    @FXML
+    private Button btn_create_schedule_tab;
+    @FXML
+    private Button btn_help_tab;
    
     @FXML
     private TableView<Course> tableCourses;
@@ -88,17 +100,29 @@ public class InterfaceController extends InterfaceMain {
     }
 
     public void pressLoginButton() throws Exception {
-        userInfo.setUsername(username.getText().toString());
-        userInfo.setPassword(password.getText().toString());
-        //changeUserText();
+        if (username.getText().toString() == "" || password.getText().toString() == "") {
+            incorrectLoginIndicator.setOpacity(1);
+        }
+        else {
+            incorrectLoginIndicator.setOpacity(0);
+            userInfo.setUsername(username.getText().toString());
+            userInfo.setPassword(password.getText().toString());
+            //changeUserText();
 
-        System.out.println(userInfo.getUsername());     //  Test print, can be removed later
+            System.out.println(userInfo.getUsername());     //  Test print, can be removed later
         
-        Thread t = new Thread(new pythonExecute(userInfo.getUsername(),userInfo.getPassword()));
-        t.start();
+            Thread t = new Thread(new pythonExecute(userInfo.getUsername(),userInfo.getPassword()));
+            t.start();
 
-        username.clear();
-        password.clear();
+            username.clear();
+            password.clear();
+
+            //  Enable other tabs
+            btn_retrieve_tab.setDisable(false);
+            btn_graph_tab.setDisable(false);
+            btn_create_schedule_tab.setDisable(false);
+            btn_help_tab.setDisable(false);
+        }
     }
 
     public void seleniumBackgroundButton() throws Exception {
@@ -247,7 +271,7 @@ public class InterfaceController extends InterfaceMain {
     }
 
     //  COURSE GRAPH TAB
-    public void CourseGraphTab() throws Exception {
+    public void courseGraphTab() throws Exception {
 
         changeScene("InterfaceCourseGraph.fxml");
     }
@@ -329,7 +353,7 @@ public class InterfaceController extends InterfaceMain {
     }
 
     //  CREATE SCHEDULE TAB
-    public void CreateScheduleTab() throws Exception {
+    public void createScheduleTab() throws Exception {
         changeScene("InterfaceCreateSchedule.fxml");
     }
     
@@ -354,5 +378,5 @@ public class InterfaceController extends InterfaceMain {
         System.out.println("Link clicked");
         Desktop.getDesktop().browse(new URI("https://mail.google.com/mail"));
     }
-    }
+}
 

@@ -19,7 +19,6 @@ public class InterfaceMain extends Application{
 
     private static Stage stg;
     private double x, y = 0;
-    //static privateInfo userInfo = new privateInfo();
 
     public static void main(String[] args){
         launch(args); // necessary to start the application
@@ -28,7 +27,7 @@ public class InterfaceMain extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         stg = primaryStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Interface.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("InterfaceStart.fxml"));
         //loader.setController(new InterfaceController());
         Parent root = loader.load();
 
@@ -65,7 +64,6 @@ public class InterfaceMain extends Application{
         Parent root = loader.load();
 
         Scene newScene = new Scene(root);
-        //fadeOut();
         stg.setScene(newScene);
         
         //  Changes the width very slightly so that all scene objects are at the correct resolution
@@ -75,15 +73,23 @@ public class InterfaceMain extends Application{
             stg.setWidth(width * 1.00007812);
         else
             stg.setWidth(Math.floor(width));
-        System.out.println("Width: " + width);
+        //System.out.println("Width: " + width);
     }
 
     @FXML
-    private StackPane rootPane;
+    void fadeIn() {
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2));
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.play();
+    }
+
+    @FXML
     void fadeOut() {
-        FadeTransition fadeInTransition = new FadeTransition(Duration.millis(1500));
-        fadeInTransition.setFromValue(0.0);
-        fadeInTransition.setToValue(1.0);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2));
+        fadeTransition.setFromValue(0.0);
+        fadeTransition.setToValue(1.0);
+        fadeTransition.play();
     }
 
     public Stage getPane(){

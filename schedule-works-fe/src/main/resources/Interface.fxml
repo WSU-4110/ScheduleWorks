@@ -52,7 +52,7 @@ you can put your changes in to the scene builder and you can see your results ac
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btn_graph_tab" mnemonicParsing="false" onAction="#CourseGraphTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Course Graph" textFill="WHITE" wrapText="true">
+                  <Button fx:id="btn_graph_tab" mnemonicParsing="false" onAction="#courseGraphTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Course Graph" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Century Gothic Bold" size="26.0" />
                      </font>
@@ -60,7 +60,7 @@ you can put your changes in to the scene builder and you can see your results ac
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btn_create_schedule" mnemonicParsing="false" onAction="#CreateScheduleTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Create Schedule" textFill="WHITE" wrapText="true">
+                  <Button fx:id="btn_create_schedule_tab" mnemonicParsing="false" onAction="#createScheduleTab" prefHeight="68.0" prefWidth="277.0" styleClass="general_button" text="Create Schedule" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Century Gothic Bold" size="26.0" />
                      </font>
@@ -68,7 +68,7 @@ you can put your changes in to the scene builder and you can see your results ac
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btn_Help" graphicTextGap="0.0" mnemonicParsing="false" onAction="#pressHelp" prefHeight="55.0" prefWidth="282.0" styleClass="general_button" text="HELP" textFill="WHITE">
+                  <Button fx:id="btn_help_tab" graphicTextGap="0.0" mnemonicParsing="false" onAction="#pressHelp" prefHeight="55.0" prefWidth="282.0" styleClass="general_button" text="HELP" textFill="WHITE">
                      <font>
                         <Font name="Century Gothic Bold" size="26.0" />
                      </font>
