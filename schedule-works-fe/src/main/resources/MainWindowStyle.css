@@ -4,7 +4,20 @@
 
 .scenePane{
     -fx-background-color: linear-gradient(to bottom right,#42af9d,#dfca0f);
+    /* animation: animate 15s ease infinite; */
     /* -fx-background-radius: 6px, 0px; */
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
 }
 
 /*  BUTTON CODE  */

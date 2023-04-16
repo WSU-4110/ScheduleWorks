@@ -1,5 +1,6 @@
 package org.scheduleworks.dep;
 
+import java.awt.*;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -12,11 +13,12 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
+import javafx.stage.Screen;
+
 public class InterfaceMain extends Application{
 
     private static Stage stg;
     private double x, y = 0;
-    //static privateInfo userInfo = new privateInfo();
 
     public static void main(String[] args){
         launch(args); // necessary to start the application
@@ -25,17 +27,20 @@ public class InterfaceMain extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         stg = primaryStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Interface.fxml"));
-        loader.setController(new InterfaceController());
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("InterfaceStart.fxml"));
+        //loader.setController(new InterfaceController());
         Parent root = loader.load();
 
         primaryStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("ScheduleWorksLogo.png")));
         primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.setTitle("ScheduleWorks"); // Title of the page of Interface
         primaryStage.setScene(new Scene(root)); // sets up the size of the interface showm in the scene 
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        primaryStage.setMaxWidth(screenSize.getWidth());
+        primaryStage.setMaxHeight(screenSize.getHeight());
         primaryStage.setMinWidth(1280);
         primaryStage.setMinHeight(810);
-
         primaryStage.setWidth(1280);
         primaryStage.setHeight(810);
 
@@ -59,16 +64,32 @@ public class InterfaceMain extends Application{
         Parent root = loader.load();
 
         Scene newScene = new Scene(root);
-        //fadeOut();
         stg.setScene(newScene);
+        
+        //  Changes the width very slightly so that all scene objects are at the correct resolution
+        double width = stg.getWidth();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        if (width % 1 == 0)
+            stg.setWidth(width * 1.00007812);
+        else
+            stg.setWidth(Math.floor(width));
+        //System.out.println("Width: " + width);
     }
 
     @FXML
-    private StackPane rootPane;
+    void fadeIn() {
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2));
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.play();
+    }
+
+    @FXML
     void fadeOut() {
-        FadeTransition fadeInTransition = new FadeTransition(Duration.millis(1500));
-        fadeInTransition.setFromValue(0.0);
-        fadeInTransition.setToValue(1.0);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2));
+        fadeTransition.setFromValue(0.0);
+        fadeTransition.setToValue(1.0);
+        fadeTransition.play();
     }
 
     public Stage getPane(){

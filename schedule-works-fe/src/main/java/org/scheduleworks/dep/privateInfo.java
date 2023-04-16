@@ -1,5 +1,6 @@
-package org.scheduleworks.dep;
 //  Private info class for login & app settings
+
+package org.scheduleworks.dep;
 
 public class privateInfo {
     //  Username and password
