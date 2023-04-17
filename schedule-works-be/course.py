@@ -51,10 +51,10 @@ class Course:
     def get_credits(self):
         return self.course_json["credits"]
 
-    def def_get_enrollment_capacity(self):
+    def get_enrollment_capacity(self):
         return self.course_json["maximumEnrollment"]
 
-    def def_get_open_seats(self):
+    def get_open_seats(self):
         return self.course_json["seatsAvailable"]
 
     def get_wait_capacity(self):

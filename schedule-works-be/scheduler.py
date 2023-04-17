@@ -106,16 +106,43 @@ class Scheduler:
                 self.possible_schedule.pop()
 
     def output_to_file(self):
+        limit = 1
         try:
             with open(
                 "C:/Program Files/ScheduleWorks/data/schedule.txt",
                 "w+",
                 encoding="utf-8",
             ) as outfile:
-                for schedule in self.possible_schedules:
+                # for i, schedule in enumerate(self.possible_schedules):
+                #     if i > limit:
+                #         return
+                # for course in schedule:
+                for course in self.possible_schedules[0]:
+                    day_values = list(course.get_days().values())
+
+                    outfile.write(course.get_course_title())
+
                     outfile.write("\n")
-                    for course in schedule:
-                        outfile.write(str(course))
+                    outfile.write(course.get_course_number())
+
+                    outfile.write("\n")
+                    outfile.write(course.get_course_subject())
+
+                    outfile.write("\n")
+                    outfile.write(course.get_campus())
+
+                    outfile.write("\n")
+                    outfile.write(course.get_times()[0])
+
+                    outfile.write("\n")
+                    outfile.write(course.get_times()[1])
+                    outfile.write("\n")
+
+                    for day in day_values:
+                        outfile.write(str(day))
+                        outfile.write("\n")
+                    outfile.write(str(course.get_open_seats()))
+                    outfile.write("\n")
 
         except FileNotFoundError as error:
             raise error
