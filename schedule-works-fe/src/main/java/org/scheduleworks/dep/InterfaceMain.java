@@ -40,9 +40,9 @@ public class InterfaceMain extends Application{
         primaryStage.setMaxWidth(screenSize.getWidth());
         primaryStage.setMaxHeight(screenSize.getHeight());
         primaryStage.setMinWidth(1280);
-        primaryStage.setMinHeight(810);
+        primaryStage.setMinHeight(800);
         primaryStage.setWidth(1280);
-        primaryStage.setHeight(810);
+        primaryStage.setHeight(800);
 
         root.setOnMousePressed(mouseEvent ->{
             x=mouseEvent.getSceneX();

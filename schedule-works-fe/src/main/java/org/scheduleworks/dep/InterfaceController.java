@@ -83,14 +83,19 @@ public class InterfaceController extends InterfaceMain {
     public void pressLoginTab() throws Exception {
         changeScene("InterfaceLogin.fxml");
 
-        btn_login_tab.setText("Welcome " + userInfo.getUsername());
-        
+        //  Reset toggles in privateInfo
+        userInfo.setSeleniumToggle(true);
+        userInfo.setSaveCookiesToggle(true);
+        //System.out.println(userInfo.getSeleniumToggle());
+        //System.out.println(userInfo.getSaveCookiesToggle());
+
+        //btn_login_tab.setText("Welcome " + userInfo.getUsername());
         //changeUserText();         //  FIX THIS if possible, remove/comment out otherwise
     }
 
     public void changeUserText() throws Exception {
         if (userInfo.getUsername() == "") {
-            userText.setText("Not currently logged inn ⚠");
+            userText.setText("Not currently logged in ⚠");
             btn_login_tab.setText("Login");
         }
         else {
@@ -116,12 +121,6 @@ public class InterfaceController extends InterfaceMain {
 
             username.clear();
             password.clear();
-
-            //  Enable other tabs
-            btn_retrieve_tab.setDisable(false);
-            btn_graph_tab.setDisable(false);
-            btn_create_schedule_tab.setDisable(false);
-            btn_help_tab.setDisable(false);
         }
     }
 
@@ -379,23 +378,21 @@ public class InterfaceController extends InterfaceMain {
         Desktop.getDesktop().browse(new URI("https://mail.google.com/mail"));
     }
     
-
     //function to delete files from the user's directory
     //files classData.json, courseHistory.json, courseHistory.txt, degreeRequirment.txt,userData.json,userData.txt
-    
-    //add button
-
-
-    private void deleteAllFiles() {
-        String[] fileNames = {"classData.json", "courseHistory.json", "courseHistory.txt",
-                              "degreeRequirement.txt", "userData.json", "userData.txt"};
+    public void deleteAllFiles() {
+        String[] fileNames = {"C:\\Program Files\\ScheduleWorks\\data\\classData.json", 
+                              "C:\\Program Files\\ScheduleWorks\\data\\courseHistory.json", 
+                              "C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt",
+                              "C:\\Program Files\\ScheduleWorks\\data\\degreeRequirement.txt", 
+                              "C:\\Program Files\\ScheduleWorks\\data\\userData.json", 
+                              "C:\\Program Files\\ScheduleWorks\\data\\userData.txt"};
         for (String fileName : fileNames) {
             File file = new File(fileName);
-            if (file.delete()) {
+            if (file.delete()) 
                 System.out.println(fileName + " deleted successfully.");
-            } else {
+            else 
                 System.out.println(fileName + " does not exist.");
-            }
         }
     }
 }

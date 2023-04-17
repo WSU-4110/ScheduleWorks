@@ -21,8 +21,8 @@ you can put your changes in to the scene builder and you can see your results ac
                   <Font name="Century Gothic Bold" size="35.0" />
                </font>
             </Text>
-            <Line endX="711.5" layoutX="255.0" layoutY="48.0" startX="-252.0" stroke="WHITE" strokeWidth="5.0" AnchorPane.bottomAnchor="665.5" AnchorPane.leftAnchor="0.5" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="45.5" />
-            <Line endX="711.5" layoutX="255.0" layoutY="48.0" startX="-252.0" stroke="WHITE" strokeWidth="5.0" AnchorPane.rightAnchor="6.0" />
+            <Line endX="711.5" layoutX="255.0" layoutY="48.0" smooth="false" startX="-252.0" stroke="WHITE" strokeWidth="5.0" AnchorPane.bottomAnchor="665.5" AnchorPane.leftAnchor="0.5" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="45.5" />
+            <Line endX="711.5" layoutX="255.0" layoutY="48.0" smooth="false" startX="-200.0" stroke="WHITE" strokeWidth="5.0" AnchorPane.rightAnchor="6.0" />
             <Button fx:id="retrieveStartButton" alignment="CENTER" layoutX="786.0" layoutY="640.0" mnemonicParsing="false" onAction="#pressRetrieveStartButton" prefHeight="47.0" prefWidth="151.0" styleClass="general_button" stylesheets="@MainWindowStyle.css" text="Update" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" AnchorPane.bottomAnchor="29.0" AnchorPane.rightAnchor="38.0">
                <font>
                   <Font name="Century Gothic Bold" size="24.0" />
