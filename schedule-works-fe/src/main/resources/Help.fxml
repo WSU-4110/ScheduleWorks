@@ -157,7 +157,7 @@ you can put your changes in to the scene builder and you can see your results ac
             </AnchorPane>
             <AnchorPane layoutX="-4.0" layoutY="502.0" prefHeight="96.0" prefWidth="992.0">
                <children>
-                  <Button fx:id="Email_button" layoutX="341.0" layoutY="16.0" mnemonicParsing="false" onAction="#EmailPage" prefHeight="65.0" prefWidth="311.0" styleClass="general_button" text="link to Access mail" textAlignment="CENTER">
+                  <Button fx:id="Email_button" layoutX="341.0" layoutY="16.0" mnemonicParsing="false" onAction="#EmailPage" prefHeight="65.0" prefWidth="311.0" styleClass="general_button" text="Discord Link" textAlignment="CENTER">
                      <font>
                         <Font size="30.0" />
                      </font>

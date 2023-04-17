@@ -369,7 +369,7 @@ public class InterfaceController extends InterfaceMain {
 
     public void EmailPage() throws Exception {
         System.out.println("Link clicked");
-        Desktop.getDesktop().browse(new URI("https://mail.google.com/mail"));
+        Desktop.getDesktop().browse(new URI("https://github.com/WSU-4110/ScheduleWorks/discussions/59"));
     }
 
     public void FaqPage() throws Exception {
