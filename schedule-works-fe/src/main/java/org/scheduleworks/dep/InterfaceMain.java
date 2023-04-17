@@ -40,9 +40,9 @@ public class InterfaceMain extends Application{
         primaryStage.setMaxWidth(screenSize.getWidth());
         primaryStage.setMaxHeight(screenSize.getHeight());
         primaryStage.setMinWidth(1280);
-        primaryStage.setMinHeight(810);
+        primaryStage.setMinHeight(800);
         primaryStage.setWidth(1280);
-        primaryStage.setHeight(810);
+        primaryStage.setHeight(800);
 
         root.setOnMousePressed(mouseEvent ->{
             x=mouseEvent.getSceneX();
@@ -70,9 +70,9 @@ public class InterfaceMain extends Application{
         double width = stg.getWidth();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         if (width % 1 == 0)
-            stg.setWidth(width * 1.00007812);
+            stg.setWidth(width * 0.999);
         else
-            stg.setWidth(Math.floor(width));
+            stg.setWidth(Math.ceil(width));
         //System.out.println("Width: " + width);
     }
 
