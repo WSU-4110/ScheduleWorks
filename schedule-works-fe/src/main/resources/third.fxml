@@ -118,57 +118,56 @@ you can put your changes in to the scene builder and you can see your results ac
          <children>
             <Line endX="711.5" layoutX="254.5" layoutY="48.0" startX="-252.0" stroke="WHITE" strokeWidth="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
             <Line endX="711.5" layoutX="255.0" layoutY="323.0" startX="-252.0" stroke="WHITE" strokeWidth="3.0" />
-            <AnchorPane layoutY="48.0" prefHeight="200.0" prefWidth="975.0">
+            <AnchorPane layoutX="1.0" layoutY="51.0" prefHeight="200.0" prefWidth="975.0">
                <children>
-                  <Text layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Customer Support" textAlignment="CENTER" wrappingWidth="974.9999972581863">
+                  <AnchorPane layoutX="-2.0" prefHeight="75.0" prefWidth="975.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#firstMenu" prefHeight="44.0" prefWidth="959.0" styleClass="general_button" text="What is the purpose of this program? Who can access it? How do I make my Account? ">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
+                  <Button layoutY="122.0" mnemonicParsing="false" onAction="#secondMenu" prefHeight="44.0" prefWidth="959.0" styleClass="general_button" text="Purpose of Retrieve Courses Button? ">
                      <font>
-                        <Font size="60.0" />
+                        <Font size="20.0" />
                      </font>
-                  </Text>
-                  <Text layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Contact the number given below" textAlignment="CENTER" wrappingWidth="974.9999972581863">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Text>
+                  </Button>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="-3.0" layoutY="218.0" prefHeight="104.0" prefWidth="984.0">
+            <AnchorPane layoutX="-4.0" layoutY="221.0" prefHeight="104.0" prefWidth="984.0">
                <children>
-                  <Text fill="#dd1a0f" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="586-328-3573" textAlignment="CENTER" wrappingWidth="984.0000049173832">
+                  <Button layoutY="68.0" mnemonicParsing="false" onAction="#thirdMenu" prefHeight="44.0" prefWidth="959.0" styleClass="general_button" text="Purpose of Create Schedule Button?">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Text layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="958.9999980926514">
+                     <font>
+                        <Font size="20.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="-1.0" layoutY="358.0" prefHeight="104.0" prefWidth="984.0">
                <children>
-                  <Text layoutX="6.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can also reach us out at" textAlignment="CENTER" wrappingWidth="975.0000185966492">
+                  <Button layoutY="46.0" mnemonicParsing="false" onAction="#fourthMenu" prefHeight="44.0" prefWidth="959.0" styleClass="general_button" text="Problems with the Program ">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="20.0" />
                      </font>
-                  </Text>
-                  <Text fill="#c91717" layoutX="355.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gw8056@wayne.edu">
+                  </Button>
+                  <Text layoutY="-5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This Button is used after the user has logged in and Retrieve his/her information then its used to make a schedule of the student " wrappingWidth="958.9999980926514">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="20.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="-4.0" layoutY="502.0" prefHeight="96.0" prefWidth="992.0">
                <children>
-                  <Button fx:id="Email_button" layoutX="341.0" layoutY="16.0" mnemonicParsing="false" onAction="#EmailPage" prefHeight="65.0" prefWidth="311.0" styleClass="general_button" text="link to Access mail" textAlignment="CENTER">
+                  <Button layoutY="14.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="959.0" styleClass="general_button" text="Latest Updates and Announcements">
                      <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="-4.0" layoutY="581.0" prefHeight="96.0" prefWidth="992.0">
-               <children>
-                  <Button fx:id="faq_button" layoutX="341.0" layoutY="17.0" mnemonicParsing="false" onAction="#FaqPage" prefHeight="65.0" prefWidth="311.0" styleClass="general_button" text="FAQ Page" textAlignment="CENTER">
-                     <font>
-                        <Font size="30.0" />
+                        <Font size="20.0" />
                      </font>
                   </Button>
                </children>
