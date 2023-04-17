@@ -70,9 +70,9 @@ public class InterfaceMain extends Application{
         double width = stg.getWidth();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         if (width % 1 == 0)
-            stg.setWidth(width * 1.00007812);
+            stg.setWidth(width * 0.999);
         else
-            stg.setWidth(Math.floor(width));
+            stg.setWidth(Math.ceil(width));
         //System.out.println("Width: " + width);
     }
 
