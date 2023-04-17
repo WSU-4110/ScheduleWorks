@@ -11,10 +11,13 @@ class Course:
     def __repr__(self):
         return str(
             "Course Object: "
-            + self.get_course_title()
             + " "
             + self.get_course_subject()
             + self.get_course_number()
+            + " "
+            + self.get_times()[0]
+            + "-"
+            + self.get_times()[1]
         )
 
     def get_id(self):
