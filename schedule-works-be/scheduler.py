@@ -16,6 +16,7 @@ class Scheduler:
         self.dgraph.graph.add_edges_from(courses_adjacancy_matrix)
         self.courses_queue = self.dgraph.make_priority_queue()
         self.import_available_courses()
+        self.possible_schedules = []
 
     def get_queue(self):
         """Returns the queue of courses needed in the order they should be taken."""
@@ -45,14 +46,64 @@ class Scheduler:
                 continue
             for section in courses_sections:
                 self.courses_queue[i][2].append(cour.Course(section))
-            self.clean_courses_queue()
-            print(self.courses_queue)
+        self.clean_courses_queue()
 
     def clean_courses_queue(self):
         """Remove classes that are not available for the semester. Internal function used by import avil courses."""
+        removal_counter = 0
         for i, course in enumerate(self.courses_queue):
-            if course[2] == []:
-                del self.courses_queue[i]
+            print(course)
+            if len(course[2]) == 0:
+                del self.courses_queue[i - removal_counter]
+                removal_counter += 1
+        print("AFTER CLEAN: ", self.courses_queue)
+
+    def classes_conflict(self, course1: cour.Course, course2: cour.Course):
+        course1_days = course1.get_days()
+        course2_days = course2.get_days()
+        shared_days = [0, 0, 0, 0, 0]
+        possible_conflict = False
+        for i, on_this_day in enumerate(course1_days):
+            if on_this_day == True and course2_days[i] == on_this_day:
+                possible_conflict = True
+                shared_days[i] = 1
+        if not possible_conflict:
+            return False
+
+        course1_time = course1.get_times()
+        course2_time = course2.get_times()
+
+        if course2_time[0] > course1_time[0] and course2_time[0] < course1_time[1]:
+            return True
+        if course2_time[1] > course1_time[0] and course2_time[1] < course1_time[1]:
+            return True
+
+        return False
+
+    def add_course(self, course):
+        pass
+
+    def backtrack(self, course_index):
+        """Given a list form all appends with the picking list"""
+        print(self.courses_queue)
+        if course_index == len(self.courses_queue) or self.courses_queue == []:
+            # All courses have been scheduled, we found a valid schedule
+            print(self.possible_schedules)
+            print("out")
+            return
+        next_course = self.courses_queue.pop(0)
+
+        for section in next_course[2]:
+            conflict = False
+            for scheduled_course in self.possible_schedules:
+                if self.classes_conflict(section, scheduled_course):
+                    conflict = True
+                    break
+
+            if not conflict:
+                self.possible_schedules.append(section)
+                self.backtrack(course_index + 1)
+                self.possible_schedules.pop()
 
     def schedule(self):
         """Create all possible schedules that satisfy filters.
@@ -62,7 +113,8 @@ class Scheduler:
         """TODO:
             go in order of queue and slowly build a schedule, 
             backtrack if cant fill
-           """
+        """
+        self.backtrack(0)
 
 
 def main():

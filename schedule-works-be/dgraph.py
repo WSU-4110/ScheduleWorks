@@ -96,7 +96,6 @@ class Dgraph:
         for entries in memo:
             queue.append([entries, len(memo[entries])])
         queue.sort(key=lambda course: course[1], reverse=True)
-
         return queue
 
     def topo_sort(self):
