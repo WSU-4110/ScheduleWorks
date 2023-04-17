@@ -8,6 +8,15 @@ class Course:
         """Initialize a course object from json data."""
         self.course_json = course_json
 
+    def __repr__(self):
+        return str(
+            "Course Object: "
+            + self.get_course_title()
+            + " "
+            + self.get_course_subject()
+            + self.get_course_number()
+        )
+
     def get_id(self):
         return self.course_json["id"]
 
@@ -30,7 +39,7 @@ class Course:
         return self.course_json["campusDescription"]
 
     def get_course_type(self):
-        """Lecture or lab etc."""
+        """Lecture or lab section."""
         return self.course_json["scheduleTypeDescription"]
 
     def get_course_title(self):

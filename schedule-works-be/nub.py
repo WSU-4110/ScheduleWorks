@@ -323,8 +323,7 @@ class Nub:
             return [{"Error": "Cannot find class"}]
 
         data = response.json()["data"]
-
-        # pprint.pprint(response.json())
+        return data
 
 
 def main():
