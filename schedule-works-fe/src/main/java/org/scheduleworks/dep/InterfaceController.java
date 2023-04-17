@@ -447,13 +447,11 @@ public class InterfaceController extends InterfaceMain {
 				// System.out.println(line);
                 tempList.add(line);
                 iter+=1;
-                System.out.println(Arrays.deepToString(tempList.toArray()));
                 
                 int col = iter % 12;
                 if(col==0 && tempList.size()>0){
                     System.out.print("HERE: ");
                     arrList.add((ArrayList<String>)tempList.clone());
-                    System.out.println(Arrays.deepToString(arrList.toArray()));
 
                     tempList.clear();
                 }
@@ -464,7 +462,6 @@ public class InterfaceController extends InterfaceMain {
 		} catch (IOException e) {
 			System.out.println("Cant find file");;
 		}
-        System.out.println(Arrays.deepToString(arrList.toArray()));
 
         return arrList;
     }
