@@ -17,6 +17,7 @@ import java.io.FileWriter;
 import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import javafx.scene.control.TableColumn;
@@ -24,6 +25,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.net.URI;
 import java.awt.Desktop;
+
 
 public class InterfaceController extends InterfaceMain {
     // BUTTON LIST
@@ -35,6 +37,8 @@ public class InterfaceController extends InterfaceMain {
     private Text incorrectLoginIndicator;
     @FXML
     private TextField username;
+    @FXML
+    private TextField customInsert;
     @FXML
     private PasswordField password;
     @FXML
@@ -50,6 +54,8 @@ public class InterfaceController extends InterfaceMain {
     private TextField code;
     @FXML
     private Button retrieveStartButton;
+    @FXML
+    private Button updateScheduleButton;
     @FXML
     private TextArea taCoursesTaken;
     @FXML
@@ -69,8 +75,11 @@ public class InterfaceController extends InterfaceMain {
 
     @FXML
     private TableView<Course> tableCourses;
+    @FXML
+    private TableView<School> tableSchedule;
+ 
+    //  IMAGE LIST
 
-    // IMAGE LIST
     @FXML
     private ImageView graphView;
 
@@ -144,7 +153,14 @@ public class InterfaceController extends InterfaceMain {
         }
     }
 
-    // RETRIEVE COURSES TAB
+    public void pressCreateSchedule() throws Exception{
+
+        Thread t = new Thread(new pythonScheduler(customInsert.getText().toString()));
+        t.start();
+    }
+
+    //  RETRIEVE COURSES TAB
+
     public void retrieveCoursesTab() throws Exception {
         changeScene("InterfaceRetrieve.fxml");
 
@@ -200,11 +216,91 @@ public class InterfaceController extends InterfaceMain {
 
         TableColumn<Course, String> numberColumn = new TableColumn<>("Number");
         numberColumn.setMinWidth(50);
-        numberColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
+        numberColumn.setCellValueFactory(new PropertyValueFactory<>("number"));    
+        
+        tableCourses.getColumns().clear();
+        tableCourses.getItems().clear();
+
 
         tableCourses.setItems(getCoursedList());
         tableCourses.getColumns().addAll(attributeColumn, numberColumn, creditColumn, nameColumn, passColumn);
     }
+
+    public void setUpScheduleTable(){
+        // subject and campus are flipped in the text file reader
+        TableColumn<School, String>courseNameColumn = new TableColumn<>("Name");
+        courseNameColumn.setMinWidth(50);
+        courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+
+
+        TableColumn<School, String>courseCodeColumn = new TableColumn<>("Code");
+        courseCodeColumn.setMinWidth(50);
+        courseCodeColumn.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
+        
+        TableColumn<School, String>courseSubjectColumn = new TableColumn<>("Subject");
+        courseSubjectColumn.setMinWidth(50);
+        courseSubjectColumn.setCellValueFactory(new PropertyValueFactory<>("campus"));
+
+
+        TableColumn<School, String>campusColumn = new TableColumn<>("Campus");
+        campusColumn.setMinWidth(50);
+        campusColumn.setCellValueFactory(new PropertyValueFactory<>("courseSubject"));
+
+
+        TableColumn<School, String>startTimeColumn = new TableColumn<>("Start Time");
+        startTimeColumn.setMinWidth(50);
+        startTimeColumn.setCellValueFactory(new PropertyValueFactory<>("startTime"));
+
+        
+        TableColumn<School, String>endTimeColumn = new TableColumn<>("End Time");
+        endTimeColumn.setMinWidth(50);
+        endTimeColumn.setCellValueFactory(new PropertyValueFactory<>("endTime"));
+
+        
+        TableColumn<School, String>mondayColumn = new TableColumn<>("Monday");
+        mondayColumn.setMinWidth(50);
+        mondayColumn.setCellValueFactory(new PropertyValueFactory<>("monday"));
+
+        
+        TableColumn<School, String>tuesdayColumn = new TableColumn<>("Tuesday");
+        tuesdayColumn.setMinWidth(50);
+        tuesdayColumn.setCellValueFactory(new PropertyValueFactory<>("tuesday"));
+
+        
+        TableColumn<School, String>wednesdayColumn = new TableColumn<>("Wedn.");
+        wednesdayColumn.setMinWidth(50);
+        wednesdayColumn.setCellValueFactory(new PropertyValueFactory<>("wednesday"));
+
+        
+        TableColumn<School, String>thursdayColumn = new TableColumn<>("Thursday");
+        thursdayColumn.setMinWidth(50);
+        thursdayColumn.setCellValueFactory(new PropertyValueFactory<>("thursday"));
+
+        
+        TableColumn<School, String>fridayColumn = new TableColumn<>("Friday");
+        fridayColumn.setMinWidth(50);
+        fridayColumn.setCellValueFactory(new PropertyValueFactory<>("friday"));
+
+        
+        TableColumn<School, String>openSeatsColumn = new TableColumn<>("Seats");
+        openSeatsColumn.setMinWidth(50);
+        openSeatsColumn.setCellValueFactory(new PropertyValueFactory<>("openSeats"));
+
+        tableSchedule.getColumns().clear();
+        tableSchedule.getItems().clear();
+
+
+        tableSchedule.setItems(getScheduleList());
+
+        tableSchedule.getColumns().addAll(courseNameColumn,courseSubjectColumn,courseCodeColumn,
+        campusColumn,startTimeColumn,endTimeColumn,mondayColumn,tuesdayColumn,wednesdayColumn,thursdayColumn,
+        fridayColumn,openSeatsColumn);
+    }
+    public void pressUpdateScheduleButton() throws Exception {
+        setUpScheduleTable();
+
+    }
+
 
     public void pressRetrieveStartButton() throws Exception {
         System.out.println("RETRIEVE START");
@@ -313,23 +409,59 @@ public class InterfaceController extends InterfaceMain {
             reader = new BufferedReader(new FileReader(file));
             String line = reader.readLine();
 
-            while (line != null) {
-                // System.out.println(line);
+			while (line != null) {
+                tempList.add(line);
+                line = reader.readLine();
+                iter+=1;
+				// System.out.println(line);
+
                 int col = iter % 5;
                 if (col % 5 == 0 && tempList.size() > 0) {
                     arrList.add((ArrayList<String>) tempList.clone());
                     tempList.clear();
                 }
-                tempList.add(line);
-                line = reader.readLine();
-                iter += 1;
-            }
+			}
 
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+			reader.close();
+		} catch (IOException e) {
+			System.out.println("File doesnt exist!");;
+		}
         // System.out.println(Arrays.deepToString(arrList.toArray()));
+
+        return arrList;
+    }
+    public ArrayList<ArrayList<String>> getScheduleData() {
+        ArrayList<ArrayList<String>> arrList = new ArrayList<ArrayList<String>>();
+
+        File file = new File("C:\\Program Files\\ScheduleWorks\\data\\schedule.txt");
+        BufferedReader reader;
+        int iter=0;
+        ArrayList<String> tempList = new ArrayList<String>();
+
+		try {
+			reader = new BufferedReader(new FileReader(file));
+			String line = reader.readLine();
+
+			while (line != null) {
+				// System.out.println(line);
+                tempList.add(line);
+                iter+=1;
+                
+                int col = iter % 12;
+                if(col==0 && tempList.size()>0){
+                    System.out.print("HERE: ");
+                    arrList.add((ArrayList<String>)tempList.clone());
+
+                    tempList.clear();
+                }
+				line = reader.readLine();
+			}
+
+			reader.close();
+		} catch (IOException e) {
+			System.out.println("Cant find file");;
+		}
+
 
         return arrList;
     }
@@ -340,6 +472,18 @@ public class InterfaceController extends InterfaceMain {
         for (ArrayList<String> tempList : getCourseData()) {
             // System.out.println(tempList.get(4)+tempList.get(3)+tempList.get(2)+tempList.get(0)+tempList.get(1));
             data.add(new Course(tempList.get(4), tempList.get(3), tempList.get(2), tempList.get(0), tempList.get(1)));
+        }
+
+        return data;
+    }
+    public ObservableList<School> getScheduleList(){
+        ObservableList<School> data = FXCollections.observableArrayList();
+
+        for(ArrayList<String> tempList: getScheduleData()){
+            data.add(new School(tempList.get(0),tempList.get(1),tempList.get(3),
+            tempList.get(2),tempList.get(4),tempList.get(5),tempList.get(6),
+            tempList.get(7),tempList.get(8),tempList.get(9),
+            tempList.get(10),tempList.get(11)));
         }
 
         return data;
@@ -399,12 +543,17 @@ public class InterfaceController extends InterfaceMain {
     // files classData.json, courseHistory.json, courseHistory.txt,
     // degreeRequirment.txt,userData.json,userData.txt
     public void deleteAllFiles() {
-        String[] fileNames = { "C:\\Program Files\\ScheduleWorks\\data\\classData.json",
-                "C:\\Program Files\\ScheduleWorks\\data\\courseHistory.json",
-                "C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt",
-                "C:\\Program Files\\ScheduleWorks\\data\\degreeRequirement.txt",
-                "C:\\Program Files\\ScheduleWorks\\data\\userData.json",
-                "C:\\Program Files\\ScheduleWorks\\data\\userData.txt" };
+        String[] fileNames = {"C:\\Program Files\\ScheduleWorks\\data\\classData.json", 
+                              "C:\\Program Files\\ScheduleWorks\\data\\courseHistory.json", 
+                              "C:\\Program Files\\ScheduleWorks\\data\\courseHistory.txt",
+                              "C:\\Program Files\\ScheduleWorks\\data\\degreeRequirement.txt", 
+                              "C:\\Program Files\\ScheduleWorks\\data\\userData.json", 
+                              "C:\\Program Files\\ScheduleWorks\\data\\userData.txt",
+                              "C:\\Program Files\\ScheduleWorks\\data\\schedule.txt",
+                              "C:\\Program Files\\ScheduleWorks\\data\\requirements.json",
+                              "C:\\Program Files\\ScheduleWorks\\data\\degreeRequirements.txt"
+                            };
+
         for (String fileName : fileNames) {
             File file = new File(fileName);
             if (file.delete())

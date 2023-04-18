@@ -7,12 +7,30 @@ public class School {
     private String campus;
     private String startTime;
     private String endTime;
-    private boolean monday;
-    private boolean tuesday;
-    private boolean wednesday;
-    private boolean thursday;
-    private boolean friday;
-    private int openSeats;
+    private String monday;
+    private String tuesday;
+    private String wednesday;
+    private String thursday;
+    private String friday;
+    private String openSeats;
+
+    public School(String courseName, String courseCode, String courseSubject,
+        String campus, String startTime, String endTime,
+        String monday, String tuesday, String wednesday,
+        String thursday, String friday, String openSeats){
+        this.courseName = courseName;
+        this.courseCode = courseCode;
+        this.courseSubject = courseSubject;
+        this.campus = campus;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.monday = monday;
+        this.tuesday = tuesday;
+        this.wednesday = wednesday;
+        this.thursday = thursday;
+        this.friday = friday;
+        this.openSeats = openSeats;
+    }
 
     public String getCourseName() {
         return courseName;
@@ -62,51 +80,51 @@ public class School {
         this.endTime = endTime;
     }
 
-    public boolean isMonday() {
+    public String isMonday() {
         return monday;
     }
 
-    public void setMonday(boolean monday) {
+    public void setMonday(String monday) {
         this.monday = monday;
     }
 
-    public boolean isTuesday() {
+    public String isTuesday() {
         return tuesday;
     }
 
-    public void setTuesday(boolean tuesday) {
+    public void setTuesday(String tuesday) {
         this.tuesday = tuesday;
     }
 
-    public boolean isWednesday() {
+    public String isWednesday() {
         return wednesday;
     }
 
-    public void setWednesday(boolean wednesday) {
+    public void setWednesday(String wednesday) {
         this.wednesday = wednesday;
     }
 
-    public boolean isThursday() {
+    public String isThursday() {
         return thursday;
     }
 
-    public void setThursday(boolean thursday) {
+    public void setThursday(String thursday) {
         this.thursday = thursday;
     }
 
-    public boolean isFriday() {
+    public String isFriday() {
         return friday;
     }
 
-    public void setFriday(boolean friday) {
+    public void setFriday(String friday) {
         this.friday = friday;
     }
 
-    public int getOpenSeats() {
+    public String getOpenSeats() {
         return openSeats;
     }
 
-    public void setOpenSeats(int openSeats) {
+    public void setOpenSeats(String openSeats) {
         this.openSeats = openSeats;
     }
 }
