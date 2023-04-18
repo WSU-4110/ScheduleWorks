@@ -32,9 +32,9 @@ you can put your changes in to the scene builder and you can see your results ac
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TableView fx:id="tableSchedule" layoutX="33.0" layoutY="83.0" prefHeight="506.0" prefWidth="907.0" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="95.0" />
-            <TextField fx:id="customInsert" layoutX="38.0" layoutY="597.0" prefHeight="25.0" prefWidth="415.0" promptText="Ex. CSC 3200 5  CSC 5290 3 PS 3080 9 : [Subject Code Priority] ]" />
-            <Button fx:id="createScheduleButton" alignment="CENTER" layoutX="38.0" layoutY="633.0" mnemonicParsing="false" onAction="#pressCreateSchedule" prefHeight="47.0" prefWidth="415.0" styleClass="general_button" stylesheets="@MainWindowStyle.css" text="Add Classes And Create" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+            <TableView fx:id="tableSchedule" layoutX="33.0" layoutY="83.0" prefHeight="484.0" prefWidth="907.0" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="95.0" />
+            <TextField fx:id="customInsert" layoutX="38.0" layoutY="606.0" prefHeight="25.0" prefWidth="415.0" promptText="Ex. CSC 3200 5  CSC 5290 3 PS 3080 9 : [Subject Code Priority] ]" AnchorPane.bottomAnchor="84.39999999999998" />
+            <Button fx:id="createScheduleButton" alignment="CENTER" layoutX="38.0" layoutY="642.0" mnemonicParsing="false" onAction="#pressCreateSchedule" prefHeight="47.0" prefWidth="415.0" styleClass="general_button" stylesheets="@MainWindowStyle.css" text="Add Classes And Create" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" AnchorPane.bottomAnchor="26.799999999999955">
                <font>
                   <Font name="Century Gothic Bold" size="24.0" />
                </font>

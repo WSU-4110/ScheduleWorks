@@ -117,62 +117,45 @@ you can put your changes in to the scene builder and you can see your results ac
       <AnchorPane fx:id="loginPane" layoutX="291.0" layoutY="69.0" prefHeight="716.0" prefWidth="986.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="69.0">
          <children>
             <Line endX="711.5" layoutX="254.5" layoutY="48.0" startX="-252.0" stroke="WHITE" strokeWidth="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Line endX="711.5" layoutX="255.0" layoutY="323.0" startX="-252.0" stroke="WHITE" strokeWidth="3.0" />
             <AnchorPane layoutY="48.0" prefHeight="200.0" prefWidth="975.0">
                <children>
-                  <Text layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Customer Support" textAlignment="CENTER" wrappingWidth="974.9999972581863">
+                  <Text layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Help Page" textAlignment="CENTER" wrappingWidth="974.9999972581863">
                      <font>
                         <Font size="60.0" />
                      </font>
                   </Text>
-                  <Text layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Contact the number given below" textAlignment="CENTER" wrappingWidth="974.9999972581863">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Text>
+                  <Line endX="711.5" layoutX="259.0" layoutY="123.0" startX="-252.0" stroke="WHITE" strokeWidth="3.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="-3.0" layoutY="218.0" prefHeight="104.0" prefWidth="984.0">
                <children>
-                  <Text fill="#dd1a0f" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="586-328-3573" textAlignment="CENTER" wrappingWidth="984.0000049173832">
+                  <Text layoutX="330.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For common questions:" textAlignment="CENTER" wrappingWidth="344.59997284412384">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="-1.0" layoutY="358.0" prefHeight="104.0" prefWidth="984.0">
-               <children>
-                  <Text layoutX="6.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can also reach us out at" textAlignment="CENTER" wrappingWidth="975.0000185966492">
+                  <Button fx:id="faq_button" layoutX="341.0" layoutY="152.0" mnemonicParsing="false" onAction="#FaqPage" prefHeight="65.0" prefWidth="311.0" styleClass="general_button" text="FAQ Page" textAlignment="CENTER">
                      <font>
                         <Font size="30.0" />
                      </font>
-                  </Text>
-                  <Text fill="#c91717" layoutX="355.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gw8056@wayne.edu">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Text>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="-4.0" layoutY="502.0" prefHeight="96.0" prefWidth="992.0">
                <children>
-                  <Button fx:id="Email_button" layoutX="341.0" layoutY="16.0" mnemonicParsing="false" onAction="#EmailPage" prefHeight="65.0" prefWidth="311.0" styleClass="general_button" text="GitHub Link" textAlignment="CENTER">
+                  <Button fx:id="Email_button" layoutX="343.0" layoutY="19.0" mnemonicParsing="false" onAction="#EmailPage" prefHeight="65.0" prefWidth="311.0" styleClass="general_button" text="GitHub Link" textAlignment="CENTER">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="-4.0" layoutY="581.0" prefHeight="96.0" prefWidth="992.0">
-               <children>
-                  <Button fx:id="faq_button" layoutX="341.0" layoutY="17.0" mnemonicParsing="false" onAction="#FaqPage" prefHeight="65.0" prefWidth="311.0" styleClass="general_button" text="FAQ Page" textAlignment="CENTER">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
+            <AnchorPane layoutX="-4.0" layoutY="581.0" prefHeight="96.0" prefWidth="992.0" />
+            <Text layoutX="371.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To contact us:" textAlignment="CENTER" wrappingWidth="233.4000000000001">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>

@@ -14,7 +14,7 @@ you can put your changes in to the scene builder and you can see your results ac
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="550.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="550.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <fx:include source="Interface.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="loginPane" layoutX="291.0" layoutY="69.0" prefHeight="716.0" prefWidth="986.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="69.0">
@@ -61,26 +61,26 @@ you can put your changes in to the scene builder and you can see your results ac
             </Label>
             <Line endX="711.5" layoutX="255.0" layoutY="323.0" smooth="false" startX="-252.0" stroke="WHITE" strokeWidth="3.0" />
             <Line endX="711.5" layoutX="255.0" layoutY="323.0" smooth="false" startX="-200.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.rightAnchor="4.5" />
-            <ToggleButton fx:id="toggle_selenium_bg" layoutX="298.0" layoutY="436.0" mnemonicParsing="false" onAction="#seleniumBackgroundButton" prefHeight="43.0" prefWidth="58.0" selected="true" text="On">
+            <ToggleButton fx:id="toggle_selenium_bg" layoutX="298.0" layoutY="436.0" mnemonicParsing="false" onAction="#seleniumBackgroundButton" opacity="0.0" prefHeight="43.0" prefWidth="58.0" selected="true" text="On">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <font>
                   <Font name="Century Gothic Bold" size="18.0" />
                </font></ToggleButton>
-            <Label layoutX="80.0" layoutY="426.0" prefHeight="63.0" prefWidth="183.0" text="Open Selenium in background" textFill="WHITE" wrapText="true">
+            <Label layoutX="80.0" layoutY="426.0" opacity="0.0" prefHeight="63.0" prefWidth="183.0" text="Open Selenium in background" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Century Gothic Bold" size="22.0" />
                </font>
             </Label>
-            <ToggleButton fx:id="toggle_save_cookies" layoutX="299.0" layoutY="505.0" mnemonicParsing="false" onAction="#saveCookiesButton" prefHeight="43.0" prefWidth="58.0" selected="true" text="On">
+            <ToggleButton fx:id="toggle_save_cookies" layoutX="302.0" layoutY="436.0" mnemonicParsing="false" onAction="#saveCookiesButton" prefHeight="43.0" prefWidth="58.0" selected="true" text="On">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <font>
                   <Font name="Century Gothic Bold" size="18.0" />
                </font></ToggleButton>
-            <Label layoutX="81.0" layoutY="495.0" prefHeight="63.0" prefWidth="195.0" text="Save user cookies" textFill="WHITE" wrapText="true">
+            <Label layoutX="84.0" layoutY="426.0" prefHeight="63.0" prefWidth="195.0" text="Save user cookies" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Century Gothic Bold" size="22.0" />
                </font>
