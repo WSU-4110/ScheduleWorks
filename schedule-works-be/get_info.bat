@@ -1,1 +1,1 @@
-python "C:\Program Files\ScheduleWorks\schedule-works-be\manual_get_data.py" --sid=%1 --passwd=%2
+"C:\Program Files\ScheduleWorks\dist\manual_get_data.exe" --sid=%1 --passwd=%2

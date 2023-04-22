@@ -38,5 +38,17 @@
             <td>3/7/2023</td>
             <td>Worked on setting up JavaFX to be cleaner and more malluable between different computers.Found issues with sizing the screen.</td>
          </tr>
+         <tr>
+            <td>3/15/2023</td>
+            <td>Talked about what needed to be finished before the sprint 2 and discussed possible implementations of our code.</td>
+         </tr>
+         <tr>
+            <td>3/28/2023</td>
+            <td>Talked about what needed to be finished for sprint 3 and created a todo list for our final sprint. Discussed how to split up work and attempted to solve previous problems.</td>
+         </tr>
+               <tr>
+            <td>4/4/2023</td>
+            <td>Discussed unit testing software and documentation strategy. Fixed compatability issues and disccused changes for the frontend</td>
+         </tr>
     </tbody>
   </table>

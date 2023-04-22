@@ -11,6 +11,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
+
 # import privateInfo
 
 
@@ -30,7 +31,6 @@ def retrive_data(refresh_token: str, token: str, name: str) -> None:
     driver.add_cookie({"name": "NAME", "value": name})
 
     driver.get("https://degreeworks.wayne.edu/api/students/myself")
-    time.sleep(59999)
     soup = BeautifulSoup(driver.page_source, features="lxml")
     dict_from_json = json.loads(soup.find("body").text)
 
@@ -68,104 +68,6 @@ def retrive_data(refresh_token: str, token: str, name: str) -> None:
     view_degree_requirements()
 
 
-def extract_user_info() -> dict:
-    """Extract user information from json file and returns relavant information in a dict."""
-    try:
-        with open(
-            "C:/Program Files/ScheduleWorks/data/userData.json", encoding="utf-8"
-        ) as file:
-            user_data = json.load(file)
-    except FileNotFoundError as error:
-        raise error
-    user_information = {}
-    user_information["name"] = user_data["_embedded"]["students"][0]["name"]
-    user_information["term_code"] = user_data["_embedded"]["students"][0]["activeTerm"]
-    user_information["id"] = user_data["_embedded"]["students"][0]["id"]
-    user_information["level"] = user_data["_embedded"]["students"][0]["goals"][0][
-        "school"
-    ]["key"]
-    user_information["degree"] = user_data["_embedded"]["students"][0]["goals"][0][
-        "degree"
-    ]["key"]
-
-    try:
-        with open(
-            "C:/Program Files/ScheduleWorks/data/userData.txt", "w+", encoding="utf-8"
-        ) as file:
-            file.write(
-                user_information["name"]
-                + "\n"
-                + user_information["term_code"]
-                + "\n"
-                + user_information["id"]
-                + "\n"
-                + user_information["level"]
-                + "\n"
-                + user_information["degree"]
-            )
-    except FileNotFoundError as error:
-        raise error
-
-    return user_information
-
-
-def view_course_history():
-    """Extract course history from json audit file."""
-    try:
-        with open(
-            "C:/Program Files/ScheduleWorks/data/classData.json", encoding="utf-8"
-        ) as file:
-            audit_data = json.load(file)
-    except FileNotFoundError as error:
-        raise error
-
-    try:
-        with open(
-            "C:/Program Files/ScheduleWorks/data/courseHistory.txt",
-            "w+",
-            encoding="utf-8",
-        ) as file:
-            for course in audit_data["classInformation"]["classArray"]:
-                print(
-                    f"{course['discipline']:<5}",
-                    f"{course['number']:<5}",
-                    f"{course['credits']:<3}",
-                    f"{course['courseTitle']:<30}",
-                    f"'Passed:' {course['passed']:<8}",
-                )
-                file.write(
-                    f"{course['discipline']:<5}"
-                    + f"{course['number']:<5}"
-                    + f"{course['credits']:<3}"
-                    + f"{course['courseTitle']:<30}"
-                    + f"'Passed:' {course['passed']:<8}\n"
-                )
-    except FileNotFoundError as error:
-        raise error
-
-
-def view_degree_requirements():
-    """Extract degree requirments from json audit file."""
-    try:
-        with open(
-            "C:/Program Files/ScheduleWorks/data/classData.json", encoding="utf-8"
-        ) as file:
-            audit_data = json.load(file)
-    except FileNotFoundError as error:
-        raise error
-
-    try:
-        with open(
-            "C:/Program Files/ScheduleWorks/data/degreeRequirments.txt",
-            "w+",
-            encoding="utf-8",
-        ) as file:
-            for degree_block_requirement in audit_data["blockArray"]:
-                print(degree_block_requirement["title"])
-                file.write(degree_block_requirement["title"] + "\n")
-
-    except FileNotFoundError as error:
-        raise error
 
 
 # def refresh_data():
@@ -178,7 +80,8 @@ def view_degree_requirements():
 
 
 if __name__ == "__main__":
+    return
     # refresh_data()
-    view_course_history()
-    view_degree_requirements()
+    # view_course_history()
+    # view_degree_requirements()
     # extract_user_info()
