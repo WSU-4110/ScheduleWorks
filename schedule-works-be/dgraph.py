@@ -3,6 +3,26 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
+
+class Dgraph:
+    """Wrapper adapater class for networkx Directed Graphs."""
+
+    # graph = None
+
+    def __init__(self):
+        self.graph = nx.DiGraph()
+
+    def course_sum(self, course: str, memo: dict) -> set:
+        """
+        Determine a given course's dependency list. See make_priority_queue() to use properly.
+        Wrapper function to clarify args used during recursion.
+        Functions best when courses are fed in order from least expected dependency to most.
+        Args:
+        G: A directed graph containing courses and edges that point towards a courses prequisite.
+        course: The course that is being analysed for priority count.
+        memo: Memoization dict to speed up complex prerequisties
+        """
+
         included_courses = set()
 
         def course_summate(course_id: str) -> None:
@@ -54,7 +74,6 @@ import matplotlib.pyplot as plt
     def make_priority_queue(self) -> list:
         """
         Produce a priority queue of courses from a directed graph.
-
         TODO:
         return numeric list.
         ensure priority when 2 classes are equal length.
@@ -155,6 +174,7 @@ def main():
 
     # topo_order = courses_graph.topological_sort()
     # print("Topological order:", topo_order)
+
 
 if __name__ == "__main__":
     main()
