@@ -5,7 +5,7 @@
 </p>
 
 
-A desktop application that can build a class schedule given time & day filters. 
+A desktop application that can build a class schedule using your WSU DegreeWorks account. 
 
 # Installation
 1. Download the repository into C:\Program Files\ using admin. (unzip if you need to)
@@ -61,25 +61,7 @@ curl https://www.python.org/ftp/python/3.10.9/python-3.10.9-amd64.exe -o python_
 
 ### Libraries
 -----
-The project is still in devolpment, to install the required tools to manually run, use below:
+Install the required tools to manually run, use below:
 ```bash
 pip install -r requirements.txt
 ```
-
- 
-### todo
- - Optimize functions 
- - Manage selenium wait times based on website load speeds.
- - Delete user information button.
- - Save user cookies for quick data refresh.
- - Display users name
- - Incorrect code handling
- - Incorrect login handling
- - Convert output data to JSON for table formatting
- - Display priority queue
- - Add functionality for the Selenium in BG and Save User Cookies (if implemented) toggles
- - Add FAQ page to interface (in place of help page)
- - Save login info & add "Remember me" function
- - Zoom in/out of interface through scaling the DPI
- - Scene transitions between interface pages (fade in/out)
-
