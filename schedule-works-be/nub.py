@@ -2,6 +2,7 @@
 import re
 import requests
 from bs4 import BeautifulSoup
+import dgraph
 import parse_info
 
 
@@ -240,6 +241,8 @@ class Nub:
 
     def get_prerequistes(self, subject_code, course_code):
         """Obtain an array with course prequeistes given a course code and id."""
+        if self.session == None:
+            raise Exception("Enable Search!")
         course_reference_number = self.get_course_reference(subject_code, course_code)
         url = self.base_url + "/searchResults/getSectionPrerequisites"
         body = {"term": self.term, "courseReferenceNumber": course_reference_number}
@@ -255,28 +258,21 @@ class Nub:
         """Produce an adjancancy matrix for courses still in progress."""
         adjancancy_mtrx = []
         course_list_degree = parse_info.get_courses()
-        courses_taken = parse_info.get_courses_taken()
-        # print(courses_taken)
-
         for course_degree in course_list_degree:
+            # print(course_degree)
             course_preqs = self.get_prerequistes(
                 course_degree.split(" ")[0], course_degree.split(" ")[1]
             )
             if course_preqs and course_preqs[0] == "Error":
                 continue
             for required_courses in course_preqs:
-                if (
-                    required_courses[0]["course"] + " " + required_courses[0]["code"]
-                    in courses_taken
-                ):
-                    continue
                 course = dict(
                     required_courses[0]
                 )  # linting caught some error without this here
                 adjancancy_mtrx.append(
                     [
                         course_degree,
-                        course["course"] + " " + course["code"],
+                        course["course"] + course["code"],
                     ]
                 )
         return adjancancy_mtrx
@@ -302,38 +298,21 @@ class Nub:
                 )
         return adjancancy_mtrx
 
-    def search_class(self, subject_code, course_code):
-        self.reset_search()
-        url = (
-            self.base_url + "/searchResults/searchResults?"
-            f"txt_subject={subject_code}"
-            f"&txt_term={self.term}"
-            f"&txt_courseNumber={course_code}"
-            "&startDatepicker="
-            "&endDatepicker="
-            "&pageOffset=0"
-            "&pageMaxSize=5000"
-            "&sortColumn=subjectDescription"
-            "&sortDirection=asc"
-        )
-        response = self.session.get(url, timeout=10)
-        if response.status_code != 200:
-            return [{"Error": response.status_code}]
-        if response.json()["totalCount"] <= 0:
-            return [{"Error": "Cannot find class"}]
-
-        data = response.json()["data"]
-        return data
+    def close_session(self):
+        """Shutting down the session to prevent resource leak"""
+        self.session.close()
+        self.session = None
 
 
 def main():
     """Give an example use case."""
     nub = Nub("https://registration.wayne.edu/StudentRegistrationSsb/ssb")
     print(nub.get_terms(maximum=5))
-    nub.set_term("202309")
+    nub.set_term("202301")
     nub.enable_search()
-    nub.search_class("CSC", "2200")
-
-
-if __name__ == "__main__":
-    main()
+    graph = dgraph.Dgraph()
+    graph.add_edges_from(nub.make_adjancancy_mtrx())
+    graph.save_graph("graph_small", dpi=600)
+    graph.add_edges_from(nub.make_adjancancy_mtrx_full())
+    graph.save_graph("graph_full", dpi=600)
+    nub.close_session()
