@@ -11,6 +11,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
+import parse_info
 
 # import privateInfo
 
@@ -42,7 +43,7 @@ def retrive_data(refresh_token: str, token: str, name: str) -> None:
     ) as outfile:
         json.dump(dict_from_json, outfile, indent=4)
 
-    user_info = extract_user_info()
+    user_info = parse_info.extract_user_info()
 
     audit_url = (
         "https://degreeworks.wayne.edu/api/audit?studentId={sid}"
@@ -64,10 +65,8 @@ def retrive_data(refresh_token: str, token: str, name: str) -> None:
     ) as outfile:
         json.dump(dict_from_json, outfile, indent=4)
     driver.close()
-    view_course_history()
-    view_degree_requirements()
-
-
+    parse_info.view_course_history()
+    parse_info.view_degree_requirements()
 
 
 # def refresh_data():

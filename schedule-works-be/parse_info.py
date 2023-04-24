@@ -225,33 +225,33 @@ def course_history_txt():
                 )
     except FileNotFoundError as error:
         raise error
-    
 
-def course_history_txt():
-    try:
-        with open(
-            "C:/Program Files/ScheduleWorks/data/classData.json", encoding="utf-8"
-        ) as file:
-            audit_data = json.load(file)
-    except FileNotFoundError as error:
-        raise error
-    try:
-        with open(
-            "C:/Program Files/ScheduleWorks/data/courseHistory.txt",
-            "w+",
-            encoding="utf-8",
-        ) as outfile:
-            for course in audit_data["classInformation"]["classArray"]:
-                outfile.write(
-                    f"{course['discipline']}\n"
-                    + f"{course['number']}\n"
-                    + f"{course['credits']}\n"
-                    + f"{course['courseTitle']}\n"
-                    + f"'Passed:' {course['passed']}\n"
-                )
-    except FileNotFoundError as error:
-        raise error
-    
+
+# def course_history_txt():
+#     try:
+#         with open(
+#             "C:/Program Files/ScheduleWorks/data/classData.json", encoding="utf-8"
+#         ) as file:
+#             audit_data = json.load(file)
+#     except FileNotFoundError as error:
+#         raise error
+#     try:
+#         with open(
+#             "C:/Program Files/ScheduleWorks/data/courseHistory.txt",
+#             "w+",
+#             encoding="utf-8",
+#         ) as outfile:
+#             for course in audit_data["classInformation"]["classArray"]:
+#                 outfile.write(
+#                     f"{course['discipline']}\n"
+#                     + f"{course['number']}\n"
+#                     + f"{course['credits']}\n"
+#                     + f"{course['courseTitle']}\n"
+#                     + f"'Passed:' {course['passed']}\n"
+#                 )
+#     except FileNotFoundError as error:
+#         raise error
+
 # def schedules_txt():
 
 #     try:
@@ -270,8 +270,6 @@ def course_history_txt():
 #                 )
 #     except FileNotFoundError as error:
 #         raise error
-
-
 
 
 if __name__ == "__main__":
