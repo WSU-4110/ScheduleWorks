@@ -16,7 +16,6 @@ on:
 
 jobs:
   build:
-
     runs-on: windows-latest
 
     steps:
@@ -29,6 +28,9 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B -X package -f schedule-works-fe/pom.xml
+    - name: Test with Maven
+      run: mvn -B test -f schedule-works-fe/pom.xml
+      
 
 #     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
 #     - name: Update dependency graph
