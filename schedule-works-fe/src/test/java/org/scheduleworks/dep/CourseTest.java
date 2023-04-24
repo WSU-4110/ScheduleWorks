@@ -33,5 +33,37 @@ public class CourseTest {
     void testSetPass() {
         test.setPass("fakepass");
         assertSame("fakepass", test.getPass());
+        
     }
+     @Test
+    void testSetCredit() {
+        test.setCredit("120");
+        assertSame("120", test.getCredit());
+    }
+
+    @Test
+    void setDiscipline() {
+        test.setDiscipline("Math");
+        assertSame("Math", test.getDiscipline());
+    }
+
+    @Test
+    void setNumber() {
+        test.setNumber("0");
+        assertSame("0", test.getNumber());
+
+    }
+
+    @Test
+    void setBlockRequirementId() {
+        test.setBlockRequirementId("12");
+        assertSame("12", test.getBlockRequirementId());
+    }
+
+    @Test
+    void setTerm() {
+        test.setTerm("Winter");
+        assertSame("Winter", test.getTerm());
+    }
+    
 }
