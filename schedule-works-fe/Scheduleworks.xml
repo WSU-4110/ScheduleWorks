@@ -3,7 +3,7 @@
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
   <jar>C:\Program Files\ScheduleWorks\schedule-works-fe\target\schedule-works-fe-1.0-SNAPSHOT-jar-with-dependencies.jar</jar>
-  <outfile>C:\Program Files\ScheduleWorks\schedule-works-fe\target\ScheduleWorks.exe</outfile>
+  <outfile>C:\Program Files\ScheduleWorks\ScheduleWorks.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
