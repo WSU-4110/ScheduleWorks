@@ -15,11 +15,8 @@ class Dgraph:
     def course_sum(self, course: str, memo: dict) -> set:
         """
         Determine a given course's dependency list. See make_priority_queue() to use properly.
-
         Wrapper function to clarify args used during recursion.
         Functions best when courses are fed in order from least expected dependency to most.
-
-
         Args:
         G: A directed graph containing courses and edges that point towards a courses prequisite.
         course: The course that is being analysed for priority count.
@@ -77,7 +74,6 @@ class Dgraph:
     def make_priority_queue(self) -> list:
         """
         Produce a priority queue of courses from a directed graph.
-
         TODO:
         return numeric list.
         ensure priority when 2 classes are equal length.

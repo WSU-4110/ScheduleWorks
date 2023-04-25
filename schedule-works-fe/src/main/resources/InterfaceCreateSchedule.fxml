@@ -12,7 +12,7 @@
 <!-- this fxml code is created through scene builder, you can edit the code here manually or
 you can put your changes in to the scene builder and you can see your results accordingly in here as well -->
 
-<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="scenePane" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <fx:include source="Interface.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane layoutX="291.0" layoutY="69.0" prefHeight="716.0" prefWidth="975.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="69.0">
@@ -24,7 +24,7 @@ you can put your changes in to the scene builder and you can see your results ac
             </Text>
             <Line endX="711.5" layoutX="255.0" layoutY="48.0" smooth="false" startX="-252.0" stroke="WHITE" strokeWidth="5.0" AnchorPane.bottomAnchor="665.5" AnchorPane.leftAnchor="0.5" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="45.5" />
             <Line endX="711.5" layoutX="255.0" layoutY="48.0" smooth="false" startX="-200.0" stroke="WHITE" strokeWidth="5.0" AnchorPane.rightAnchor="6.0" />
-            <Button fx:id="updateScheduleButton" alignment="CENTER" layoutX="729.0" layoutY="642.0" mnemonicParsing="false" onAction="#pressUpdateScheduleButton" prefHeight="47.0" prefWidth="151.0" styleClass="general_button" stylesheets="@MainWindowStyle.css" text="Update" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="95.0">
+            <Button fx:id="updateScheduleButton" alignment="CENTER" layoutX="789.0" layoutY="642.0" mnemonicParsing="false" onAction="#pressUpdateScheduleButton" prefHeight="47.0" prefWidth="151.0" styleClass="general_button" stylesheets="@MainWindowStyle.css" text="Update" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="35.0">
                <font>
                   <Font name="Century Gothic Bold" size="24.0" />
                </font>
@@ -35,6 +35,7 @@ you can put your changes in to the scene builder and you can see your results ac
             <TableView fx:id="tableSchedule" layoutX="33.0" layoutY="83.0" prefHeight="484.0" prefWidth="907.0" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="95.0" />
             <TextField fx:id="customInsert" layoutX="38.0" layoutY="606.0" prefHeight="25.0" prefWidth="415.0" promptText="Ex. CSC 3200 5  CSC 5290 3 PS 3080 9 : [Subject Code Priority] ]" AnchorPane.bottomAnchor="84.39999999999998" />
             <Button fx:id="createScheduleButton" alignment="CENTER" layoutX="38.0" layoutY="642.0" mnemonicParsing="false" onAction="#pressCreateSchedule" prefHeight="47.0" prefWidth="415.0" styleClass="general_button" stylesheets="@MainWindowStyle.css" text="Add Classes And Create" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" AnchorPane.bottomAnchor="26.799999999999955">
+
                <font>
                   <Font name="Century Gothic Bold" size="24.0" />
                </font>
